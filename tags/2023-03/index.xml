@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>2023-03 on 番茄🍅杂货铺</title>
-    <link>http://example.org/tags/2023-03/</link>
+    <link>https://aidysun.github.io/tags/2023-03/</link>
     <description>Recent content in 2023-03 on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Mar 2023 22:07:21 +0800</lastBuildDate><atom:link href="http://example.org/tags/2023-03/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 22:07:21 +0800</lastBuildDate><atom:link href="https://aidysun.github.io/tags/2023-03/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>能否在 C&#43;&#43; 的构造函数中使用 this 指针</title>
-      <link>http://example.org/posts/2023/03/this-pointer-in-cpp-ctor/</link>
+      <link>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</link>
       <pubDate>Mon, 20 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>http://example.org/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
+      <guid>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
       <description>构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？</description>
     </item>
     
     <item>
       <title>如何删除本地 git 中未追踪的文件/文件夹</title>
-      <link>http://example.org/posts/2023/03/git-rm-untracked-file-dir/</link>
+      <link>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</link>
       <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2023/03/git-rm-untracked-file-dir/</guid>
+      <guid>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</guid>
       <description>git clean</description>
     </item>
     
