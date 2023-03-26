@@ -1,3 +1,6 @@
 [submodule "themes/hugo-notepadium-mod"]
 	path = themes/hugo-notepadium-mod
 	url = https://github.com/qdzhang/hugo-notepadium-mod.git
+[submodule "themes/hugo-PaperMod"]
+	path = themes/hugo-PaperMod
+	url = https://github.com/AidySun/hugo-PaperMod.git
