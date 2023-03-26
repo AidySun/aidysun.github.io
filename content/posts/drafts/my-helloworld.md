@@ -41,3 +41,13 @@ while (true) {
   yes
 }
 {{< / highlight >}}
+
+## Ref
+
+- [How to Setup a Hugo Website on GitHub](https://letsautomate.it/article/how-to-setup-a-hugo-website-on-github/)
+- [Using Hugo Modules Instead of Git Submodules](https://www.adamormsby.com/posts/012-hugo-modules/)
+
+
+## Themes
+
+https://theme-notemod.littlezhang.com/about/

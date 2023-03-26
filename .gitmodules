@@ -3,4 +3,4 @@
 	url = https://github.com/qdzhang/hugo-notepadium-mod.git
 [submodule "themes/hugo-PaperMod"]
 	path = themes/hugo-PaperMod
-	url = https://github.com/AidySun/hugo-PaperMod.git
+	url = git@github.com:AidySun/hugo-PaperMod.git
