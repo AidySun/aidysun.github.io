@@ -2,12 +2,12 @@
 title: '能否在 C++ 的构造函数中使用 this 指针'
 description: '构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？'
 date: 2023-03-20T22:07:21+08:00
-draft: true
 author: 'SZH'
-tags: ["C++", "Development"]
+tags: ["C++", "Development", "2023", "2023-03"]
 theme: 'light'
 featured: true
 ---
+moved.
 
 Simple answer is **yes**, with some attention in inheritance.
 
@@ -15,20 +15,14 @@ Simple answer is **yes**, with some attention in inheritance.
 其实
 According to [Should you use the this pointer in the constructor?](https://isocpp.org/wiki/faq/ctors#using-this-in-ctors):
 
-```text
-Some people feel you should not use the this pointer in a constructor because the object is not fully formed yet. However you can use this in the constructor (in the {body} and even in the initialization list) if you are careful.
+> Some people feel you should not use the this pointer in a constructor because the object is not fully formed yet. However you can use this in the constructor (in the {body} and even in the initialization list) if you are careful.
 
-Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.
-
-```
+> Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.
 
 Please pay attention to virtual functions:
-```
-The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.
+> The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.
 
-Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this->method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object. 
-
-```
+> Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this->method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object. 
 
 ```cpp
 #include <iostream>
