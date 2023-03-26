@@ -4,7 +4,6 @@ description: 'git clean'
 date: 2023-03-20
 author: 'SZH'
 tags: ["Git", "Development", "2023", "2023-03"]
-theme: 'light'
 ---
 
 对于一个 git 项目，执行 `git status -u` 有如下状态：
@@ -39,5 +38,3 @@ theme: 'light'
 | `-f` | *Delete files or diretories* |
 | `-d` | *Recurse into untracked directories* |
 | `-x` | *Don’t use the standard ignore rules* |
-
-(End)
