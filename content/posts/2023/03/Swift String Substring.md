@@ -8,8 +8,6 @@ featured: true
 draft: true
 ---
 
-# Swift String Substring
-
 Swift 中对 `String` 类型的 `substring()` 方法都被标记为`不推荐(deprecated)`了，那该如何实现 substring 的功能呢？
 
 ![substring is deprecated](../images/swift-string-substring-deprecated.png "XCode 中对String.substring的提示")

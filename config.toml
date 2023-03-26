@@ -1,7 +1,7 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = '番茄🍅杂货铺'
-theme = 'hugo-notepadium-mod' #'ananke'
+theme = 'hugo-PaperMod'
 
 enableEmoji = true
 hasCJKLanguage = true
