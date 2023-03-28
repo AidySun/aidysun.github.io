@@ -70,8 +70,8 @@
 <meta property="og:description" content="构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-03-20T22:07:21+08:00" />
-<meta property="article:modified_time" content="2023-03-20T22:07:21+08:00" />
+<meta property="article:published_time" content="2023-03-27T22:07:21+08:00" />
+<meta property="article:modified_time" content="2023-03-27T22:07:21+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="能否在 C&#43;&#43; 的构造函数中使用 this 指针"/>
@@ -111,8 +111,8 @@
   "articleBody": "直接说结论：可以在构造函数中使用 this，但是，多态无法生效。\n有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。 根据Should you use the this pointer in the constructor?的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。\nHere is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.\n但要注意在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。\nThe bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.\n这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。\nHere is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-\u003emethod()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.\n可以用如下的例子类验证一下。\n1#include 2 3using namespace std; 4 5class A { 6 7public: 8 A() { 9 cout \u003c\u003c \"A() { \\n\"; 10 this-\u003evf(); 11 this-\u003ef1(); 12 cout \u003c\u003c \"} \\n\"; 13 } 14 15 ~A() { 16 cout \u003c\u003c \"~A()\\n\"; 17 } 18 19 virtual void vf() { 20 cout \u003c\u003c \" A's vf()\\n\"; 21 } 22 23 void f1() { 24 cout \u003c\u003c \" A's f1()\\n\"; 25 vf(); 26 } 27}; 28 29class B : public A { 30 31public: 32 B() { 33 cout \u003c\u003c \"B() { \\n\"; 34 this-\u003evf(); 35 this-\u003ef1(); 36 cout \u003c\u003c \"} \\n\"; 37 } 38 39 ~B() { 40 cout \u003c\u003c \"~B()\\n\"; 41 } 42 43 virtual void vf() { 44 cout \u003c\u003c \" B's vf()\\n\"; 45 } 46 47 void f1() { 48 cout \u003c\u003c \" B's f1()\\n\"; 49 vf(); 50 } 51}; 52 53int main() { 54 cout \u003c\u003c \"creat A a\\n\"; 55 A a; 56 cout \u003c\u003c \"creat B b\\n\"; 57 B b; 58 59 cout \u003c\u003c \"======\\n\"; 60 return 0; 61} 执行结果如下：\n1creat A a 2A() { 3 A's vf() 4 A's f1() 5 A's vf() 6} 7creat B b // 开始构造 B b; 8A() { 9 A's vf() // 在B的构造过程中，父类A中的this调用的是A的virtual function 10 A's f1() 11 A's vf() // 同样，在父类构造函数中间接调用的虚函数，也不会调用子类的虚函数 12} 13B() { 14 B's vf() 15 B's f1() 16 B's vf() 17} 18====== 19~B() 20~A() 21~A() ",
   "wordCount" : "832",
   "inLanguage": "en",
-  "datePublished": "2023-03-20T22:07:21+08:00",
-  "dateModified": "2023-03-20T22:07:21+08:00",
+  "datePublished": "2023-03-27T22:07:21+08:00",
+  "dateModified": "2023-03-27T22:07:21+08:00",
   "author":{
     "@type": "Person",
     "name": "SZH"
@@ -202,7 +202,7 @@
     <div class="post-description">
       构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？
     </div>
-    <div class="post-meta"><span title='2023-03-20 22:07:21 +0800 CST'>March 20, 2023</span>&nbsp;·&nbsp;SZH
+    <div class="post-meta"><span title='2023-03-27 22:07:21 +0800 CST'>March 27, 2023</span>&nbsp;·&nbsp;SZH
 
 </div>
   </header> 
