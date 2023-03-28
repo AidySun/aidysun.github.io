@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on 番茄🍅杂货铺</title>
-    <link>http://aidysun.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Mar 2023 22:07:21 +0800</lastBuildDate><atom:link href="http://aidysun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Mar 2023 22:07:21 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2023</title>
-      <link>http://aidysun.github.io/tags/2023/</link>
+      <link>/tags/2023/</link>
       <pubDate>Mon, 27 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>http://aidysun.github.io/tags/2023/</guid>
+      <guid>/tags/2023/</guid>
       <description></description>
     </item>
     
     <item>
       <title>2023-03</title>
-      <link>http://aidysun.github.io/tags/2023-03/</link>
+      <link>/tags/2023-03/</link>
       <pubDate>Mon, 27 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>http://aidysun.github.io/tags/2023-03/</guid>
+      <guid>/tags/2023-03/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C&#43;&#43;</title>
-      <link>http://aidysun.github.io/tags/c&#43;&#43;/</link>
+      <link>/tags/c&#43;&#43;/</link>
       <pubDate>Mon, 27 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>http://aidysun.github.io/tags/c&#43;&#43;/</guid>
+      <guid>/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development</title>
-      <link>http://aidysun.github.io/tags/development/</link>
+      <link>/tags/development/</link>
       <pubDate>Mon, 27 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>http://aidysun.github.io/tags/development/</guid>
+      <guid>/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://aidysun.github.io/tags/git/</link>
+      <link>/tags/git/</link>
       <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://aidysun.github.io/tags/git/</guid>
+      <guid>/tags/git/</guid>
       <description></description>
     </item>
     
