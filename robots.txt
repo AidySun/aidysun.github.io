@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://aidysun.github.io/sitemap.xml
