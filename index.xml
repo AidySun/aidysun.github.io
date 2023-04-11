@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>设计模式：观察者模式、订阅-发布模式、事件监听模式</title>
-      <link>https://aidysun.github.io/posts/drafts/design-pattern-observer/</link>
+      <link>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</link>
       <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/drafts/design-pattern-observer/</guid>
+      <guid>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</guid>
       <description>Design Pattern: Observer Pattern</description>
     </item>
     
