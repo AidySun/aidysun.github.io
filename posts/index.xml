@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>每个程序员都应该知道的字符集发展简史</title>
+      <link>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</guid>
+      <description>关于ASCII、DBCS、Unicode、UCS-2、UTF-8和Encoding</description>
+    </item>
+    
     <item>
       <title>设计模式：观察者模式、订阅-发布模式、事件监听模式</title>
       <link>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</link>
@@ -59,6 +68,15 @@
       
       <guid>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</guid>
       <description>git clean</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aidysun.github.io/posts/drafts/cpp-smart-pointer-and-dynamic-array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/drafts/cpp-smart-pointer-and-dynamic-array/</guid>
+      <description>C++ 中没有垃圾回收，动态申请的内存需要手动释放。 「智能指针」是 C++ 中管理动态内存、防止资源泄漏的一种数据结构。 「动态数组」指的是通过 operator new[] 申请的数</description>
     </item>
     
   </channel>

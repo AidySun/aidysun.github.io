@@ -6,7 +6,16 @@
     <description>Recent content in Development on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>每个程序员都应该知道的字符集发展简史</title>
+      <link>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</guid>
+      <description>关于ASCII、DBCS、Unicode、UCS-2、UTF-8和Encoding</description>
+    </item>
+    
     <item>
       <title>设计模式：观察者模式、订阅-发布模式、事件监听模式</title>
       <link>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</link>
