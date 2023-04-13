@@ -14,6 +14,22 @@
       
       <guid>https://aidysun.github.io/posts/2023/03/markdown-link-to-url-with-space/</guid>
       <description>Markdown 中加入超链接指向文件，但文件名中包含空格，怎么办？</description>
+      <content:encoded><![CDATA[<h2 id="方法一-将空格替换为20">方法一： 将空格替换为<code>%20</code></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">-</span> [<span class="nt">百度搜索 markdown link space</span>](<span class="na">https://www.baidu.com/s?wd=markdown%20link%20space</span>)
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">-</span> [<span class="nt">父目录中的READ ME.md</span>](<span class="na">../READ%20ME.md</span>) 
+</span></span></code></pre></div><p>效果：</p>
+<ul>
+<li><a href="https://www.baidu.com/s?wd=markdown%20link%20space">百度搜索 markdown link space</a></li>
+<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>🕷️404预警</code></li>
+</ul>
+<h2 id="方法二-用--把带空格的路径url括起来">方法二： 用 <code>&lt;&gt;</code> 把带空格的路径/URL括起来</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">-</span> [<span class="nt">Bing搜索 markdown link with space</span>](<span class="na">&lt;https://cn.bing.com/search?q=markdown link with space&gt;</span>)
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">-</span> [<span class="nt">父目录中的READ ME.md</span>](<span class="na">&lt;../READ ME.md&gt;</span>)
+</span></span></code></pre></div><ul>
+<li><a href="https://cn.bing.com/search?q=markdown%20link%20with%20space">Bing搜索 markdown link with space</a></li>
+<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>🐞404预警</code></li>
+</ul>
+]]></content:encoded>
     </item>
     
     <item>
@@ -23,6 +39,39 @@
       
       <guid>https://aidysun.github.io/posts/2023/03/hugo-theme-not-work-online/</guid>
       <description>Failed to find a valid digest in the &amp;#39;integrity&amp;#39; attribute for resource &amp;#39;https://.....css&amp;#39; with computed SHA-256 integrity &amp;#39;.....&amp;#39;. The resource has been blocked.</description>
+      <content:encoded><![CDATA[<p><strong>根本原因：<code>git crlf</code> 设置导致推送到 <code>github</code> 的文件变动。</strong></p>
+<p><code>Hugo</code> 静态博客，使用 <code>PaperMode</code> 主题，本地渲染没问题，将 <code>publish</code> 文件夹 <code>push</code> 到 <code>&lt;username&gt;.github.io</code> 后，通过 Github Page 访问会出现 <code>CSS block</code> 的情况：</p>
+<p></p>
+<h2 id="尝试过但不起作用的方法">尝试过但不起作用的方法</h2>
+<ol>
+<li>修改 <code>config.toml</code> 中的 <code>baseURL</code>，用 <code>http</code>、用 <code>https</code>。</li>
+<li>根据 <a href="https://github.com/kylethedeveloper/hugo-PaperMod/commit/1b9352398fe91fab207337352befee77152cc544">head, footer: add option to disable fingerprinting adityatelange#89</a>, 在 <code>config.toml</code> 中加入如下内容:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">assets</span><span class="p">]</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nx">disableFingerprinting</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span></code></pre></div><h2 id="我的解决方法">我的解决方法</h2>
+<p>根据 <a href="https://github.com/lxndrblz/anatole/issues/114">Failed to find a valid digest in the integrity attribute</a>，问题可能是 <code>git</code> <code>line breaking</code> 的问题，我使用的是 <code>macOS</code>，当时的 <code>git config -l</code> 中:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">core.autocrlf<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><p>在 <code>hugo project repo</code> 和 我的 <code>github.io</code> repo 中 执行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">git config core.autocrlf <span class="nb">false</span>
+</span></span></code></pre></div><p>然后生成博客：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">cd</span> blog-hugo
+</span></span><span class="line"><span class="ln">2</span><span class="cl">hugo -t PaperMod
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"># publish is &lt;username&gt;.github.io repo as a submodule</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nb">cd</span> publish
+</span></span><span class="line"><span class="ln">6</span><span class="cl">git add .
+</span></span><span class="line"><span class="ln">7</span><span class="cl">git commit -m <span class="s2">&#34;fix online theme&#34;</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">git push
+</span></span></code></pre></div><p>完美解决：</p>
+<p></p>
+<h2 id="其它未尝试的方法">其它未尝试的方法</h2>
+<ul>
+<li>修改模版中的 <code>integrity=&quot;{{ xxxx }}&quot;</code> 为 <code>integrity=&quot;&quot;</code></li>
+<li><code>git config --global core.autocrlf input</code></li>
+<li><a href="https://swopnil.com/blog/valid-digest-integrity-error-hugo-styling/">CloudFlare Cache</a></li>
+</ul>
+]]></content:encoded>
     </item>
     
     <item>
@@ -32,6 +81,105 @@
       
       <guid>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
       <description>构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？</description>
+      <content:encoded><![CDATA[<p>直接说结论：<strong>可以在构造函数中使用 this，但是，多态无法生效。</strong></p>
+<p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
+根据<a href="https://isocpp.org/wiki/faq/ctors#using-this-in-ctors">Should you use the this pointer in the constructor?</a>的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。</p>
+<blockquote>
+<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p>
+</blockquote>
+<p>但要<strong>注意</strong>在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。</p>
+<blockquote>
+<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p>
+</blockquote>
+<p>这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。</p>
+<blockquote>
+<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p>
+</blockquote>
+<p>可以用如下的例子类验证一下。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;A() { </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line hl"><span class="ln">10</span><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">vf</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;} </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">
+</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;~A()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">
+</span></span><span class="line"><span class="ln">19</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">vf</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;  A&#39;s vf()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">
+</span></span><span class="line"><span class="ln">23</span><span class="cl">  <span class="kt">void</span> <span class="nf">f1</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;  A&#39;s f1()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line hl"><span class="ln">25</span><span class="cl">    <span class="n">vf</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">
+</span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="k">class</span> <span class="nc">B</span> <span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">
+</span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">  <span class="n">B</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;B() { </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">vf</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">f1</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;} </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">  
+</span></span><span class="line"><span class="ln">39</span><span class="cl">  <span class="o">~</span><span class="n">B</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;~B()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">
+</span></span><span class="line"><span class="ln">43</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">vf</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;  B&#39;s vf()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">
+</span></span><span class="line"><span class="ln">47</span><span class="cl">  <span class="kt">void</span> <span class="nf">f1</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">48</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;  B&#39;s f1()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">49</span><span class="cl">    <span class="n">vf</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">
+</span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;creat A a</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">55</span><span class="cl">  <span class="n">A</span> <span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">56</span><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;creat B b</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line hl"><span class="ln">57</span><span class="cl">  <span class="n">B</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">58</span><span class="cl">
+</span></span><span class="line"><span class="ln">59</span><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;======</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">60</span><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">61</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>执行结果如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">creat A a
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">A<span class="o">()</span> <span class="o">{</span> 
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  A<span class="s1">&#39;s vf()
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="s1">  A&#39;</span>s f1<span class="o">()</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  A<span class="s1">&#39;s vf()
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="s1">} 
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="s1">creat B b  // 开始构造 B b;
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="s1">A() { 
+</span></span></span><span class="line hl"><span class="ln"> 9</span><span class="cl"><span class="s1">  A&#39;</span>s vf<span class="o">()</span> // 在B的构造过程中，父类A中的this调用的是A的virtual <span class="k">function</span> 
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  A<span class="s1">&#39;s f1()
+</span></span></span><span class="line hl"><span class="ln">11</span><span class="cl"><span class="s1">  A&#39;</span>s vf<span class="o">()</span> // 同样，在父类构造函数中间接调用的虚函数，也不会调用子类的虚函数
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="o">}</span> 
+</span></span><span class="line"><span class="ln">13</span><span class="cl">B<span class="o">()</span> <span class="o">{</span> 
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  B<span class="s1">&#39;s vf()
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="s1">  B&#39;</span>s f1<span class="o">()</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  B<span class="err">&#39;</span>s vf<span class="o">()</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="o">}</span> 
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="o">======</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">~B<span class="o">()</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">~A<span class="o">()</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">~A<span class="o">()</span></span></span></code></pre></div>
+]]></content:encoded>
     </item>
     
     <item>
@@ -41,6 +189,42 @@
       
       <guid>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</guid>
       <description>git clean</description>
+      <content:encoded><![CDATA[<p>对于一个 git 项目，执行 <code>git status -u</code> 有如下状态：</p>
+<p></p>
+<p>对于本地新增的文件，可以通过 <code>clean</code> 命令直接删除：</p>
+<p></p>
+<p></p>
+<p>但是本地新增的文件夹却没有被删除掉。要删除文件夹需要加上 <code>-d</code> 参数：</p>
+<p></p>
+<p>还有一种情况就是已经在 <code>.gitignore</code> 中的文件或文件夹是不会被删除的。</p>
+<p></p>
+<p></p>
+<p>需要通过 <code>-x</code> 选项来删除被 <code>.gitignore</code> 包含的文件或文件夹：</p>
+<p></p>
+<h2 id="git-clean-options"><code>git clean</code> options</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Option</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-f</code></td>
+<td><em>Delete files or diretories</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-d</code></td>
+<td><em>Recurse into untracked directories</em></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-x</code></td>
+<td><em>Don’t use the standard ignore rules</em></td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
     </item>
     
   </channel>

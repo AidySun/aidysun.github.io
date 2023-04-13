@@ -14,6 +14,95 @@
       
       <guid>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</guid>
       <description>每个程序员都应该知道的字符集发展简史</description>
+      <content:encoded><![CDATA[<p>写于二十年前(<code>2003年</code>)的文章，现在依然受用。</p>
+<p>你是否曾探究过<code>HTTP</code>请求中神秘的<code>Content-Type</code>？你是否曾遇到过满是问号 <code>???? ???? ??</code> 的电子邮件（或网页）？</p>
+<p>作者发现多数程序开发人员并不是完全明白字符集<code>character set</code>、编码<code>encoding</code>、<code>Unicode</code>、<code>UTF-8</code>等相关话题。</p>
+<p>这篇文章回顾了字符集的发展历史。</p>
+<p></p>
+<h2 id="asciiamerican-standard-code-for-information-interchange美国信息交换标准代码"><code>ASCII</code>（<code>American Standard Code for Information Interchange</code>，美国信息交换标准代码）</h2>
+<p>回到<code>Unix</code>正在被发明的上古时代，一个英文字符的<code>ASCII</code>值可以用 <code>32-127</code> 范围内的数字来表示，包括英文字母、数字和符号。
+比如空格是<code>32</code>，<code>A</code>是<code>65</code>，<code>a</code>是<code>97</code>。 <code>0-31</code> 被用作操作符。如<code>10</code>为换行，<code>13</code>为回车。</p>
+<p>计算机的最小寻址单位是一字节（<code>8</code>个比特），<code>127</code>只需要<code>7</code>个比特位就能表示（<code>2的7次方=128</code>），所以还有一比特位（值<code>128-255</code>）空闲。</p>
+<p>这些空闲的值在不同的语言地区被赋予不同的用法。比如美洲地区用<code>130</code>来表示<code>é</code>，但是以色列的电脑用<code>130</code>来表示希伯来字符<code>ג</code>。那么在美洲电脑上显示的单词<code>résumés</code>，在以色列的电脑上就成了 <code>rגsumגs</code>。这导致了同一文档内容在不同的电脑上可能有不同的显示。</p>
+<h2 id="code-page代码页">Code Page（代码页）</h2>
+<p><code>ANSI</code>（<code>American National Standards Institute</code>，美国国家标准学会）在制定标准的时候，引入了代码页。</p>
+<p>这些代码页<code>128</code>以下是一样的，只有<code>128</code>以上不同。如，以色列使用<code>code page 862</code>，希腊使用 <code>code page 737</code>。</p>
+<p>这样在同一电脑上可以有多个不同的代码页可供选择。</p>
+<h2 id="dbcsdouble-byte-character-set双字节字符集"><code>DBCS</code>（<code>Double Byte Character Set</code>，双字节字符集）</h2>
+<p>但是，由于亚洲语言有成千上万的字符，没办法用一字节（<code>8</code>比特）完全表示。</p>
+<p><code>DBCS</code> 是对英文字符使用单字节，其他字符（如中日韩文）使用双字节。访问文本时，只能从前向后处理。因为需要一直判断当前字节是不是前导字节，对于既有可能是前导也有可能是后续的字节，只能通过上下文做判断。</p>
+<p>对计算机程序及程序员来说，操作起来比较麻烦、容易出错。</p>
+<h2 id="unicode统一码万国码"><code>Unicode</code>（统一码、万国码）</h2>
+<p>一套可以适用于全世界所有国家的字符集。</p>
+<p>对 <code>Unicode</code> 最常见的误解是：每个字符占用<code>16</code>比特，因此能表示的字符个数是 <code>2的16次方=65536</code>个。实际上，这是不对的。</p>
+<p><code>Unicode</code> 中对所有字母表中的每个字符分配一个数字——<code>code point</code>，如 <code>A</code> 的<code>code point</code> 是 <code>U+0041</code>；<code>迪</code>的 <code>code point</code> 是 <code>U+8FEA</code>。</p>
+<p><code>Unicode</code> 中的字符，是一个概念定义。比如字符<code>A</code>，很明显<code>A</code>不同于<code>B</code>，也不同于<code>a</code>，但是无论是斜体的<code>A</code>、粗体的<code>A</code>、还是正常的<code>A</code>，它们应该是一样的，都是字符<code>A</code>。对于字体<code>Times New Roman</code>中的<code>A</code>，应该和字体<code>Helvetica</code>中的<code>A</code>一样，都是字符<code>A</code>。(对于字符<code>A</code>，<code>Unicode</code>只定义<code>U+0041</code>是字符<code>A</code>，而具体的这个字符显示出来时什么样子，是定义在字体文件中的)</p>
+<h2 id="ucs-2--utf-16"><code>UCS-2</code> / <code>UTF-16</code></h2>
+<p>那么 <code>He</code> 用 <code>Unicode</code> 表示就是 <code>00 48 00 65</code>。</p>
+<p>对吗？憋着急。那它为啥不能是 <code>48 00 65 00</code> 呢？技术上来说没有问题，而实际上也是两种方式都存在（因为特定的 <code>CPU</code> 用特定的顺序会更快）——大端序（<code>big-edian</code>）和 小端序（<code>little-endian</code>）。</p>
+<p>为了区分，在文本开头加上字节顺序标记位，大端序用 <code>FE FF</code>，小端序用 <code>FF FE</code>。</p>
+<p>这种方式对于新生成的文档没有任何问题，但是无法兼容已有的<code>ASCII</code>和<code>DBCS</code>文档。</p>
+<h2 id="utf-8unicode-transformation-format-8-bit">UTF-8（Unicode Transformation Format 8-bit）</h2>
+<p>所以，出现了另一种实现 <code>Unicode</code> 字符集的系统——<code>UTF-8</code>。它采用变长的编码，用一个字节存储 <code>code point 0-127</code>，对 <code>128</code> 以上的使用 <code>2字节、3字节，最多到 6字节</code>。</p>
+<p>比如，表示字符 <code>₤</code> 的 <code>Unicode</code> 十六进制值为 <code>U+20A4</code>，其二进制为 <code>0010 0000 1010 0100</code>。用<code>UTF-8</code> 来表示字符<code>₤</code>的话，需要<code>3</code>个字节：</p>
+<ul>
+<li>第一个字节的前四位，用<code>3</code>比特<code>1</code>（代表<code>3</code>个字节）加一个<code>0</code>：<code>1110</code>。后四位接<code>20A4</code>的前四子节：<code>0010</code>。得到<code>1110 0010</code>。</li>
+<li>第二子节以<code>10</code>开头，后六字节接<code>20A4</code>的六字节 <code>0000 10</code>，得到<code>1000 0010</code>。</li>
+<li>第三子节还是以<code>10</code>开头，后六字节接<code>20A4</code>最后六字节<code>10 0100</code>，得到<code>1010 0100</code>。</li>
+</ul>
+<p>最终得到字符<code>₤</code>的<code>UTF-8</code>表示为<code>1110-0010 1000-0010 1010-0100</code>。</p>
+<blockquote>
+<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p>
+</blockquote>
+<h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
+<p><strong>不一定</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符串</th>
+<th>UTF-8</th>
+<th>UTF-16</th>
+<th>空间比较</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>AI</code></td>
+<td><code>4149</code></td>
+<td><code>0041 0049</code></td>
+<td><code>UTF-8</code>&lt;<code>UTF-16</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>射雕</code></td>
+<td><code>E5B0 84E9 9B95</code></td>
+<td><code>5C04 96D5</code></td>
+<td><code>UTF-8</code>&gt;<code>UTF-16</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
+</blockquote>
+<h2 id="encodings编码">Encodings（编码）</h2>
+<p></p>
+<p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
+<p>所以，必须确定所用的<code>Encoding</code>才能正确处理一个字符串。</p>
+<p>在浏览器中看到这每个网页会有<code>Encoding</code>的信息：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=utf-8&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>可是，在不知道<code>encoding</code>的情况下怎么去读这个<code>HTML</code>文件来取到<code>encoding</code>的信息呢？</p>
+<p>幸运的是，绝大多数<code>encoding</code>对 <code>32-127</code> 的<code>code point</code>的处理方式是一样的，可以把文件开头的内容当作<code>ASCII</code>来处理。所以<code>encoding</code>信息越早出现越好，避免出现在任何<code>code point</code>大于<code>127</code>的字符之后。</p>
+<p>另外，<code>HTTP</code>请求头中也可以包含<code>encoding</code>信息（<code>Content-Type</code>）。</p>
+<p>早期的浏览器都有设置<code>encoding</code>的菜单，以应对找不到<code>encoding</code>定义而无法正确处理的情况。大部分现代浏览器（如<code>Chrome</code>）已经去掉该菜单，可以根据上下文判断出正确<code>encoding</code>了。</p>
+<h2 id="原文链接">原文链接</h2>
+<ul>
+<li><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg5NDE1MTU2NQ==&amp;mid=2247483816&amp;idx=1&amp;sn=2be8183562976b65cbdc37c711ff79fb&amp;chksm=c022bf4af755365cf1440172cb044f204758796097fb42dfc028ff31c58505b5648e2478f10a&amp;token=258030414&amp;lang=zh_CN#rd">每个程序员都应该知道的字符集发展简史</a></li>
+</ul>
+<blockquote>
+</blockquote>
+]]></content:encoded>
     </item>
     
   </channel>
