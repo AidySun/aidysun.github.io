@@ -10,7 +10,7 @@
 <meta name="description" content="每个程序员都应该知道的字符集发展简史">
 <meta name="author" content="">
 <link rel="canonical" href="https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.b26459e5b8cd390644cd9b4eff07eed4a55f23e6f577854e9e1259d9a22ee150.css" integrity="sha256-smRZ5bjNOQZEzZtO/wfu1KVfI&#43;b1d4VOnhJZ2aIu4VA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.d13dc9670c54a799901d8f51eb366234127600b84f76504283993a1e6bb2ffd7.css" integrity="sha256-0T3JZwxUp5mQHY9R6zZiNBJ2ALhPdlBCg5k6Hmuy/9c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://aidysun.github.io/favicon.ico">
 <link rel="apple-touch-icon" href="https://aidysun.github.io/apple-touch-icon.png">
 
@@ -66,7 +66,7 @@ if (!doNotTrack) {
   "keywords": [
     "Unicode", "Development", "2023", "2023-04"
   ],
-  "wordCount" : "2251",
+  "wordCount" : "2254",
   "inLanguage": "en",
   "datePublished": "2023-04-12T00:00:00Z",
   "dateModified": "2023-04-12T00:00:00Z",
@@ -362,10 +362,19 @@ function toggleThemeListener() {
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
 <p>所以，必须确定所用的<code>Encoding</code>才能正确处理一个字符串。</p>
 <p>在浏览器中看到这每个网页会有<code>Encoding</code>的信息：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=utf-8&#34;</span><span class="p">&gt;</span>
-</span></span></code></pre></div><p>可是，在不知道<code>encoding</code>的情况下怎么去读这个<code>HTML</code>文件来取到<code>encoding</code>的信息呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=utf-8&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可是，在不知道<code>encoding</code>的情况下怎么去读这个<code>HTML</code>文件来取到<code>encoding</code>的信息呢？</p>
 <p>幸运的是，绝大多数<code>encoding</code>对 <code>32-127</code> 的<code>code point</code>的处理方式是一样的，可以把文件开头的内容当作<code>ASCII</code>来处理。所以<code>encoding</code>信息越早出现越好，避免出现在任何<code>code point</code>大于<code>127</code>的字符之后。</p>
 <p>另外，<code>HTTP</code>请求头中也可以包含<code>encoding</code>信息（<code>Content-Type</code>）。</p>
 <p>早期的浏览器都有设置<code>encoding</code>的菜单，以应对找不到<code>encoding</code>定义而无法正确处理的情况。大部分现代浏览器（如<code>Chrome</code>）已经去掉该菜单，可以根据上下文判断出正确<code>encoding</code>了。</p>

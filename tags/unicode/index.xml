@@ -88,10 +88,19 @@
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
 <p>所以，必须确定所用的<code>Encoding</code>才能正确处理一个字符串。</p>
 <p>在浏览器中看到这每个网页会有<code>Encoding</code>的信息：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=utf-8&#34;</span><span class="p">&gt;</span>
-</span></span></code></pre></div><p>可是，在不知道<code>encoding</code>的情况下怎么去读这个<code>HTML</code>文件来取到<code>encoding</code>的信息呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;Content-Type&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;text/html; charset=utf-8&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可是，在不知道<code>encoding</code>的情况下怎么去读这个<code>HTML</code>文件来取到<code>encoding</code>的信息呢？</p>
 <p>幸运的是，绝大多数<code>encoding</code>对 <code>32-127</code> 的<code>code point</code>的处理方式是一样的，可以把文件开头的内容当作<code>ASCII</code>来处理。所以<code>encoding</code>信息越早出现越好，避免出现在任何<code>code point</code>大于<code>127</code>的字符之后。</p>
 <p>另外，<code>HTTP</code>请求头中也可以包含<code>encoding</code>信息（<code>Content-Type</code>）。</p>
 <p>早期的浏览器都有设置<code>encoding</code>的菜单，以应对找不到<code>encoding</code>定义而无法正确处理的情况。大部分现代浏览器（如<code>Chrome</code>）已经去掉该菜单，可以根据上下文判断出正确<code>encoding</code>了。</p>

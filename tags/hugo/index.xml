@@ -22,23 +22,59 @@
 <li>修改 <code>config.toml</code> 中的 <code>baseURL</code>，用 <code>http</code>、用 <code>https</code>。</li>
 <li>根据 <a href="https://github.com/kylethedeveloper/hugo-PaperMod/commit/1b9352398fe91fab207337352befee77152cc544">head, footer: add option to disable fingerprinting adityatelange#89</a>, 在 <code>config.toml</code> 中加入如下内容:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">assets</span><span class="p">]</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nx">disableFingerprinting</span> <span class="p">=</span> <span class="kc">true</span>
-</span></span></code></pre></div><h2 id="我的解决方法">我的解决方法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">assets</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">disableFingerprinting</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="我的解决方法">我的解决方法</h2>
 <p>根据 <a href="https://github.com/lxndrblz/anatole/issues/114">Failed to find a valid digest in the integrity attribute</a>，问题可能是 <code>git</code> <code>line breaking</code> 的问题，我使用的是 <code>macOS</code>，当时的 <code>git config -l</code> 中:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">core.autocrlf<span class="o">=</span><span class="nb">true</span>
-</span></span></code></pre></div><p>在 <code>hugo project repo</code> 和 我的 <code>github.io</code> repo 中 执行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">git config core.autocrlf <span class="nb">false</span>
-</span></span></code></pre></div><p>然后生成博客：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">cd</span> blog-hugo
-</span></span><span class="line"><span class="ln">2</span><span class="cl">hugo -t PaperMod
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"># publish is &lt;username&gt;.github.io repo as a submodule</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nb">cd</span> publish
-</span></span><span class="line"><span class="ln">6</span><span class="cl">git add .
-</span></span><span class="line"><span class="ln">7</span><span class="cl">git commit -m <span class="s2">&#34;fix online theme&#34;</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">git push
-</span></span></code></pre></div><p>完美解决：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">core.autocrlf<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <code>hugo project repo</code> 和 我的 <code>github.io</code> repo 中 执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git config core.autocrlf <span class="nb">false</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后生成博客：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> blog-hugo
+</span></span><span class="line"><span class="cl">hugo -t PaperMod
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># publish is &lt;username&gt;.github.io repo as a submodule</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> publish
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;fix online theme&#34;</span>
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完美解决：</p>
 <p></p>
 <h2 id="其它未尝试的方法">其它未尝试的方法</h2>
 <ul>

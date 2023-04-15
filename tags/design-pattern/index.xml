@@ -29,231 +29,495 @@
 </blockquote>
 <h3 id="观察者">观察者</h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span></code></pre></div><h3 id="被观察对象">被观察对象</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="被观察对象">被观察对象</h3>
 <p>基类 <code>Subject</code>，它需要知道有那些观察者，在需要通知的时候遍历观察者列表发送通知。
 有自己的实现，定义子类时不需要复写基类的方法，直接使用即可。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">notify</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">*&gt;</span> <span class="n">observers</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">removeObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">notify</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">obs</span><span class="p">:</span> <span class="n">observers</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="n">obs</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h3 id="应用">应用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">notify</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">*&gt;</span> <span class="n">observers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">removeObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">notify</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">obs</span><span class="p">:</span> <span class="n">observers</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">obs</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="应用">应用</h3>
 <p>以公众号和订阅者为例。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">articles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="n">notify</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">articles</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">
-</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">
-</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="n">string</span> <span class="n">article</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="n">readArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">
-</span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="kt">void</span> <span class="nf">readArticle</span><span class="p">(</span><span class="n">string</span> <span class="n">article</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; is reading article : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">article</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">
-</span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">
-</span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">
-</span></span><span class="line"><span class="ln">32</span><span class="cl">    <span class="n">Publisher</span> <span class="n">publisher</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">
-</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub1</span><span class="p">(</span><span class="s">&#34;Tom&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 1&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl">
-</span></span><span class="line"><span class="ln">38</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">39</span><span class="cl">
-</span></span><span class="line"><span class="ln">40</span><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub2</span><span class="p">(</span><span class="s">&#34;Jerry&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">41</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">42</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 2&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">43</span><span class="cl">
-</span></span><span class="line"><span class="ln">44</span><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>执行结果：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">Tom</span> <span class="n">is</span> <span class="n">reading</span> <span class="nl">article</span> <span class="p">:</span> <span class="n">Article</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">Tom</span> <span class="n">is</span> <span class="n">reading</span> <span class="nl">article</span> <span class="p">:</span> <span class="n">Article</span> <span class="mi">2</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">Jerry</span> <span class="n">is</span> <span class="n">reading</span> <span class="nl">article</span> <span class="p">:</span> <span class="n">Article</span> <span class="mi">2</span>
-</span></span></code></pre></div><hr>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 公众号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">articles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notify</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">articles</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="n">string</span> <span class="n">article</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">readArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">readArticle</span><span class="p">(</span><span class="n">string</span> <span class="n">article</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; is reading article : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">article</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Publisher</span> <span class="n">publisher</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub1</span><span class="p">(</span><span class="s">&#34;Tom&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub2</span><span class="p">(</span><span class="s">&#34;Jerry&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Tom</span> <span class="n">is</span> <span class="n">reading</span> <span class="nl">article</span> <span class="p">:</span> <span class="n">Article</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Tom</span> <span class="n">is</span> <span class="n">reading</span> <span class="nl">article</span> <span class="p">:</span> <span class="n">Article</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">Jerry</span> <span class="n">is</span> <span class="n">reading</span> <span class="nl">article</span> <span class="p">:</span> <span class="n">Article</span> <span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h2 id="观察者模式20">观察者模式2.0</h2>
 <p>上面的<code>Observer</code>提供了一个带有一个参数的<code>update</code>接口： <code>virtual void update(string msg)</code>。
 虽然在应用中可以通过传递不同参数来区分不同的通知，比如：<code>update(&quot;全部订阅者可见更新&quot;)</code>，<code>update(&quot;VIP订阅者可见更新&quot;)</code>，但对于复杂一点的需要多参数传递的场景就不适用了。</p>
 <p>那么可以通过引入<code>Event</code>类型，以更灵活的定义不同的、复杂的通知类型。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// Event 接口定义
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">enum</span> <span class="nc">EventType</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">ARTICLE_UPDATED</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">VIP_ARTICLE_UPDATED</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">class</span> <span class="nc">Event</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">Event</span><span class="p">()</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">
-</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1">// 具体的 Event 类型
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">
-</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="n">string</span> <span class="nf">getArticle</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="kt">void</span> <span class="nf">setArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">article</span> <span class="o">=</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="n">string</span> <span class="n">article</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">
-</span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="k">class</span> <span class="nc">VipArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">VIP_ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">
-</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="n">string</span> <span class="nf">getArticle</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">    <span class="kt">void</span> <span class="nf">setArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">article</span> <span class="o">=</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">
-</span></span><span class="line"><span class="ln">32</span><span class="cl">    <span class="kt">int</span> <span class="nf">getReward</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">reward</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="kt">void</span> <span class="nf">setReward</span><span class="p">(</span><span class="kt">int</span> <span class="n">reward</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">reward</span> <span class="o">=</span> <span class="n">reward</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">    <span class="n">string</span> <span class="n">article</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="kt">int</span> <span class="n">reward</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><p>将<code>Observer</code>更新为：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="c1">// virtual void update(string msg) = 0; // abstract virtual
-</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span></code></pre></div><p><code>Subject</code>更新为：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="p">...</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="c1">// virtual void notify(string msg);
-</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="p">...</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="p">};</span></span></span></code></pre></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Event 接口定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">EventType</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ARTICLE_UPDATED</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">VIP_ARTICLE_UPDATED</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Event</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">Event</span><span class="p">()</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 具体的 Event 类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="nf">getArticle</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">article</span> <span class="o">=</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">article</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">VipArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">VIP_ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="nf">getArticle</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">article</span> <span class="o">=</span> <span class="n">article</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">getReward</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">reward</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setReward</span><span class="p">(</span><span class="kt">int</span> <span class="n">reward</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">reward</span> <span class="o">=</span> <span class="n">reward</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">article</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">reward</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将<code>Observer</code>更新为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// virtual void update(string msg) = 0; // abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Subject</code>更新为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// virtual void notify(string msg);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 <p>应用到<code>公众号——订阅者</code>上：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">ArticleUpdatedEvent</span><span class="o">&gt;</span><span class="p">();</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="n">e</span><span class="o">-&gt;</span><span class="n">setArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">notify</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="kt">void</span> <span class="nf">addVipArticleWithReward</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">,</span> <span class="kt">int</span> <span class="n">reward</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">VipArticleUpdatedEvent</span><span class="o">&gt;</span><span class="p">();</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="n">e</span><span class="o">-&gt;</span><span class="n">setArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="n">e</span><span class="o">-&gt;</span><span class="n">setReward</span><span class="p">(</span><span class="n">reward</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="n">notify</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">
-</span></span><span class="line"><span class="ln">24</span><span class="cl">   <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">())</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">            <span class="k">case</span> <span class="n">EventType</span><span class="o">::</span><span class="nl">ARTICLE_UPDATED</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">                <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">ArticleUpdatedEvent</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">                    <span class="n">string</span> <span class="n">article</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">getArticle</span><span class="p">();</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">                    <span class="n">readArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="ln">32</span><span class="cl">                <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">33</span><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="ln">34</span><span class="cl">            <span class="k">case</span> <span class="n">EventType</span><span class="o">::</span><span class="nl">VIP_ARTICLE_UPDATED</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">35</span><span class="cl">                <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">VipArticleUpdatedEvent</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-</span></span><span class="line"><span class="ln">36</span><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">37</span><span class="cl">                    <span class="n">string</span> <span class="n">vipArticle</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">getArticle</span><span class="p">();</span>
-</span></span><span class="line"><span class="ln">38</span><span class="cl">                    <span class="n">readArticle</span><span class="p">(</span><span class="n">vipArticle</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">39</span><span class="cl">                    <span class="kt">int</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">getReward</span><span class="p">();</span>
-</span></span><span class="line"><span class="ln">40</span><span class="cl">                    <span class="n">earnReward</span><span class="p">(</span><span class="n">reward</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">41</span><span class="cl">                <span class="p">}</span>
-</span></span><span class="line"><span class="ln">42</span><span class="cl">                <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="ln">44</span><span class="cl">            <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">45</span><span class="cl">                <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="ln">47</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">48</span><span class="cl">
-</span></span><span class="line"><span class="ln">49</span><span class="cl">    <span class="kt">void</span> <span class="nf">readArticle</span><span class="p">(</span><span class="n">string</span> <span class="n">article</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">50</span><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; is reading article : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">article</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">51</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">52</span><span class="cl">
-</span></span><span class="line"><span class="ln">53</span><span class="cl">    <span class="kt">void</span> <span class="nf">earnReward</span><span class="p">(</span><span class="kt">int</span> <span class="n">reward</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">54</span><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; earned reward : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">reward</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">55</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">56</span><span class="cl">
-</span></span><span class="line"><span class="ln">57</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">58</span><span class="cl">    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">60</span><span class="cl">
-</span></span><span class="line"><span class="ln">61</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">62</span><span class="cl">
-</span></span><span class="line"><span class="ln">63</span><span class="cl">    <span class="n">Publisher</span> <span class="n">publisher</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">64</span><span class="cl">
-</span></span><span class="line"><span class="ln">65</span><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub1</span><span class="p">(</span><span class="s">&#34;Tom&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">66</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">67</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 1&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">68</span><span class="cl">
-</span></span><span class="line"><span class="ln">69</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">70</span><span class="cl">
-</span></span><span class="line"><span class="ln">71</span><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub2</span><span class="p">(</span><span class="s">&#34;Jerry&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">72</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">73</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addVipArticleWithReward</span><span class="p">(</span><span class="s">&#34;Article 2&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">74</span><span class="cl">
-</span></span><span class="line"><span class="ln">75</span><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">76</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>执行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 公众号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">ArticleUpdatedEvent</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">e</span><span class="o">-&gt;</span><span class="n">setArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notify</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">addVipArticleWithReward</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">,</span> <span class="kt">int</span> <span class="n">reward</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">VipArticleUpdatedEvent</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">e</span><span class="o">-&gt;</span><span class="n">setArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">e</span><span class="o">-&gt;</span><span class="n">setReward</span><span class="p">(</span><span class="n">reward</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">notify</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">EventType</span><span class="o">::</span><span class="nl">ARTICLE_UPDATED</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">ArticleUpdatedEvent</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">string</span> <span class="n">article</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">getArticle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">readArticle</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="n">EventType</span><span class="o">::</span><span class="nl">VIP_ARTICLE_UPDATED</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">auto</span> <span class="n">e</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">VipArticleUpdatedEvent</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">e</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">string</span> <span class="n">vipArticle</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">getArticle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">readArticle</span><span class="p">(</span><span class="n">vipArticle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">int</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">e</span><span class="o">-&gt;</span><span class="n">getReward</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">earnReward</span><span class="p">(</span><span class="n">reward</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">readArticle</span><span class="p">(</span><span class="n">string</span> <span class="n">article</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; is reading article : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">article</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">earnReward</span><span class="p">(</span><span class="kt">int</span> <span class="n">reward</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; earned reward : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">reward</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Publisher</span> <span class="n">publisher</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub1</span><span class="p">(</span><span class="s">&#34;Tom&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub2</span><span class="p">(</span><span class="s">&#34;Jerry&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addVipArticleWithReward</span><span class="p">(</span><span class="s">&#34;Article 2&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行结果：</p>
 <pre tabindex="0"><code>Tom is reading article : Article 1
 
 Tom is reading article : Article 2
@@ -266,51 +530,106 @@ Jerry earned reward : 5
 <hr>
 <h2 id="观察者模式30">观察者模式3.0</h2>
 <p>更改 <code>Subject</code> 的订阅和通知方法：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">notify</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">EventType</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">*&gt;</span> <span class="o">&gt;</span> <span class="n">observers</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">
-</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">
-</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">removeObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">erase</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">
-</span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">notify</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">obs</span><span class="p">:</span> <span class="n">observers</span><span class="p">[</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">()])</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="n">obs</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>修改<code>main</code>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">Publisher</span> <span class="n">publisher</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub1</span><span class="p">(</span><span class="s">&#34;Tom&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span><span class="o">::</span><span class="n">ARTICLE_UPDATED</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 1&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub2</span><span class="p">(</span><span class="s">&#34;Jerry&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span><span class="o">::</span><span class="n">VIP_ARTICLE_UPDATED</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addVipArticleWithReward</span><span class="p">(</span><span class="s">&#34;VIP Article 2&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>执行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Subject.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">notify</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">EventType</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Observer</span><span class="o">*&gt;</span> <span class="o">&gt;</span> <span class="n">observers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">removeObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">erase</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">notify</span><span class="p">(</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">obs</span><span class="p">:</span> <span class="n">observers</span><span class="p">[</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">()])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">obs</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改<code>main</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Publisher</span> <span class="n">publisher</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub1</span><span class="p">(</span><span class="s">&#34;Tom&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span><span class="o">::</span><span class="n">ARTICLE_UPDATED</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addArticle</span><span class="p">(</span><span class="s">&#34;Article 1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span> <span class="n">sub2</span><span class="p">(</span><span class="s">&#34;Jerry&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span><span class="o">::</span><span class="n">VIP_ARTICLE_UPDATED</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">publisher</span><span class="p">.</span><span class="n">addVipArticleWithReward</span><span class="p">(</span><span class="s">&#34;VIP Article 2&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行结果：</p>
 <pre tabindex="0"><code>Tom is reading article : Article 1
 
 Jerry is reading article : VIP Article 2

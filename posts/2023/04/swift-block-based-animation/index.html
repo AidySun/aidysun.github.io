@@ -10,7 +10,7 @@
 <meta name="description" content="Swift / Objective-C block-based animation">
 <meta name="author" content="SZH">
 <link rel="canonical" href="https://aidysun.github.io/posts/2023/04/swift-block-based-animation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.b26459e5b8cd390644cd9b4eff07eed4a55f23e6f577854e9e1259d9a22ee150.css" integrity="sha256-smRZ5bjNOQZEzZtO/wfu1KVfI&#43;b1d4VOnhJZ2aIu4VA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.d13dc9670c54a799901d8f51eb366234127600b84f76504283993a1e6bb2ffd7.css" integrity="sha256-0T3JZwxUp5mQHY9R6zZiNBJ2ALhPdlBCg5k6Hmuy/9c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://aidysun.github.io/favicon.ico">
 <link rel="apple-touch-icon" href="https://aidysun.github.io/apple-touch-icon.png">
 
@@ -66,7 +66,7 @@ if (!doNotTrack) {
   "keywords": [
     "Swift", "Development", "2023", "2023-04"
   ],
-  "wordCount" : "151",
+  "wordCount" : "161",
   "inLanguage": "en",
   "datePublished": "2023-04-02T00:00:00Z",
   "dateModified": "2023-04-02T00:00:00Z",
@@ -262,27 +262,63 @@ function toggleThemeListener() {
   </header> 
 
   <div class="post-content"><p>用 <code>Xcode 14.2</code> 升级一个 <code>Swift</code> 项目时有编译警告️⚠提示 <code>beginAnimations()</code> 在 <code>iOS 13.0</code> 后已经不推荐使用，应该用 <code>block-based animation</code> 代替。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line hl"><span class="ln">1</span><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">beginAnimations</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="c1">// &#39;beginAnimations(_:context:)&#39; was deprecated in iOS 13.0: Use the block-based animation API instead</span>
-</span></span><span class="line hl"><span class="ln">2</span><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">setAnimationDuration</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1">// &#39;setAnimationDuration&#39; was deprecated in iOS 13.0: Use the block-based animation API instead</span>
-</span></span><span class="line hl"><span class="ln">3</span><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">commitAnimations</span><span class="p">()</span> <span class="c1">// &#39;commitAnimations()&#39; was deprecated in iOS 13.0: Use the block-based animation API instead </span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">currentOverlay</span> <span class="p">=</span> <span class="n">overlay</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="n">currentOverlayTarget</span> <span class="p">=</span> <span class="n">overlayTarget</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="n">currentLoadingText</span> <span class="p">=</span> <span class="n">loadingText</span></span></span></code></pre></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt">1
+</span></span><span class="hl"><span class="lnt">2
+</span></span><span class="hl"><span class="lnt">3
+</span></span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line hl"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">beginAnimations</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="c1">// &#39;beginAnimations(_:context:)&#39; was deprecated in iOS 13.0: Use the block-based animation API instead</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">setAnimationDuration</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1">// &#39;setAnimationDuration&#39; was deprecated in iOS 13.0: Use the block-based animation API instead</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">commitAnimations</span><span class="p">()</span> <span class="c1">// &#39;commitAnimations()&#39; was deprecated in iOS 13.0: Use the block-based animation API instead </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">currentOverlay</span> <span class="p">=</span> <span class="n">overlay</span>
+</span></span><span class="line"><span class="cl"><span class="n">currentOverlayTarget</span> <span class="p">=</span> <span class="n">overlayTarget</span>
+</span></span><span class="line"><span class="cl"><span class="n">currentLoadingText</span> <span class="p">=</span> <span class="n">loadingText</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 <p>修改为使用 <code>Block-based animation</code> 的代码：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">animate</span><span class="p">(</span><span class="n">withDuration</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">currentOverlay</span> <span class="p">=</span> <span class="n">overlay</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">currentOverlayTarget</span> <span class="p">=</span> <span class="n">overlayTarget</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">currentLoadingText</span> <span class="p">=</span> <span class="n">loadingText</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>如果用 <code>Objective-C</code> 则修改如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-objc" data-lang="objc"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">[</span><span class="n">UIView</span> <span class="nl">animateWithDuration</span><span class="p">:</span> <span class="mf">0.5</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">                 <span class="nl">animations</span><span class="p">:</span> <span class="o">^</span><span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">currentOverlay</span> <span class="o">=</span> <span class="n">overlay</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">currentOverlayTarget</span> <span class="o">=</span> <span class="n">overlayTarget</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">currentLoadingText</span> <span class="o">=</span> <span class="n">loadingText</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}];</span>
-</span></span></code></pre></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">animate</span><span class="p">(</span><span class="n">withDuration</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentOverlay</span> <span class="p">=</span> <span class="n">overlay</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentOverlayTarget</span> <span class="p">=</span> <span class="n">overlayTarget</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentLoadingText</span> <span class="p">=</span> <span class="n">loadingText</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果用 <code>Objective-C</code> 则修改如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-objc" data-lang="objc"><span class="line"><span class="cl"><span class="p">[</span><span class="n">UIView</span> <span class="nl">animateWithDuration</span><span class="p">:</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">                 <span class="nl">animations</span><span class="p">:</span> <span class="o">^</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentOverlay</span> <span class="o">=</span> <span class="n">overlay</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentOverlayTarget</span> <span class="o">=</span> <span class="n">overlayTarget</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">currentLoadingText</span> <span class="o">=</span> <span class="n">loadingText</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 
   </div>
 
