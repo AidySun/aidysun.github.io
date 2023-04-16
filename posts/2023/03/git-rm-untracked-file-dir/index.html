@@ -275,17 +275,17 @@ function toggleThemeListener() {
 </div>
 
   <div class="post-content"><p>对于一个 git 项目，执行 <code>git status -u</code> 有如下状态：</p>
-<p></p>
+<p><img loading="lazy" src="/images/git-status--u.png" alt="git status -u result"  title="hi"  /></p>
 <p>对于本地新增的文件，可以通过 <code>clean</code> 命令直接删除：</p>
-<p></p>
-<p></p>
+<p><img loading="lazy" src="/images/git-clean--f.png" alt="git clean -f"  /></p>
+<p><img loading="lazy" src="/images/git-status--u-2.png" alt="after clean"  /></p>
 <p>但是本地新增的文件夹却没有被删除掉。要删除文件夹需要加上 <code>-d</code> 参数：</p>
-<p></p>
+<p><img loading="lazy" src="/images/git-clean-fd.png" alt="git clean -f -d"  /></p>
 <p>还有一种情况就是已经在 <code>.gitignore</code> 中的文件或文件夹是不会被删除的。</p>
-<p></p>
-<p></p>
+<p><img loading="lazy" src="/images/cat-.gitignore.png" alt="cat .gitignore"  /></p>
+<p><img loading="lazy" src="/images/git-status---ignored.png" alt="git status &amp;ndash;ignored"  /></p>
 <p>需要通过 <code>-x</code> 选项来删除被 <code>.gitignore</code> 包含的文件或文件夹：</p>
-<p></p>
+<p><img loading="lazy" src="/images/git-clean--fdx.png" alt="git clean -f -d -x"  /></p>
 <h2 id="git-clean-options"><code>git clean</code> options<a hidden class="anchor" aria-hidden="true" href="#git-clean-options">¶</a></h2>
 <table>
 <thead>

@@ -18,7 +18,7 @@
 <p>你是否曾探究过<code>HTTP</code>请求中神秘的<code>Content-Type</code>？你是否曾遇到过满是问号 <code>???? ???? ??</code> 的电子邮件（或网页）？</p>
 <p>作者发现多数程序开发人员并不是完全明白字符集<code>character set</code>、编码<code>encoding</code>、<code>Unicode</code>、<code>UTF-8</code>等相关话题。</p>
 <p>这篇文章回顾了字符集的发展历史。</p>
-<p></p>
+<p><img loading="lazy" src="/images/ascii.png" alt="ASCII"  /></p>
 <h2 id="asciiamerican-standard-code-for-information-interchange美国信息交换标准代码"><code>ASCII</code>（<code>American Standard Code for Information Interchange</code>，美国信息交换标准代码）</h2>
 <p>回到<code>Unix</code>正在被发明的上古时代，一个英文字符的<code>ASCII</code>值可以用 <code>32-127</code> 范围内的数字来表示，包括英文字母、数字和符号。
 比如空格是<code>32</code>，<code>A</code>是<code>65</code>，<code>a</code>是<code>97</code>。 <code>0-31</code> 被用作操作符。如<code>10</code>为换行，<code>13</code>为回车。</p>
@@ -84,7 +84,7 @@
 <p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
 </blockquote>
 <h2 id="encodings编码">Encodings（编码）</h2>
-<p></p>
+<p><img loading="lazy" src="/images/character-encoding.jpeg" alt="encoding"  /></p>
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
 <p>所以，必须确定所用的<code>Encoding</code>才能正确处理一个字符串。</p>
 <p>在浏览器中看到这每个网页会有<code>Encoding</code>的信息：</p>
@@ -744,7 +744,7 @@ Jerry earned reward : 5
 </code></pre><p>此版本进化到了一个更为特殊的观察者模式———发布订阅者模式，或者叫事件订阅模式。</p>
 <h3 id="observer-pattern-vs-publish-subscribe-pattern">Observer Pattern v.s. Publish-Subscribe Pattern</h3>
 <p>其主要区别是观察者模式涉及两种角色 <code>Subject</code> 和 <code>Observer</code>，而发布订阅模式中间多了一个<code>Event</code>处理，有的称之为<code>Broker</code>或<code>Channel</code>:</p>
-<p></p>
+<p><img loading="lazy" src="/images/observer-pattern-v.s.-publish-subscript-pattern.jpeg" alt="Observer Pattern v.s. Publish-Subscribe Pattern"  /></p>
 <hr>
 <h2 id="完整代码">完整代码</h2>
 <ul>

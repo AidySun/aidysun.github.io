@@ -16,7 +16,7 @@
       <description>Failed to find a valid digest in the &amp;#39;integrity&amp;#39; attribute for resource &amp;#39;https://.....css&amp;#39; with computed SHA-256 integrity &amp;#39;.....&amp;#39;. The resource has been blocked.</description>
       <content:encoded><![CDATA[<p><strong>根本原因：<code>git crlf</code> 设置导致推送到 <code>github</code> 的文件变动。</strong></p>
 <p><code>Hugo</code> 静态博客，使用 <code>PaperMode</code> 主题，本地渲染没问题，将 <code>publish</code> 文件夹 <code>push</code> 到 <code>&lt;username&gt;.github.io</code> 后，通过 Github Page 访问会出现 <code>CSS block</code> 的情况：</p>
-<p></p>
+<p><img loading="lazy" src="/images/hugo-local-vs-online.png" alt="hugo local v.s. online"  /></p>
 <h2 id="尝试过但不起作用的方法">尝试过但不起作用的方法</h2>
 <ol>
 <li>修改 <code>config.toml</code> 中的 <code>baseURL</code>，用 <code>http</code>、用 <code>https</code>。</li>
@@ -75,7 +75,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>完美解决：</p>
-<p></p>
+<p><img loading="lazy" src="/images/hugo-online-fixed.png" alt="fixed online"  /></p>
 <h2 id="其它未尝试的方法">其它未尝试的方法</h2>
 <ul>
 <li>修改模版中的 <code>integrity=&quot;{{ xxxx }}&quot;</code> 为 <code>integrity=&quot;&quot;</code></li>

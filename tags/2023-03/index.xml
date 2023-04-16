@@ -57,7 +57,7 @@
       <description>Failed to find a valid digest in the &amp;#39;integrity&amp;#39; attribute for resource &amp;#39;https://.....css&amp;#39; with computed SHA-256 integrity &amp;#39;.....&amp;#39;. The resource has been blocked.</description>
       <content:encoded><![CDATA[<p><strong>根本原因：<code>git crlf</code> 设置导致推送到 <code>github</code> 的文件变动。</strong></p>
 <p><code>Hugo</code> 静态博客，使用 <code>PaperMode</code> 主题，本地渲染没问题，将 <code>publish</code> 文件夹 <code>push</code> 到 <code>&lt;username&gt;.github.io</code> 后，通过 Github Page 访问会出现 <code>CSS block</code> 的情况：</p>
-<p></p>
+<p><img loading="lazy" src="/images/hugo-local-vs-online.png" alt="hugo local v.s. online"  /></p>
 <h2 id="尝试过但不起作用的方法">尝试过但不起作用的方法</h2>
 <ol>
 <li>修改 <code>config.toml</code> 中的 <code>baseURL</code>，用 <code>http</code>、用 <code>https</code>。</li>
@@ -116,7 +116,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>完美解决：</p>
-<p></p>
+<p><img loading="lazy" src="/images/hugo-online-fixed.png" alt="fixed online"  /></p>
 <h2 id="其它未尝试的方法">其它未尝试的方法</h2>
 <ul>
 <li>修改模版中的 <code>integrity=&quot;{{ xxxx }}&quot;</code> 为 <code>integrity=&quot;&quot;</code></li>
@@ -336,17 +336,17 @@
       <guid>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</guid>
       <description>git clean</description>
       <content:encoded><![CDATA[<p>对于一个 git 项目，执行 <code>git status -u</code> 有如下状态：</p>
-<p></p>
+<p><img loading="lazy" src="/images/git-status--u.png" alt="git status -u result"  title="hi"  /></p>
 <p>对于本地新增的文件，可以通过 <code>clean</code> 命令直接删除：</p>
-<p></p>
-<p></p>
+<p><img loading="lazy" src="/images/git-clean--f.png" alt="git clean -f"  /></p>
+<p><img loading="lazy" src="/images/git-status--u-2.png" alt="after clean"  /></p>
 <p>但是本地新增的文件夹却没有被删除掉。要删除文件夹需要加上 <code>-d</code> 参数：</p>
-<p></p>
+<p><img loading="lazy" src="/images/git-clean-fd.png" alt="git clean -f -d"  /></p>
 <p>还有一种情况就是已经在 <code>.gitignore</code> 中的文件或文件夹是不会被删除的。</p>
-<p></p>
-<p></p>
+<p><img loading="lazy" src="/images/cat-.gitignore.png" alt="cat .gitignore"  /></p>
+<p><img loading="lazy" src="/images/git-status---ignored.png" alt="git status &amp;ndash;ignored"  /></p>
 <p>需要通过 <code>-x</code> 选项来删除被 <code>.gitignore</code> 包含的文件或文件夹：</p>
-<p></p>
+<p><img loading="lazy" src="/images/git-clean--fdx.png" alt="git clean -f -d -x"  /></p>
 <h2 id="git-clean-options"><code>git clean</code> options</h2>
 <table>
 <thead>
