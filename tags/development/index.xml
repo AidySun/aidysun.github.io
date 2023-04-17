@@ -6,7 +6,73 @@
     <description>Recent content in Development on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
+      <link>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</link>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</guid>
+      <description>ssh Permissions are too open</description>
+      <content:encoded><![CDATA[<p>在 macOS 的终端中执行 <code>git pull</code> 命令时出现如下两个错误，可以通过手动修改权限来修复。同样适用于 Linux 系统及其他 ssh 相关应用出现的此类错误。</p>
+<ul>
+<li>错误一：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Bad owner or permissions on &lt;user&gt;/.ssh/config
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>错误二：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span></span><span class="line"><span class="cl">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+</span></span><span class="line"><span class="cl">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span></span><span class="line"><span class="cl">Permissions 0640 for &#39;&lt;user&gt;/.ssh/id_rsa&#39; are too open.
+</span></span><span class="line"><span class="cl">It is required that your private key files are NOT accessible by others.
+</span></span><span class="line"><span class="cl">This private key will be ignored.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="solution">Solution</h2>
+<p>通过如下方式手动修复 <code>.ssh</code> 目录及文件权限：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/.ssh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo chmod <span class="m">700</span> .      <span class="c1"># .ssh dir</span>
+</span></span><span class="line"><span class="cl">sudo chmod <span class="m">700</span> *.pub  <span class="c1"># PUBLIC key file</span>
+</span></span><span class="line"><span class="cl">sudo chmod <span class="m">600</span> id_rsa <span class="c1"># PRIVATE key file</span>
+</span></span><span class="line"><span class="cl">sudo chmod <span class="m">600</span> config <span class="c1"># config file</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="reference">Reference</h2>
+<p>其他类型文件的权限及详细描述参见 <code>man ssh</code>：</p>
+<p><img loading="lazy" src="images/man-ssh.png" alt="man ssh"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>关于ASCII、DBCS、Unicode、UCS-16、UTF-8和Encoding</title>
       <link>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</link>
