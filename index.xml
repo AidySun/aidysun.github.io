@@ -59,6 +59,23 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     </item>
     
     <item>
+      <title>如何从 App Store Connect 中删除一个未发布版本</title>
+      <link>https://aidysun.github.io/posts/2023/04/app-store-connect-rm-a-version/</link>
+      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/app-store-connect-rm-a-version/</guid>
+      <description>苹果商店Connect无法删除App版本</description>
+      <content:encoded><![CDATA[<p>一个 iOS App 最新已发布版本: <code>4.0</code>，在 <code>App Store Connect</code> 中添加了一个版本 <code>4.1</code>，状态为 <code>准备提交（Prepare for Submission）</code> (或其他未发布状态)。</p>
+<p>后来改动有点大，打算做个大版本升级——把<code>4.1</code> 改为 <code>5.0</code>。</p>
+<p>没有找到删除 <code>4.1</code> 的方法，但是可以通过如下途径更改版本为 <code>5.0</code>:</p>
+<p>在 <code>version 4.1</code> 构建页面的 版本信息（Version Information） 模块下将版本 <code>4.1</code> 直接改为 <code>5.0</code>:</p>
+<p><img loading="lazy" src="/images/v4.1.png" alt="v5.0"  /></p>
+<p>点击 保存（Save）按钮，版本 <code>4.1</code> 就变成 <code>5.0</code> 啦：</p>
+<p><img loading="lazy" src="/images/v5.0.png" alt="v5.0"  /></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
       <link>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
