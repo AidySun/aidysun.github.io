@@ -76,6 +76,122 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     </item>
     
     <item>
+      <title>如何在 Markdown 中插入图片，并设置大小</title>
+      <link>https://aidysun.github.io/posts/2023/04/markdown-insert-picture-with-size/</link>
+      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/markdown-insert-picture-with-size/</guid>
+      <description>Add pictures to Markdown, with hyperlink and size setting</description>
+      <content:encoded><![CDATA[<p>本文介绍在 <code>Markdown</code> 文件中插入图片的两种方式：<a href="#markdown_insert_img">1.Markdown语法</a>，<a href="#html_insert_img">2.HTML语法</a>；
+以及<a href="#image_size">如何设置图片尺寸</a>，<a href="#image_link">如何给图片加链接</a>。</p>
+<p><a name="markdown_insert_img"></a></p>
+<h2 id="1-使用-markdown-语法">1. 使用 <code>Markdown</code> 语法</h2>
+<ul>
+<li>以叹号<code>!</code>开头</li>
+<li>后面方括号<code>[]</code>中是替换文本（图片加载失败时显示给读者的文本）</li>
+<li>再后面圆括号<code>()</code>中是图片的路径（本地路径、网络路径）</li>
+<li>如果需要图片标题，可以在路径后面用双引号<code>&quot;&quot;</code>扩起来。
+<em>⚠️：所有的<strong>符号必须是半角/英文符号</strong>，不可以使用全角/中文符号</em></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">替换文本</span>](<span class="na">图片路径 &#34;图片标题&#34;</span>)
+</span></span><span class="line"><span class="cl">![<span class="nt">alt text</span>](<span class="na">image_path &#34;image title&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">substring is deprecated</span>](<span class="na">/images/xcode-while-editing.png &#34;XCode屏幕截图&#34;</span>)
+</span></span><span class="line"><span class="cl"><span class="ge">*Tips: 可以在图片下面用一行斜体的说明文本。图片标题不保证一定会显示*</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示效果如下：
+<img loading="lazy" src="/images/xcode-while-editing.png" alt="substring is deprecated"  title="XCode屏幕截图"  />
+<em>Tips: 可以在图片下面用一行斜体的说明文本。图片标题不保证一定会显示</em></p>
+<p><a name="html_insert_img"></a></p>
+<h2 id="2-使用-html-语法">2. 使用 <code>HTML</code> 语法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">image</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://picsum.photos/400/200&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;网络图片400*200&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>效果如下：
+<image src="https://picsum.photos/400/200" alt="网络图片400*200" title="HTML图片"></p>
+<p><a name="image_size"></a></p>
+<h3 id="如何设置图片尺寸">如何设置图片尺寸</h3>
+<p>推荐使用<code>HTML</code>的方式设置图片大小：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">image</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://picsum.photos/400/200&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;网络图片400*200&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;100&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;200&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><image src="https://picsum.photos/400/200" alt="网络图片400*200" width="100" height="200">
+<p>原生<code>Markdown</code>语法不支持设置图片尺寸，<code>Extended Markdown</code>支持如下语法。不是所有引擎都支持，个人不推荐。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">![<span class="nt">alt text</span>](<span class="na">image path &#34;image title&#34;</span>){ width=80%,height=120px }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a name="image_link" />
+<h3 id="如何给图片加链接">如何给图片加链接</h3>
+<h4 id="markdown语法"><code>Markdown</code>语法</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">[<span class="nt">![图片替换文本</span>](<span class="na">图片路径</span>)](链接地址)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">[<span class="nt">![点击图片跳转AppStore</span>](<span class="na">https://mzstatic.com/image/AppIcon.png</span>)](https://apps.apple.com)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://apps.apple.com/cn/app/id1528477391">
+  <img loading="lazy" src="https://is4-ssl.mzstatic.com/image/thumb/Purple122/v4/72/62/8a/72628ae2-9c11-e676-acb2-5e207f07aa65/AppIcon-1x_U007emarketing-0-6-0-85-220.png/460x0w.webp" alt="点击图片跳转AppStore"  /></a></p>
+<h4 id="html语法"><code>HTML</code>语法</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://apps.apple.com/cn/app/id1528477391&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://mzstatic.com/image/AppIcon.png&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a href="https://apps.apple.com/cn/app/id1528477391">
+    <img src="https://is4-ssl.mzstatic.com/image/thumb/Purple122/v4/72/62/8a/72628ae2-9c11-e676-acb2-5e207f07aa65/AppIcon-1x_U007emarketing-0-6-0-85-220.png/460x0w.webp" />
+</a>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
       <link>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
