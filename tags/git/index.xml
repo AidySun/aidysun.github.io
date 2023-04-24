@@ -64,7 +64,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
       <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</guid>
-      <description>git clean</description>
+      <description>git clean/delete untracked files, folders</description>
       <content:encoded><![CDATA[<p>对于一个 git 项目，执行 <code>git status -u</code> 有如下状态：</p>
 <p><img loading="lazy" src="/images/git-status--u.png" alt="git status -u result"  title="hi"  /></p>
 <p>对于本地新增的文件，可以通过 <code>clean</code> 命令直接删除：</p>
