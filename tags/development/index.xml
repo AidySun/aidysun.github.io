@@ -258,6 +258,74 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     </item>
     
     <item>
+      <title>Swift String Substring</title>
+      <link>https://aidysun.github.io/posts/2023/04/swift-substring/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/swift-substring/</guid>
+      <description>Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的</description>
+      <content:encoded><![CDATA[<p>Swift 中对 <code>String</code> 类型的 <code>substring()</code> 方法都被标记为<code>不推荐(deprecated)</code>了，那该如何实现 substring 的功能呢？</p>
+<p><img loading="lazy" src="/images/swift-string-substring-deprecated.jpg" alt="substring is deprecated"  title="XCode 中对String.substring的提示"  /></p>
+<p>根据Xcode的提示<strong>可以使用<code>slicing（切片）</code>的方式来实现<code>substring</code>的功能</strong>：</p>
+<p>以字符串 <code>let str = &quot;0123456789&quot;</code> 为例:</p>
+<h3 id="从开始到第一个等于5的字符之前的子串">从开始到第一个等于<code>5</code>的字符之前的子串：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="k">if</span> <span class="kd">let</span> <span class="nv">firstFive</span> <span class="p">=</span> <span class="n">str</span><span class="p">.</span><span class="n">firstIndex</span><span class="p">(</span><span class="n">of</span><span class="p">:</span> <span class="s">&#34;5&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">substr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[</span><span class="n">str</span><span class="p">.</span><span class="n">startIndex</span><span class="p">..&lt;</span><span class="n">firstFive</span><span class="p">]</span> <span class="c1">// substr = 01234</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 或者可以省略开始的index</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">substr2</span> <span class="p">=</span> <span class="n">str</span><span class="p">[..&lt;</span><span class="n">firstFive</span><span class="p">]</span> <span class="c1">// substr2 = 01234</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="从开头到第一个等于5的字符">从开头到第一个等于<code>5</code>的字符</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">substr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[...</span><span class="n">firstFive</span><span class="p">]</span> <span class="c1">// substr = 012345</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="从第一个5开始到字符串末尾">从第一个<code>5</code>开始到字符串末尾</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">substr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[</span><span class="n">firstFive</span><span class="p">...]</span> <span class="c1">// 56789</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="前7个字符">前7个字符</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">strstr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[</span><span class="n">str</span><span class="p">.</span><span class="n">startIndex</span><span class="p">..&lt;</span><span class="n">str</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="mi">7</span><span class="p">)]</span> <span class="c1">// 0123456</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>String</code>切片后返回的结果类型是 <code>Substring</code>。</p>
+<h2 id="struct-substring">struct Substring</h2>
+<p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
+<blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>关于ASCII、DBCS、Unicode、UCS-16、UTF-8和Encoding</title>
       <link>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>

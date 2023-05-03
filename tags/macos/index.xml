@@ -6,7 +6,54 @@
     <description>Recent content in macOS on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何删除Karabiner</title>
+      <link>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
+      <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</guid>
+      <description>不能完成此操作，因为项目“Karabiner-Elements.app”已被锁定</description>
+      <content:encoded><![CDATA[<ol>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C">方法二</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%89">方法三</a></li>
+</ol>
+<p>macOS 12，从 应用程序 中手动删除 Karabiner 时出现如下错误：</p>
+<pre tabindex="0"><code>不能完成此操作，因为项目“Karabiner-Elements.app”已被锁定。
+不能完成此操作，因为项目“Karabiner-EventViewer.app”已被锁定。
+</code></pre><h2 id="方法一">方法一</h2>
+<p><a href="https://karabiner-elements.pqrs.org/docs/manual/operation/uninstall/">参照官方 uninstall 步骤</a>，如果 Karabiner-Elements 可以运行，可以通过界面操作卸载(Uninstall -&gt; Launch uninstaller)，但我的 App 已无法执行。</p>
+<h2 id="方法二">方法二</h2>
+<p>执行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">bash <span class="s1">&#39;/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/deactivate_driver.sh&#39;</span>
+</span></span><span class="line"><span class="cl">sudo <span class="s1">&#39;/Library/Application Support/org.pqrs/Karabiner-Elements/uninstall.sh&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但我的环境中已经没有相关 sh，所以第一条指令已经失败：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ bash <span class="s1">&#39;/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/deactivate_driver.sh&#39;</span>
+</span></span><span class="line"><span class="cl">bash: /Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/deactivate_driver.sh: No such file or directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="方法三">方法三</h2>
+<p>终极方案——重装。从 <a href="https://karabiner-elements.pqrs.org/">https://karabiner-elements.pqrs.org/</a> 下载安装，然后通过<a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a>删除：</p>
+<p>
+  <img loading="lazy" src="https://karabiner-elements.pqrs.org/docs/manual/operation/uninstall/images/uninstall-button@2x.png" alt="built-in uninstaller"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
       <link>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</link>

@@ -6,7 +6,54 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何删除Karabiner</title>
+      <link>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
+      <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</guid>
+      <description>不能完成此操作，因为项目“Karabiner-Elements.app”已被锁定</description>
+      <content:encoded><![CDATA[<ol>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C">方法二</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%89">方法三</a></li>
+</ol>
+<p>macOS 12，从 应用程序 中手动删除 Karabiner 时出现如下错误：</p>
+<pre tabindex="0"><code>不能完成此操作，因为项目“Karabiner-Elements.app”已被锁定。
+不能完成此操作，因为项目“Karabiner-EventViewer.app”已被锁定。
+</code></pre><h2 id="方法一">方法一</h2>
+<p><a href="https://karabiner-elements.pqrs.org/docs/manual/operation/uninstall/">参照官方 uninstall 步骤</a>，如果 Karabiner-Elements 可以运行，可以通过界面操作卸载(Uninstall -&gt; Launch uninstaller)，但我的 App 已无法执行。</p>
+<h2 id="方法二">方法二</h2>
+<p>执行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">bash <span class="s1">&#39;/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/deactivate_driver.sh&#39;</span>
+</span></span><span class="line"><span class="cl">sudo <span class="s1">&#39;/Library/Application Support/org.pqrs/Karabiner-Elements/uninstall.sh&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但我的环境中已经没有相关 sh，所以第一条指令已经失败：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ bash <span class="s1">&#39;/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/deactivate_driver.sh&#39;</span>
+</span></span><span class="line"><span class="cl">bash: /Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/deactivate_driver.sh: No such file or directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="方法三">方法三</h2>
+<p>终极方案——重装。从 <a href="https://karabiner-elements.pqrs.org/">https://karabiner-elements.pqrs.org/</a> 下载安装，然后通过<a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a>删除：</p>
+<p>
+  <img loading="lazy" src="https://karabiner-elements.pqrs.org/docs/manual/operation/uninstall/images/uninstall-button@2x.png" alt="built-in uninstaller"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>error: git object file .git/objects/xxx is empty 和 fatal: cannot read existing object info</title>
       <link>https://aidysun.github.io/posts/2023/04/git-object-file-is-empty/</link>
@@ -254,6 +301,74 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </div><h2 id="reference">Reference</h2>
 <p>其他类型文件的权限及详细描述参见 <code>man ssh</code>：</p>
 <p><img loading="lazy" src="/images/man-ssh.png" alt="man ssh"  /></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Swift String Substring</title>
+      <link>https://aidysun.github.io/posts/2023/04/swift-substring/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/04/swift-substring/</guid>
+      <description>Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的</description>
+      <content:encoded><![CDATA[<p>Swift 中对 <code>String</code> 类型的 <code>substring()</code> 方法都被标记为<code>不推荐(deprecated)</code>了，那该如何实现 substring 的功能呢？</p>
+<p><img loading="lazy" src="/images/swift-string-substring-deprecated.jpg" alt="substring is deprecated"  title="XCode 中对String.substring的提示"  /></p>
+<p>根据Xcode的提示<strong>可以使用<code>slicing（切片）</code>的方式来实现<code>substring</code>的功能</strong>：</p>
+<p>以字符串 <code>let str = &quot;0123456789&quot;</code> 为例:</p>
+<h3 id="从开始到第一个等于5的字符之前的子串">从开始到第一个等于<code>5</code>的字符之前的子串：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="k">if</span> <span class="kd">let</span> <span class="nv">firstFive</span> <span class="p">=</span> <span class="n">str</span><span class="p">.</span><span class="n">firstIndex</span><span class="p">(</span><span class="n">of</span><span class="p">:</span> <span class="s">&#34;5&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">substr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[</span><span class="n">str</span><span class="p">.</span><span class="n">startIndex</span><span class="p">..&lt;</span><span class="n">firstFive</span><span class="p">]</span> <span class="c1">// substr = 01234</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 或者可以省略开始的index</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">substr2</span> <span class="p">=</span> <span class="n">str</span><span class="p">[..&lt;</span><span class="n">firstFive</span><span class="p">]</span> <span class="c1">// substr2 = 01234</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="从开头到第一个等于5的字符">从开头到第一个等于<code>5</code>的字符</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">substr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[...</span><span class="n">firstFive</span><span class="p">]</span> <span class="c1">// substr = 012345</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="从第一个5开始到字符串末尾">从第一个<code>5</code>开始到字符串末尾</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">substr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[</span><span class="n">firstFive</span><span class="p">...]</span> <span class="c1">// 56789</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="前7个字符">前7个字符</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">strstr</span> <span class="p">=</span> <span class="n">str</span><span class="p">[</span><span class="n">str</span><span class="p">.</span><span class="n">startIndex</span><span class="p">..&lt;</span><span class="n">str</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="mi">7</span><span class="p">)]</span> <span class="c1">// 0123456</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>String</code>切片后返回的结果类型是 <code>Substring</code>。</p>
+<h2 id="struct-substring">struct Substring</h2>
+<p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
+<blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
+</blockquote>
 ]]></content:encoded>
     </item>
     
