@@ -6,7 +6,109 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git ssh REMOTE HOST IDENTIFICATION HAS CHANGED</title>
+      <link>https://aidysun.github.io/posts/2023/05/git-remote-host-identification-has-changed/</link>
+      <pubDate>Tue, 09 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/05/git-remote-host-identification-has-changed/</guid>
+      <description>Could not read from remote repository</description>
+      <content:encoded><![CDATA[<p>使用 <code>git</code> 命令或 <code>ssh</code> 命令时出现如下提示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span></span><span class="line"><span class="cl">@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+</span></span><span class="line"><span class="cl">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span></span><span class="line"><span class="cl">IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+</span></span><span class="line"><span class="cl">Someone could be eavesdropping on you right now <span class="o">(</span>man-in-the-middle attack<span class="o">)</span>!
+</span></span><span class="line"><span class="cl">It is also possible that a host key has just been changed.
+</span></span><span class="line"><span class="cl">The fingerprint <span class="k">for</span> the RSA key sent by the remote host is
+</span></span><span class="line"><span class="cl">SHA256:xxxxxxx.
+</span></span><span class="line"><span class="cl">Please contact your system administrator.
+</span></span><span class="line"><span class="cl">Add correct host key in /Users/xxx/.ssh/known_hosts to get rid of this message.
+</span></span><span class="line"><span class="cl">Offending RSA key in /Users/xxx/.ssh/known_hosts:1
+</span></span><span class="line"><span class="cl">Host key <span class="k">for</span> github.com has changed and you have requested strict checking.
+</span></span><span class="line"><span class="cl">Host key verification failed.
+</span></span><span class="line"><span class="cl">fatal: Could not <span class="nb">read</span> from remote repository.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Please make sure you have the correct access rights
+</span></span><span class="line"><span class="cl">and the repository exists.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="solution">Solution</h2>
+<p>执行如下命令，找到输出中 <code>github.com</code> 对应的 IP 地址。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh-keygen -lf ~/.ssh/known_hosts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="m">256</span> SHA256:xxxxxxxxxxxxxxxx github.com,13.250.177.223
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对找到的 IP 地址（e.g. <code>13.250.177.223</code>），执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">&gt;&gt;&gt;&gt; $ ssh-keygen -R 13.250.177.223
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完成！
+执行成功后会有如下输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Host 13.250.177.223 found: line 1</span>
+</span></span><span class="line"><span class="cl">/Users/xxx/.ssh/known_hosts updated.
+</span></span><span class="line"><span class="cl">Original contents retained as /Users/xxx/.ssh/known_hosts.old
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再执行 <code>git</code> 或 <code>ssh</code> 命令时会有如下提示，输入 <code>yes</code> 即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Are you sure you want to <span class="k">continue</span> connecting <span class="o">(</span>yes/no<span class="o">)</span>? 
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded>
+    </item>
+    
     <item>
       <title>如何删除Karabiner</title>
       <link>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
