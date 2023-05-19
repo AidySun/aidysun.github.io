@@ -82,7 +82,7 @@ if (!doNotTrack) {
   "keywords": [
     "C++", "Cpp", "cplusplus", "C++11"
   ],
-  "wordCount" : "563",
+  "wordCount" : "724",
   "inLanguage": "en",
   "datePublished": "2023-05-18T00:00:00Z",
   "dateModified": "2023-05-18T00:00:00Z",
@@ -319,7 +319,20 @@ function toggleThemeListener() {
 </div><h3 id="problem">Problem<a hidden class="anchor" aria-hidden="true" href="#problem">¶</a></h3>
 <p>非类型安全，比如对<code>Week w</code>和<code>Season s</code>两个逻辑意义上不同类型的变量作比较，会产生不合逻辑的结果：<code>w == s</code> 是 <code>true</code>。</p>
 <p>It&rsquo;s not safe, the result of <code>w == s</code> is <code>true</code> is not reasonalbe.</p>
-<h2 id="scoped-enum">Scoped enum<a hidden class="anchor" aria-hidden="true" href="#scoped-enum">¶</a></h2>
+<p>不同类型的 enum 比较会有编译警告<code>warning</code>，但只是警告：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">warning: comparison between ‘enum Week’ and ‘enum Season’ <span class="o">[</span>-Wenum-compare<span class="o">]</span>
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>   bool <span class="nv">isEqual</span> <span class="o">=</span> <span class="o">(</span><span class="nv">w</span> <span class="o">==</span> s<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>                        ^
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="scoped-enum">Scoped enum<a hidden class="anchor" aria-hidden="true" href="#scoped-enum">¶</a></h2>
 <ul>
 <li><code>enum class</code> and <code>enum struct</code> are the same</li>
 <li><code>enum class</code> is not a class</li>
@@ -372,33 +385,55 @@ function toggleThemeListener() {
 </span><span class="lnt">44
 </span><span class="lnt">45
 </span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// enum - traditional enumeration
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">enum</span> <span class="nc">Week</span>        <span class="p">{</span><span class="n">Mon</span>   <span class="p">,</span><span class="n">Tue</span>   <span class="p">,</span><span class="n">Wed</span>  <span class="p">,</span><span class="n">Thu</span>   <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Season</span>      <span class="p">{</span><span class="n">Sprint</span><span class="p">,</span><span class="n">Summer</span><span class="p">,</span><span class="n">Fall</span> <span class="p">,</span><span class="n">Winter</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumOnly</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Week</span> <span class="p">{</span> <span class="n">Mon</span><span class="p">,</span> <span class="n">Tue</span><span class="p">,</span> <span class="n">Wed</span><span class="p">,</span> <span class="n">Thu</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Season</span> <span class="p">{</span> <span class="n">Sprint</span><span class="p">,</span> <span class="n">Summer</span><span class="p">,</span> <span class="n">Fall</span><span class="p">,</span> <span class="n">Winter</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumOnly
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumClass</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Month</span> <span class="p">{</span> <span class="n">Jan</span><span class="p">,</span> <span class="n">Feb</span><span class="p">,</span> <span class="n">Mar</span><span class="p">,</span> <span class="n">Apr</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Num</span> <span class="p">{</span> <span class="n">One</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Two</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// enum class - scoped enumeratoin
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">enum</span> <span class="k">class</span> <span class="nc">Month</span> <span class="p">{</span><span class="n">Jan</span>   <span class="p">,</span><span class="n">Feb</span>   <span class="p">,</span><span class="n">Mar</span>  <span class="p">,</span><span class="n">Apr</span>   <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Num</span>   <span class="p">{</span><span class="n">One</span>   <span class="p">,</span><span class="n">Two</span>   <span class="p">,</span><span class="n">Three</span><span class="p">,</span><span class="n">Four</span>  <span class="p">};</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumClass
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumOnly::Week::Mon = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span><span class="o">::</span><span class="n">Mon</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumClass::Month::Jan = &#34;</span> <span class="o">&lt;&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">::</span><span class="n">Jan</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is Week a class : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_class</span><span class="o">&lt;</span><span class="n">Week</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is Week a enum : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_enum</span><span class="o">&lt;</span><span class="n">Week</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is Month a class : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_class</span><span class="o">&lt;</span><span class="n">Month</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is Month a enum : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_enum</span><span class="o">&lt;</span><span class="n">Month</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is EnumOnly::Week a class : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_class</span><span class="o">&lt;</span><span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is EnumOnly::Week a enum : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_enum</span><span class="o">&lt;</span><span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">Week</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Tue</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Season</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Summer</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Month</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Month</span><span class="o">::</span><span class="n">Feb</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Num</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Num</span><span class="o">::</span><span class="n">Two</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Num</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">Num</span><span class="o">::</span><span class="n">Two</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Num</span> <span class="n">n3</span> <span class="o">=</span> <span class="n">Num</span><span class="o">::</span><span class="n">Three</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is EnumClass::Month a class : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_class</span><span class="o">&lt;</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Is EnumClass::Month a enum : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">is_enum</span><span class="o">&lt;</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span> <span class="n">w</span> <span class="o">=</span> <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Tue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Season</span> <span class="n">s</span> <span class="o">=</span> <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Summer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span> <span class="n">m</span> <span class="o">=</span> <span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">::</span><span class="n">Feb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">EnumClass</span><span class="o">::</span><span class="n">Num</span> <span class="n">n</span> <span class="o">=</span> <span class="n">EnumClass</span><span class="o">::</span><span class="n">Num</span><span class="o">::</span><span class="n">Two</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">EnumClass</span><span class="o">::</span><span class="n">Num</span> <span class="n">n2</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Num</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">EnumClass</span><span class="o">::</span><span class="n">Num</span> <span class="n">n3</span> <span class="o">=</span> <span class="n">EnumClass</span><span class="o">::</span><span class="n">Num</span><span class="o">::</span><span class="n">Three</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w == s, ohh!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// unmeaningful
@@ -417,7 +452,13 @@ function toggleThemeListener() {
 </span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;n != n3, yes&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  if (w == m) {
+</span></span></span><span class="line"><span class="cl"><span class="cm">    cout &lt;&lt; &#34;w == m&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="cm">  } else {
+</span></span></span><span class="line"><span class="cl"><span class="cm">    cout &lt;&lt; &#34;w != m&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="cm">  }
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -433,20 +474,22 @@ function toggleThemeListener() {
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Is Week a class : <span class="m">0</span>
-</span></span><span class="line"><span class="cl">Is Week a enum : <span class="m">1</span>
-</span></span><span class="line"><span class="cl">Is Month a class : <span class="m">0</span>
-</span></span><span class="line"><span class="cl">Is Month a enum : <span class="m">1</span>
-</span></span><span class="line"><span class="cl">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">EnumOnly::Week::Mon <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">EnumClass::Month::Jan <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Is EnumOnly::Week a class : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Is EnumOnly::Week a enum : <span class="m">1</span>
+</span></span><span class="line"><span class="cl">Is EnumClass::Month a class : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Is EnumClass::Month a enum : <span class="m">1</span>
 </span></span><span class="line"><span class="cl"><span class="nv">w</span> <span class="o">==</span> s, ohh!
 </span></span><span class="line"><span class="cl"><span class="nv">n</span> <span class="o">==</span> n2, yes
 </span></span><span class="line"><span class="cl">n !<span class="o">=</span> n3, yes
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果用 <code>==</code> 比较两个不同类型的 <code>enum class</code> 对象会产生编译错误。
-比如用<code>if (w == m)</code>比较 <code>enum Week</code> 类型的 <code>w</code> 与 <code>enum class Month</code> 类型的 <code>m</code> 会产生如下错误：</p>
+比如用<code>if (w == m)</code>比较 <code>enum Week</code> 类型的 <code>w</code> 与 <code>enum class Month</code> 类型的 <code>m</code> 会产生如下错误 <code>error</code> ：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -454,13 +497,15 @@ function toggleThemeListener() {
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">error: no match <span class="k">for</span> ‘operator<span class="o">==</span>’ <span class="o">(</span>operand types are ‘Week’ and ‘Month’<span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">|</span>   <span class="k">if</span> <span class="o">(</span><span class="nv">w</span> <span class="o">==</span> m<span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="p">|</span>       ~ ^~ ~
-</span></span><span class="line"><span class="cl">    <span class="p">|</span>       <span class="p">|</span>    <span class="p">|</span>
-</span></span><span class="line"><span class="cl">    <span class="p">|</span>       Week Month
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">error: no match <span class="k">for</span> ‘operator<span class="o">==</span>’ <span class="o">(</span>operand types are ‘EnumOnly::Week’ and ‘EnumClass::Month’<span class="o">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>   <span class="k">if</span> <span class="o">(</span><span class="nv">w</span> <span class="o">==</span> m<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>       ~ ^~ ~
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>       <span class="p">|</span>    <span class="p">|</span>
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>       <span class="p">|</span>    EnumClass::Month
+</span></span><span class="line"><span class="cl">      <span class="p">|</span>       EnumOnly::Week
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>用 <code>==</code> 比较两个不同的 <code>enum class</code> 对象也会产生相同的编译错误。</p>
