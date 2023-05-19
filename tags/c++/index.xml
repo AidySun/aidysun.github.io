@@ -14,7 +14,7 @@
       
       <guid>https://aidysun.github.io/posts/2023/05/cpp-scoped-enum-class/</guid>
       <description>Strong typed enums in C&#43;&#43;11</description>
-      <content:encoded><![CDATA[<h2 id="traditional-enum-in-c">traditional enum in c++</h2>
+      <content:encoded><![CDATA[<h2 id="traditional-enum-in-c">Traditional enum in C++</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -38,8 +38,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="problem">Problem</h3>
-<p>not safe, the output is <code>w == s</code>.</p>
-<h2 id="scoped-enum---enum-classstruct">Scoped enum - enum class/struct</h2>
+<p>非类型安全，比如对<code>Week w</code>和<code>Season s</code>两个逻辑意义上不同类型的变量作比较，会产生不合逻辑的结果：<code>w == s</code> 是 <code>true</code>。</p>
+<p>It&rsquo;s not safe, the result of <code>w == s</code> is <code>true</code> is not reasonalbe.</p>
+<h2 id="scoped-enum">Scoped enum</h2>
 <ul>
 <li><code>enum class</code> and <code>enum struct</code> are the same</li>
 <li><code>enum class</code> is not a class</li>
@@ -92,45 +93,6 @@
 </span><span class="lnt">44
 </span><span class="lnt">45
 </span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
@@ -177,50 +139,53 @@
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;n != n3, yes&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">  if (w == m) {
-</span></span></span><span class="line"><span class="cl"><span class="cm">    cout &lt;&lt; &#34;w == m&#34;;
-</span></span></span><span class="line"><span class="cl"><span class="cm">  } else {
-</span></span></span><span class="line"><span class="cl"><span class="cm">    cout &lt;&lt; &#34;w != m&#34;;
-</span></span></span><span class="line"><span class="cl"><span class="cm">  }
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  error: no match for ‘operator==’ (operand types are ‘Week’ and ‘Month’)
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |   if (w == m) {
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |       ~ ^~ ~
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |       |    |
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |       Week Month
-</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">  if (n == m) {
-</span></span></span><span class="line"><span class="cl"><span class="cm">    cout &lt;&lt; &#34;n == m&#34;;
-</span></span></span><span class="line"><span class="cl"><span class="cm">  } else {
-</span></span></span><span class="line"><span class="cl"><span class="cm">    cout &lt;&lt; &#34;n != m&#34;;
-</span></span></span><span class="line"><span class="cl"><span class="cm">  }
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  error: no match for ‘operator==’ (operand types are ‘Num’ and ‘Month’)
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |   if (n == m) {
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |       ~ ^~ ~
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |       |    |
-</span></span></span><span class="line"><span class="cl"><span class="cm">      |       Num  Month
-</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="n">shell</span>
-</span></span><span class="line"><span class="cl"><span class="n">Is</span> <span class="n">Week</span> <span class="n">a</span> <span class="k">class</span> <span class="err">: 0</span>
-</span></span><span class="line"><span class="cl"><span class="n">Is</span> <span class="n">Week</span> <span class="n">a</span> <span class="k">enum</span> <span class="err">: 1</span>
-</span></span><span class="line"><span class="cl"><span class="n">Is</span> <span class="n">Month</span> <span class="n">a</span> <span class="k">class</span> <span class="err">: 0</span>
-</span></span><span class="line"><span class="cl"><span class="n">Is</span> <span class="n">Month</span> <span class="n">a</span> <span class="k">enum</span> <span class="err">: 1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">,</span> <span class="n">ohh</span><span class="o">!</span>
-</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">==</span> <span class="n">n2</span><span class="p">,</span> <span class="n">yes</span>
-</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">!=</span> <span class="n">n3</span><span class="p">,</span> <span class="n">yes</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>]]></content:encoded>
+</div><p>输出如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Is Week a class : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Is Week a enum : <span class="m">1</span>
+</span></span><span class="line"><span class="cl">Is Month a class : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Is Month a enum : <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">w</span> <span class="o">==</span> s, ohh!
+</span></span><span class="line"><span class="cl"><span class="nv">n</span> <span class="o">==</span> n2, yes
+</span></span><span class="line"><span class="cl">n !<span class="o">=</span> n3, yes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果用 <code>==</code> 比较两个不同类型的 <code>enum class</code> 对象会产生编译错误。
+比如用<code>if (w == m)</code>比较 <code>enum Week</code> 类型的 <code>w</code> 与 <code>enum class Month</code> 类型的 <code>m</code> 会产生如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">error: no match <span class="k">for</span> ‘operator<span class="o">==</span>’ <span class="o">(</span>operand types are ‘Week’ and ‘Month’<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>   <span class="k">if</span> <span class="o">(</span><span class="nv">w</span> <span class="o">==</span> m<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>       ~ ^~ ~
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>       <span class="p">|</span>    <span class="p">|</span>
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>       Week Month
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用 <code>==</code> 比较两个不同的 <code>enum class</code> 对象也会产生相同的编译错误。</p>
+]]></content:encoded>
     </item>
     
     <item>

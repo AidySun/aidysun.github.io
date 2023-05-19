@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Xcode on 番茄🍅杂货铺</title>
+    <link>https://aidysun.github.io/tags/xcode/</link>
+    <description>Recent content in Xcode on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xcode自动删除空行的白字符</title>
+      <link>https://aidysun.github.io/posts/2023/05/xcode-remove-whitespaces-of-empty-lines/</link>
+      <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aidysun.github.io/posts/2023/05/xcode-remove-whitespaces-of-empty-lines/</guid>
+      <description>Auto remove spaces of empty lines</description>
+      <content:encoded><![CDATA[<p>在 Xcode 编辑代码后用 git 提交时，如果空行含有白字符（空格或tab），会有如下提示：</p>
+<p><img loading="lazy" src="/images/whitespace-in-empty-line.png" alt="space-in-empty-line"  /></p>
+<p><strong>那么如何能自动删除空白行开头的空格呢？</strong></p>
+<ol>
+<li>编辑时自动删除</li>
+</ol>
+<p>在 <code>Xcode</code> 中, 依次打开 <code>[Preferences... -&gt; Text Editing -&gt; Editing -&gt; While Editing]</code>，勾选两个选项：</p>
+<p><img loading="lazy" src="/images/xcode-while-editing.png" alt="xcode-while-editing"  /></p>
+<p>然而以上设置只对在编辑过程中出现的空白行中的空格起作用，对于已经存在的文件不会起作用。</p>
+<ol start="2">
+<li>命令行删除</li>
+</ol>
+<p>那对已经存在的文件，可以通过在 Terminal 中执行命令来修改，比如修改所有 Swift/Objective-C 的代码文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> &lt;folder of your project&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">find . -type f <span class="se">\(</span> -iname <span class="s2">&#34;*.swift&#34;</span> -o -iname <span class="s2">&#34;*.h&#34;</span> -o -iname <span class="s2">&#34;*.m&#34;</span> <span class="se">\)</span> -exec sed -i -e <span class="s2">&#34;s/^\( \{1,99\}\)*</span>$<span class="s2">//g&#34;</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>code format 工具</li>
+</ol>
+<p>可以在每次项目编译时统一处理代码格式。比如通过 <code>swiftlint</code>:</p>
+<p><img loading="lazy" src="/images/whitespace-swiftlint-setting-in-xcode.png" alt="xcode-with-switlint"  /></p>
+<p>关于具体配置参考<code>swiftlint</code>的文档。</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
