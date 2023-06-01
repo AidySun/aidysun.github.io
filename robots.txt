@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: https://aidysun.github.io/sitemap.xml
+Sitemap: https://blog.tomatostore.top/sitemap.xml

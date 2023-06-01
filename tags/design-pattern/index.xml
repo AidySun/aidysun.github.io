@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Design Pattern on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/design-pattern/</link>
+    <link>https://blog.tomatostore.top/tags/design-pattern/</link>
     <description>Recent content in Design Pattern on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>设计模式：观察者模式、订阅-发布模式、事件监听模式</title>
-      <link>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/design-pattern-observer/</link>
       <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/design-pattern-observer/</guid>
       <description>Design Pattern: Observer Pattern</description>
       <content:encoded><![CDATA[<p>观察者模式（<code>Observer Pattern</code>）解决的对象间的一对多的关系，即一个被观察者与多个观察者。最直接的例子就是公众号（<code>Subject</code>）及订阅者（<code>Observer</code>）。</p>
 <p>对于观察者模式、发布-订阅模式/事件监听模式，为只是相同技术实现基础上的不同演化，属于同一类设计模式。</p>

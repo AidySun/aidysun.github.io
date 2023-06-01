@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Development on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/development/</link>
+    <link>https://blog.tomatostore.top/tags/development/</link>
     <description>Recent content in Development on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use customized class in std::map, std::set</title>
-      <link>https://aidysun.github.io/posts/2023/05/custom-class-with-std-associative-container/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/custom-class-with-std-associative-container/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/custom-class-with-std-associative-container/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/custom-class-with-std-associative-container/</guid>
       <description>Make self-defined class comparable</description>
       <content:encoded><![CDATA[<p>有一个自定义的 <code>class A</code>:</p>
 <div class="highlight"><div class="chroma">
@@ -257,10 +257,10 @@
     
     <item>
       <title>[C&#43;&#43;11] Scoped Enumeration (enum class)</title>
-      <link>https://aidysun.github.io/posts/2023/05/cpp-scoped-enum-class/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/cpp-scoped-enum-class/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/cpp-scoped-enum-class/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/cpp-scoped-enum-class/</guid>
       <description>Strong typed enums in C&#43;&#43;11</description>
       <content:encoded><![CDATA[<h2 id="traditional-enum-in-c">Traditional enum in C++</h2>
 <div class="highlight"><div class="chroma">
@@ -483,10 +483,10 @@
     
     <item>
       <title>error: git object file .git/objects/xxx is empty 和 fatal: cannot read existing object info</title>
-      <link>https://aidysun.github.io/posts/2023/04/git-object-file-is-empty/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/git-object-file-is-empty/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/git-object-file-is-empty/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/git-object-file-is-empty/</guid>
       <description>index-pack failed，unable to unlink null bad address</description>
       <content:encoded><![CDATA[<h2 id="object-file-相关错误"><code>object file</code> 相关错误</h2>
 <p>本地的<code>repo</code>在执行<code>git log</code>和<code>git pull</code>命令时出现了如下关于<code>object file</code>的错误：</p>
@@ -534,10 +534,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     
     <item>
       <title>如何从 App Store Connect 中删除一个未发布版本</title>
-      <link>https://aidysun.github.io/posts/2023/04/app-store-connect-rm-a-version/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/app-store-connect-rm-a-version/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/app-store-connect-rm-a-version/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/app-store-connect-rm-a-version/</guid>
       <description>苹果商店Connect无法删除App版本</description>
       <content:encoded><![CDATA[<p>一个 iOS App 最新已发布版本: <code>4.0</code>，在 <code>App Store Connect</code> 中添加了一个版本 <code>4.1</code>，状态为 <code>准备提交（Prepare for Submission）</code> (或其他未发布状态)。</p>
 <p>后来改动有点大，打算做个大版本升级——把<code>4.1</code> 改为 <code>5.0</code>。</p>
@@ -551,10 +551,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     
     <item>
       <title>如何在 Markdown 中插入图片，并设置大小</title>
-      <link>https://aidysun.github.io/posts/2023/04/markdown-insert-picture-with-size/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/markdown-insert-picture-with-size/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/markdown-insert-picture-with-size/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/markdown-insert-picture-with-size/</guid>
       <description>Add pictures to Markdown, with hyperlink and size setting</description>
       <content:encoded><![CDATA[<p>本文介绍在 <code>Markdown</code> 文件中插入图片的两种方式：<a href="#markdown_insert_img">1.Markdown语法</a>，<a href="#html_insert_img">2.HTML语法</a>；
 以及<a href="#image_size">如何设置图片尺寸</a>，<a href="#image_link">如何给图片加链接</a>。</p>
@@ -667,10 +667,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     
     <item>
       <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
-      <link>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/ssh-file-permission/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/ssh-file-permission/</guid>
       <description>ssh Permissions are too open</description>
       <content:encoded><![CDATA[<p>在 macOS 的终端中执行 <code>git pull</code> 命令时出现如下两个错误，可以通过手动修改权限来修复。同样适用于 Linux 系统及其他 ssh 相关应用出现的此类错误。</p>
 <ul>
@@ -733,10 +733,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     
     <item>
       <title>Swift String Substring</title>
-      <link>https://aidysun.github.io/posts/2023/04/swift-substring/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/swift-substring/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/swift-substring/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/swift-substring/</guid>
       <description>Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的</description>
       <content:encoded><![CDATA[<p>Swift 中对 <code>String</code> 类型的 <code>substring()</code> 方法都被标记为<code>不推荐(deprecated)</code>了，那该如何实现 substring 的功能呢？</p>
 <p><img loading="lazy" src="/images/swift-string-substring-deprecated.jpg" alt="substring is deprecated"  title="XCode 中对String.substring的提示"  /></p>
@@ -801,10 +801,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     
     <item>
       <title>关于ASCII、DBCS、Unicode、UCS-16、UTF-8和Encoding</title>
-      <link>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/unicode-and-character-sets/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/unicode-and-character-sets/</guid>
       <description>每个程序员都应该知道的字符集发展简史</description>
       <content:encoded><![CDATA[<p>写于二十年前(<code>2003年</code>)的文章，现在依然受用。</p>
 <p>你是否曾探究过<code>HTTP</code>请求中神秘的<code>Content-Type</code>？你是否曾遇到过满是问号 <code>???? ???? ??</code> 的电子邮件（或网页）？</p>
@@ -908,10 +908,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
     
     <item>
       <title>设计模式：观察者模式、订阅-发布模式、事件监听模式</title>
-      <link>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/design-pattern-observer/</link>
       <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/design-pattern-observer/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/design-pattern-observer/</guid>
       <description>Design Pattern: Observer Pattern</description>
       <content:encoded><![CDATA[<p>观察者模式（<code>Observer Pattern</code>）解决的对象间的一对多的关系，即一个被观察者与多个观察者。最直接的例子就是公众号（<code>Subject</code>）及订阅者（<code>Observer</code>）。</p>
 <p>对于观察者模式、发布-订阅模式/事件监听模式，为只是相同技术实现基础上的不同演化，属于同一类设计模式。</p>
@@ -1549,10 +1549,10 @@ Jerry earned reward : 5
     
     <item>
       <title>Swift: beginAnimations(_:context:) was deprecated in iOS 13.0: Use the block-based animation API instead</title>
-      <link>https://aidysun.github.io/posts/2023/04/swift-block-based-animation/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/swift-block-based-animation/</link>
       <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/swift-block-based-animation/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/swift-block-based-animation/</guid>
       <description>Swift / Objective-C block-based animation</description>
       <content:encoded><![CDATA[<p>用 <code>Xcode 14.2</code> 升级一个 <code>Swift</code> 项目时有编译警告️⚠提示 <code>beginAnimations()</code> 在 <code>iOS 13.0</code> 后已经不推荐使用，应该用 <code>block-based animation</code> 代替。</p>
 <div class="highlight"><div class="chroma">
@@ -1616,10 +1616,10 @@ Jerry earned reward : 5
     
     <item>
       <title>能否在 C&#43;&#43; 的构造函数中使用 this 指针</title>
-      <link>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</link>
+      <link>https://blog.tomatostore.top/posts/2023/03/this-pointer-in-cpp-ctor/</link>
       <pubDate>Mon, 27 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
       <description>构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？</description>
       <content:encoded><![CDATA[<p>直接说结论：<strong>可以在构造函数中使用 this，但是，多态无法生效。</strong></p>
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
@@ -1818,10 +1818,10 @@ Jerry earned reward : 5
     
     <item>
       <title>如何删除本地 git 中未追踪的文件/文件夹</title>
-      <link>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</link>
+      <link>https://blog.tomatostore.top/posts/2023/03/git-rm-untracked-file-dir/</link>
       <pubDate>Fri, 24 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/03/git-rm-untracked-file-dir/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/03/git-rm-untracked-file-dir/</guid>
       <description>git clean/delete untracked files, folders</description>
       <content:encoded><![CDATA[<p>对于一个 git 项目，执行 <code>git status -u</code> 有如下状态：</p>
 <p><img loading="lazy" src="/images/git-status--u.png" alt="git status -u result"  title="hi"  /></p>

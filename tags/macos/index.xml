@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>macOS on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/macos/</link>
+    <link>https://blog.tomatostore.top/tags/macos/</link>
     <description>Recent content in macOS on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何删除Karabiner</title>
-      <link>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
       <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/macos-cannot-perform-action-because-locked/</guid>
       <description>不能完成此操作，因为项目“Karabiner-Elements.app”已被锁定</description>
       <content:encoded><![CDATA[<ol>
 <li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a></li>
@@ -56,10 +56,10 @@
     
     <item>
       <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
-      <link>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/ssh-file-permission/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/ssh-file-permission/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/ssh-file-permission/</guid>
       <description>ssh Permissions are too open</description>
       <content:encoded><![CDATA[<p>在 macOS 的终端中执行 <code>git pull</code> 命令时出现如下两个错误，可以通过手动修改权限来修复。同样适用于 Linux 系统及其他 ssh 相关应用出现的此类错误。</p>
 <ul>

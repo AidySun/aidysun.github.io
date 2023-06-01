@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Unicode on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/unicode/</link>
+    <link>https://blog.tomatostore.top/tags/unicode/</link>
     <description>Recent content in Unicode on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于ASCII、DBCS、Unicode、UCS-16、UTF-8和Encoding</title>
-      <link>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/unicode-and-character-sets/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/unicode-and-character-sets/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/unicode-and-character-sets/</guid>
       <description>每个程序员都应该知道的字符集发展简史</description>
       <content:encoded><![CDATA[<p>写于二十年前(<code>2003年</code>)的文章，现在依然受用。</p>
 <p>你是否曾探究过<code>HTTP</code>请求中神秘的<code>Content-Type</code>？你是否曾遇到过满是问号 <code>???? ???? ??</code> 的电子邮件（或网页）？</p>

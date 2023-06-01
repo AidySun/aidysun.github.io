@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Markdown on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/markdown/</link>
+    <link>https://blog.tomatostore.top/tags/markdown/</link>
     <description>Recent content in Markdown on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何在 Markdown 中插入图片，并设置大小</title>
-      <link>https://aidysun.github.io/posts/2023/04/markdown-insert-picture-with-size/</link>
+      <link>https://blog.tomatostore.top/posts/2023/04/markdown-insert-picture-with-size/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/04/markdown-insert-picture-with-size/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/04/markdown-insert-picture-with-size/</guid>
       <description>Add pictures to Markdown, with hyperlink and size setting</description>
       <content:encoded><![CDATA[<p>本文介绍在 <code>Markdown</code> 文件中插入图片的两种方式：<a href="#markdown_insert_img">1.Markdown语法</a>，<a href="#html_insert_img">2.HTML语法</a>；
 以及<a href="#image_size">如何设置图片尺寸</a>，<a href="#image_link">如何给图片加链接</a>。</p>
@@ -125,10 +125,10 @@
     
     <item>
       <title>Markdown 路径中有空格的链接(link)</title>
-      <link>https://aidysun.github.io/posts/2023/03/markdown-link-to-url-with-space/</link>
+      <link>https://blog.tomatostore.top/posts/2023/03/markdown-link-to-url-with-space/</link>
       <pubDate>Thu, 30 Mar 2023 21:17:22 +0800</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/03/markdown-link-to-url-with-space/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/03/markdown-link-to-url-with-space/</guid>
       <description>Markdown 中加入超链接指向文件，但文件名中包含空格，怎么办？</description>
       <content:encoded><![CDATA[<h2 id="方法一-将空格替换为20">方法一： 将空格替换为<code>%20</code></h2>
 <div class="highlight"><div class="chroma">

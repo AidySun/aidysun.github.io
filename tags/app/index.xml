@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>App on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/app/</link>
+    <link>https://blog.tomatostore.top/tags/app/</link>
     <description>Recent content in App on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/app/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 02 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何删除Karabiner</title>
-      <link>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/macos-cannot-perform-action-because-locked/</link>
       <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/macos-cannot-perform-action-because-locked/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/macos-cannot-perform-action-because-locked/</guid>
       <description>不能完成此操作，因为项目“Karabiner-Elements.app”已被锁定</description>
       <content:encoded><![CDATA[<ol>
 <li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a></li>

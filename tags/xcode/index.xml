@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Xcode on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/xcode/</link>
+    <link>https://blog.tomatostore.top/tags/xcode/</link>
     <description>Recent content in Xcode on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/xcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Xcode自动删除空行的白字符</title>
-      <link>https://aidysun.github.io/posts/2023/05/xcode-remove-whitespaces-of-empty-lines/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/xcode-remove-whitespaces-of-empty-lines/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/xcode-remove-whitespaces-of-empty-lines/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/xcode-remove-whitespaces-of-empty-lines/</guid>
       <description>Auto remove spaces of empty lines</description>
       <content:encoded><![CDATA[<p>在 Xcode 编辑代码后用 git 提交时，如果空行含有白字符（空格或tab），会有如下提示：</p>
 <p><img loading="lazy" src="/images/whitespace-in-empty-line.png" alt="space-in-empty-line"  /></p>

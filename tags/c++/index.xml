@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>C&#43;&#43; on 番茄🍅杂货铺</title>
-    <link>https://aidysun.github.io/tags/c&#43;&#43;/</link>
+    <link>https://blog.tomatostore.top/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aidysun.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Use customized class in std::map, std::set</title>
-      <link>https://aidysun.github.io/posts/2023/05/custom-class-with-std-associative-container/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/custom-class-with-std-associative-container/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/custom-class-with-std-associative-container/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/custom-class-with-std-associative-container/</guid>
       <description>Make self-defined class comparable</description>
       <content:encoded><![CDATA[<p>有一个自定义的 <code>class A</code>:</p>
 <div class="highlight"><div class="chroma">
@@ -257,10 +257,10 @@
     
     <item>
       <title>[C&#43;&#43;11] Scoped Enumeration (enum class)</title>
-      <link>https://aidysun.github.io/posts/2023/05/cpp-scoped-enum-class/</link>
+      <link>https://blog.tomatostore.top/posts/2023/05/cpp-scoped-enum-class/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/05/cpp-scoped-enum-class/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/05/cpp-scoped-enum-class/</guid>
       <description>Strong typed enums in C&#43;&#43;11</description>
       <content:encoded><![CDATA[<h2 id="traditional-enum-in-c">Traditional enum in C++</h2>
 <div class="highlight"><div class="chroma">
@@ -483,10 +483,10 @@
     
     <item>
       <title>能否在 C&#43;&#43; 的构造函数中使用 this 指针</title>
-      <link>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</link>
+      <link>https://blog.tomatostore.top/posts/2023/03/this-pointer-in-cpp-ctor/</link>
       <pubDate>Mon, 27 Mar 2023 22:07:21 +0800</pubDate>
       
-      <guid>https://aidysun.github.io/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
+      <guid>https://blog.tomatostore.top/posts/2023/03/this-pointer-in-cpp-ctor/</guid>
       <description>构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？</description>
       <content:encoded><![CDATA[<p>直接说结论：<strong>可以在构造函数中使用 this，但是，多态无法生效。</strong></p>
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
