@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>2023-06 on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/2023-06/</link>
+    <description>Recent content in 2023-06 on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 11 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-06/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>阿里云域名解析 Github.io</title>
+      <link>https://blog.tomatostore.top/posts/2023/06/github-pages-with-customized-domain-alicloud/</link>
+      <pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/06/github-pages-with-customized-domain-alicloud/</guid>
+      <description>Github pages 自定义域名</description>
+      <content:encoded><![CDATA[<p>Github Page 提供了免费的域名来搭建静态网站，但国内访问速度不是很理想，经过搜索后学习到可以通过自定义域名+国内域名解析来实现国内提速。</p>
+<p>本网站是 <code>Github page + Hugo</code>搭建的，默认地址 <code>aidysun.github.io</code>。</p>
+<ol>
+<li>域名注册</li>
+</ol>
+<p>在<a href="https://wanwang.aliyun.com/domain/?spm=5176.100251.111252.17.13bb4f15ZkUpEQ">阿里云</a>中注册自己的域名，如果对名字和后缀没有特殊要求的话，价格还是很美丽的。
+我选择的 <code>tomatostore.top</code> 3年只需要一百多块钱。</p>
+<ol start="2">
+<li>域名解析</li>
+</ol>
+<p>登陆【阿里云】-【域名控制台】-【域名解析】，填写内容参考下图：</p>
+<p><img loading="lazy" src="/images/dns-analysis-ali-cloud.png" alt="dns analysis"  /></p>
+<ol start="3">
+<li>github设置</li>
+</ol>
+<p>在 github.io 的 repo 设置，选择 pages, 在 Custom Domain 中输入自定义的域名，保存即可。</p>
+<p><img loading="lazy" src="/images/github-io-customize-domain-setting.png" alt="github io customize domain setting"  /></p>
+<ul>
+<li>我的网站：<a href="https://blog.tomatostore.top">https://blog.tomatostore.top</a></li>
+<li>github: <a href="https://github.com/AidySun/aidysun.github.io">https://github.com/AidySun/aidysun.github.io</a></li>
+</ul>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
