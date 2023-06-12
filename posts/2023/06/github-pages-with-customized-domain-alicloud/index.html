@@ -21,7 +21,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "ahttps://hm.baidu.com/hm.js?2d2cc293a53355fbf39bb29e2d9a2f7a";
+      hm.src = "https://hm.baidu.com/hm.js?7b49c1dcff9f821bef8b93e39d824080";
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
@@ -82,7 +82,7 @@ if (!doNotTrack) {
   "keywords": [
     "domain", "githubpage", "alicloud"
   ],
-  "wordCount" : "266",
+  "wordCount" : "510",
   "inLanguage": "en",
   "datePublished": "2023-06-11T00:00:00Z",
   "dateModified": "2023-06-11T00:00:00Z",
@@ -267,7 +267,7 @@ function toggleThemeListener() {
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
   <span class="post-tags"><a href="https://blog.tomatostore.top/tags/github-page/">Github Page</a><a href="https://blog.tomatostore.top/tags/2023/">2023</a><a href="https://blog.tomatostore.top/tags/2023-06/">2023-06</a><a href="https://blog.tomatostore.top/tags/blog/">Blog</a></span></span><span class="meta-item">
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 15"></polyline></svg>
-  <span>1 min</span></span>
+  <span>2 min</span></span>
 
       
       
@@ -291,6 +291,9 @@ function toggleThemeListener() {
 </ol>
 <p>在 github.io 的 repo 设置，选择 pages, 在 Custom Domain 中输入自定义的域名，保存即可。</p>
 <p><img loading="lazy" src="/images/github-io-customize-domain-setting.png" alt="github io customize domain setting"  /></p>
+<p><strong>注意⚠</strong>️：这一步保存之后会在 github.io 的根目录下自动添加一个 <code>CNAME</code> 的文件。<code>CNAME</code>的内容就是在 setting 中设置的 Custom domain 的内容。</p>
+<p>如果你的网站并不是直接在 github.io 下管理的，比如是通过其他 repo 的action更新到 github.io 的 repo 的。那么需要确保在后面自动更新github.io后也要有这个CNAME文件。</p>
+<p>比如我用的是 hugo 在另一个repo中，那我需要在 hugo 的 static 文件夹下新建一个 CNAME 文件，内容为我的custom域名：blog.tomatostore.top。这样在hugo build之后push到github.io的根目录下就会有 CNAME。</p>
 <ul>
 <li>我的网站：<a href="https://blog.tomatostore.top">https://blog.tomatostore.top</a></li>
 <li>github: <a href="https://github.com/AidySun/aidysun.github.io">https://github.com/AidySun/aidysun.github.io</a></li>
