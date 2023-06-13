@@ -6,7 +6,37 @@
     <description>Recent content on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 11 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何用VLC Media Player截取部分视频</title>
+      <link>https://blog.tomatostore.top/posts/2023/06/how-to-cut-videos-using-vlc/</link>
+      <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/06/how-to-cut-videos-using-vlc/</guid>
+      <description>比如删除视频后半部分、只保留中间想要的部分</description>
+      <content:encoded><![CDATA[<p>VLC Media Player是一款流行的免费媒体播放器，除了播放功能之外，它还可以用于简单的视频编辑。
+在本文中，我们将介绍如何使用VLC Media Player截取视频。</p>
+<h2 id="步骤">步骤</h2>
+<ol>
+<li>用 VLC 打开你要编辑的视频，播放到想要截取的开始位置。</li>
+<li>并点击菜单栏中的“视图”选项。然后选择“高级控制”以显示高级控制面板。
+<img loading="lazy" src="/images/vlc-views-menu.png" alt="VLC View menu"  /></li>
+<li>在底部的控制栏上，你会看到一个红色圆圈的“记录”按钮。</li>
+<li>点击红色按钮以开始录制。然后点击播放按钮开始播放你的视频。
+<img loading="lazy" src="/images/vlc-record-and-play.png" alt="VLC Record and Play"  /></li>
+<li>当视频播放到你想要删除的位置时，点击红色录制按钮停止录制，也可以先停止播放，再停止录制。</li>
+<li>此时 VLC 已经将录制的视频自动保存，但不会有提示。可以从如下路径找到录制好的视频：</li>
+</ol>
+<ul>
+<li>Windows: <code>C:\Users\&lt;Username&gt;\Videos</code></li>
+<li>macOS: <code>/Users/&lt;Username&gt;/Movies</code></li>
+<li>Linux: <code>/home/&lt;Username&gt;/Videos</code></li>
+</ul>
+<p>这种方法实际上是通过录制一个新的视频文件来达到截取视频(cut video)的目的，而不是直接编辑原始视频文件。</p>
+<p>如果你需要进行更复杂的视频编辑操作，如剪切、裁剪、合并等，你可能需要考虑使用专业的视频编辑软件，如Adobe Premiere Pro、Final Cut Pro等。</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>阿里云域名解析 Github.io</title>
       <link>https://blog.tomatostore.top/posts/2023/06/github-pages-with-customized-domain-alicloud/</link>
