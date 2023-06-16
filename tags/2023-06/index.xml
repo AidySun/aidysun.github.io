@@ -6,7 +6,33 @@
     <description>Recent content in 2023-06 on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-06/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-06/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode: Markdown 预览支持 PlantUML</title>
+      <link>https://blog.tomatostore.top/posts/2023/06/vscode-preview-markdown-with-plantuml/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/06/vscode-preview-markdown-with-plantuml/</guid>
+      <description>Dot Executable: /opt/local/bin/dot</description>
+      <content:encoded><![CDATA[<p>想在 VSCode 中预览 PlantUML 格式的文件，可以通过安装 <a href="https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml">PlantUML Extension</a> 来实现。</p>
+<p>如果想在 Markdown 文件中嵌入一段 PlantUML 脚本并在 VSCode 中预览，可以安装 <a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enahnced</a>.</p>
+<p><img loading="lazy" src="/images/vscode-preview-plantuml-in-markdown.png" alt="Preview PlantUML in Markdown"  /></p>
+<p>在 Linux 的 VSCode 中，如果在 Preview 的时候 PlantUML 图出不来并有如下错误：</p>
+<pre tabindex="0"><code>Dot Executable: /opt/local/bin/dot
+File does not exist
+Cannot find Graphviz. You should try
+ 
+@startuml
+testdot
+@enduml
+ 
+or
+ 
+java -jar plantuml.jar -testdot
+</code></pre><p>可以执行 <code>sudo apt-get install graphviz</code> 安装 <code>graphviz</code> 来解决。</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>如何用VLC Media Player截取部分视频</title>
       <link>https://blog.tomatostore.top/posts/2023/06/how-to-cut-videos-using-vlc/</link>
