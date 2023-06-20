@@ -6,7 +6,74 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 16 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何选择正确的日志级别（log level）</title>
+      <link>https://blog.tomatostore.top/posts/2023/06/loglevel-introduction/</link>
+      <pubDate>Tue, 20 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/06/loglevel-introduction/</guid>
+      <description>Log Level Introduction</description>
+      <content:encoded><![CDATA[<h2 id="日志级别的历史">日志级别的历史：</h2>
+<p><code>日志级别（log level）</code>起源于 20 世纪 80 年代的由 <code>Eric Allman</code> 开发的项目 <code>Sendmail</code> 。该项目需要一种日志记录解决方案，这最终导致了 <code>System Logging Protocol（Syslog）</code> 的创建以及不同日志级别的概念。后来 <code>Syslog</code> 被广泛应用于各种应用程序，并成为系统日志和事件消息的标准协议。</p>
+<h2 id="日志级别">日志级别</h2>
+<p>按重要性递减排列：</p>
+<ul>
+<li>OFF：不记录任何日志信息。</li>
+<li>FATAL：表示应用程序即将发生严重问题或数据损坏，意味着应用程序处于灾难性状态，重要功能无法正常工作。</li>
+<li>ERROR：表示无法访问服务或文件等重要故障，应用程序可能继续运行，但需要及时处理。</li>
+<li>WARN：表示检测到意外问题，可能会影响特定进程的运行，但不会对应用程序造成损害。</li>
+<li>INFO：记录应用程序的正常行为，如服务启动或停止、数据库添加等，通常不需要跟进处理。</li>
+<li>DEBUG：提供详细的诊断信息，用于故障诊断、排查或测试应用程序。</li>
+<li>TRACE：捕获应用程序行为的详细信息，比DEBUG级别更细粒度，用于查看代码中的参数或解释算法的步骤。</li>
+<li>ALL：记录所有定义的日志级别，包括自定义日志级别，相当于综合所有级别的日志。</li>
+</ul>
+<h2 id="常用日志库">常用日志库</h2>
+<table>
+<thead>
+<tr>
+<th>编程语言</th>
+<th>日志库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C++</td>
+<td><a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://www.boost.org/doc/libs/1_75_0/libs/log/doc/html/index.html">Boost.Log</a></td>
+</tr>
+<tr>
+<td>Java</td>
+<td><a href="https://logging.apache.org/log4j/2.x/">Log4j</a>, <a href="http://www.slf4j.org/">Slf4j</a></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><a href="https://docs.python.org/3/library/logging.html">Python logging</a>, <a href="https://github.com/Delgan/loguru">Loguru</a></td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td><a href="https://github.com/winstonjs/winston">Winston</a>, <a href="https://github.com/trentm/node-bunyan">Bunyan</a></td>
+</tr>
+<tr>
+<td>C#</td>
+<td><a href="https://nlog-project.org/">NLog</a>, <a href="https://serilog.net/">Serilog</a></td>
+</tr>
+<tr>
+<td>Go</td>
+<td><a href="https://github.com/sirupsen/logrus">logrus</a>, <a href="https://github.com/uber-go/zap">zap</a></td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td><a href="https://github.com/colbygk/log4r">Log4r</a>, <a href="https://ruby-doc.org/stdlib-3.0.2/libdoc/logger/rdoc/Logger.html">Logger</a></td>
+</tr>
+<tr>
+<td>PHP</td>
+<td><a href="https://github.com/Seldaek/monolog">Monolog</a>, <a href="https://laravel.com/docs/8.x/logging">Laravel Log</a></td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>VSCode: Markdown 预览支持 PlantUML</title>
       <link>https://blog.tomatostore.top/posts/2023/06/vscode-preview-markdown-with-plantuml/</link>

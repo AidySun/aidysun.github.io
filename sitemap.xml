@@ -3,22 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.tomatostore.top/tags/2023/</loc>
-    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/tags/2023-06/</loc>
-    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/development/</loc>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/log/</loc>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/posts/</loc>
-    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/tags/</loc>
-    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/2023/06/loglevel-introduction/</loc>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/</loc>
+    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -28,11 +48,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/posts/2023/06/vscode-preview-markdown-with-plantuml/</loc>
-    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -68,11 +83,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/tags/c&#43;&#43;/</loc>
-    <lastmod>2023-05-19T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/development/</loc>
     <lastmod>2023-05-19T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
