@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Game Dev on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/game-dev/</link>
+    <description>Recent content in Game Dev on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/game-dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Godot 2D Sprite Animation</title>
+      <link>https://blog.tomatostore.top/posts/2023/06/godot-2d-sprite-animation/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/06/godot-2d-sprite-animation/</guid>
+      <description>如何在 Godot 中创建 2D Sprite 动画</description>
+      <content:encoded><![CDATA[<p>官方文档 <a href="ttps://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html">2D Sprite Animation</a> 介绍了 3 种实现 2D Sprite 动画的方法。</p>
+<p>第一种方法适用于<strong>每一帧的动画是单独图片</strong>的情况。后两种方式适用于<strong>多个动画帧在一张图片内</strong>的情况。</p>
+<h2 id="animatedsprite2d单独的图像帧"><code>AnimatedSprite2D</code>+单独的图像帧</h2>
+<p>这种方式适用于将动画拆分为单独的图像帧（frame）的情况。
+需要将每个动画帧作为单独的图像导入到 Godot 中，并使用 <code>AnimatedSprite2D</code> 节点来创建动画。通过在 <code>SpriteFrames</code> 面板中设置帧速率和添加动画帧，可以控制动画的播放。</p>
+<ol>
+<li>点击 <code>AnimatedSprite2D</code> 的 <code>SpriteFrames</code> 属性，选择 <code>New SpriteFrames</code>.
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_new_spriteframes.webp" alt="AnimatedSprite2D - SpriteFrames - New SpriteFrames"  /></li>
+<li>拖拽单个帧的图片到 <code>SpriteFrames</code>
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_spriteframes_done.webp" alt="add-individual-frames-to-spriteFrames"  /></li>
+</ol>
+<h2 id="animatedsprite2dspritesheet"><code>AnimatedSprite2D</code>+<code>SpriteSheet</code></h2>
+<p>这种方式适用于使用精灵表单（sprite sheet）的情况，精灵表单是指将所有动画帧合并到一个图像中。</p>
+<ol>
+<li>点击 <code>AnimatedSprite2D</code> 的 <code>SpriteFrames</code> 属性，选择 <code>New SpriteFrames</code>.</li>
+<li>在 <code>SpriteFrames</code> 面板中选择 <code>Add frames from a Sprite Sheet</code>
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_add_from_spritesheet.webp" alt="add-frames-from-a-sprite-sheet"  /></li>
+<li>选择想要导入的精灵表单，在弹出的窗口中输入行与列的数量将图片分成多个帧（frame），用鼠标选择相应的帧导入。
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_spritesheet_select_rows.webp" alt="select-frames"  /></li>
+</ol>
+<p>到此为止的前两种用 <code>AnimatedSprete2D</code> 实现的动画都可以在代码中使用 <code>play()</code> 和 <code>stop()</code> 来控制。以 <code>GDScropt</code> 为例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">extends</span> <span class="nx">CharacterBody2D</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">onready</span> <span class="kd">var</span> <span class="nx">_animated_sprite</span> <span class="o">=</span> <span class="nx">$AnimatedSprite2D</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">func</span> <span class="nx">_process</span><span class="p">(</span><span class="nx">_delta</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;ui_right&#34;</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">_animated_sprite</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="s2">&#34;run&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">_animated_sprite</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="sprite2danimationplayerspritesheet"><code>Sprite2D</code>+<code>AnimationPlayer</code>+<code>SpriteSheet</code></h2>
+<ol>
+<li>选中 <code>Sprite2D</code> 节点，拖拽精灵表单到 <code>Texture</code> ，设置相应的 <code>Hframes</code> 和 <code>Vframes</code> 来切分成单个帧。
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_setframes.webp" alt="sprite2d-texture"  /></li>
+<li>选中 <code>AnimationPlayer</code> 节点，点击 <code>Animation</code> 按钮，接着点 <code>New</code>，输入名字，设置动画时长和循环。
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_new_animation.webp" alt="animation-setting"  /></li>
+<li>在 <code>Animation</code> 的时间轴上选择插入点，在 <code>Sprite2D</code> 的 <code>Frame</code> 属性设置中选择对应的帧，点 <code>key</code> （钥匙）图标，将相应的帧插入时间轴。对其余帧重复操作。
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_new_track.webp" alt="click-key-to-add-frame"  />
+
+  <img loading="lazy" src="https://docs.godotengine.org/en/stable/_images/2d_animation_full_animation.webp" alt="multi-frames-in-animation"  /></li>
+</ol>
+<p>对 <code>AnimationPlayer</code> 也可用通过代码控制动画。比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">extends</span> <span class="nx">CharacterBody2D</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">onready</span> <span class="kd">var</span> <span class="nx">_animation_player</span> <span class="o">=</span> <span class="nx">$AnimationPlayer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">func</span> <span class="nx">_process</span><span class="p">(</span><span class="nx">_delta</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">is_action_pressed</span><span class="p">(</span><span class="s2">&#34;ui_right&#34;</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">_animation_player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="s2">&#34;walk&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">_animation_player</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>本文只是概述，详情参看<a href="https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html">原文</a>.</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
