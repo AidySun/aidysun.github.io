@@ -12,6 +12,21 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://blog.tomatostore.top/tags/c&#43;&#43;/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/2023/06/cpp-template-parameter-class-vs-typename/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/development/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://blog.tomatostore.top/tags/game-dev/</loc>
     <lastmod>2023-06-21T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -39,11 +54,6 @@
   </url><url>
     <loc>https://blog.tomatostore.top/</loc>
     <lastmod>2023-06-21T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/development/</loc>
-    <lastmod>2023-06-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -93,11 +103,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/tags/2023-05/</loc>
-    <lastmod>2023-05-19T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/c&#43;&#43;/</loc>
     <lastmod>2023-05-19T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

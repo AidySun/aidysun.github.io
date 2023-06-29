@@ -8,6 +8,60 @@
     <language>zh-cn</language>
     <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>C&#43;&#43; template&lt;class&gt; v.s. template&lt;typename&gt;</title>
+      <link>https://blog.tomatostore.top/posts/2023/06/cpp-template-parameter-class-vs-typename/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/06/cpp-template-parameter-class-vs-typename/</guid>
+      <description>C&#43;&#43;模板用typename和class有啥区别</description>
+      <content:encoded><![CDATA[<p><strong>Q:</strong> <code>C++</code> 模板用 <code>typename</code> 和 <code>class</code> 有啥区别?
+<strong>A:</strong> 无论使用 <code>class</code> 还是 <code>typename</code> 声明类型参数，效果都是相同的，选择使用哪个关键字主要取决于个人或团队的偏好。一般来说，较为常见的做法是在声明类模板时使用 class，而在嵌套类型的声明或模板内部使用时则使用 typename。</p>
+<hr>
+<p>早期的 <code>C++</code> 标准将 <code>class</code> 用作声明类型参数的关键字。为了支持<em>模板内嵌套类型</em>，<code>C++98</code> 标准引入了 <code>typename</code>， 同时为了兼容性，<code>class</code> 作为模板类型声明的关键字继续保留。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// template&lt;class&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass1</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// template&lt;typename&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyContainer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// internal usage
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// nested type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Godot 2D Sprite Animation</title>
       <link>https://blog.tomatostore.top/posts/2023/06/godot-2d-sprite-animation/</link>
       <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
