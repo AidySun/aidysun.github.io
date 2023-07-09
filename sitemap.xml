@@ -3,7 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.tomatostore.top/tags/2023/</loc>
-    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/2023-07/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/github/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/2023/07/github-remote-host-identif-change/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/hosts/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/2023/07/github-ping-return-127-or-update-hosts/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/ssh/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/</loc>
+    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -38,21 +83,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/posts/2023/06/godot-2d-sprite-animation/</loc>
-    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/posts/</loc>
-    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/</loc>
-    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/</loc>
     <lastmod>2023-06-21T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -187,11 +217,6 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://blog.tomatostore.top/tags/ssh/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://blog.tomatostore.top/tags/swift/</loc>
     <lastmod>2023-04-16T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -254,6 +279,10 @@
   </url><url>
     <loc>https://blog.tomatostore.top/posts/2023/03/git-rm-untracked-file-dir/</loc>
     <lastmod>2023-03-24T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/drafts/godot-working-with-characterbody2d/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>

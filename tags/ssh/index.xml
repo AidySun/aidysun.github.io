@@ -6,7 +6,49 @@
     <description>Recent content in ssh on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>github: REMOTE HOST IDENTIFICATION HAS CHANGED</title>
+      <link>https://blog.tomatostore.top/posts/2023/07/github-remote-host-identif-change/</link>
+      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/07/github-remote-host-identif-change/</guid>
+      <description>修改hosts访问github</description>
+      <content:encoded><![CDATA[<p><code>git pull</code> 出现了如下开头的错误提示：</p>
+<pre tabindex="0"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+</code></pre><h2 id="解决方法-update-know_hosts">解决方法: update know_hosts</h2>
+<ol>
+<li>执行如下命令删除 <code>~/.ssh/know_hosts</code> 中的 <code>github.com</code> 记录：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh-keygen -R github.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>可以使用 <code>ssh-keygen -l -f ~/.ssh/known_hosts</code> 命令查看 <code>~/.ssh/know_hosts</code></li>
+</ul>
+<ol start="2">
+<li>再次执行 <code>git pull</code> 命令，会有如下提示，输入 <code>yes</code> 后继续即可。</li>
+</ol>
+<pre tabindex="0"><code>The authenticity of host &#39;github.com (ipaddress)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:+XDFLKJWEOIRXXX.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</code></pre><ol start="3">
+<li>如果还是无法访问，或者出现 <a href="mailto:git@github.com">git@github.com</a> 输入密码的提示，先参考 <a href="https://blog.tomatostore.top/posts/2023/07/github-ping-return-127-or-update-hosts/">这篇文章更新hosts</a>后，再更新 <code>~/.ssh/know_hosts</code>。</li>
+</ol>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Bad owner or permissions on ssh config/git命令.ssh文件权限错误</title>
       <link>https://blog.tomatostore.top/posts/2023/04/ssh-file-permission/</link>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>hosts on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/hosts/</link>
+    <description>Recent content in hosts on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/hosts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ping github.com returns 127.0.0.1</title>
+      <link>https://blog.tomatostore.top/posts/2023/07/github-ping-return-127-or-update-hosts/</link>
+      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/07/github-ping-return-127-or-update-hosts/</guid>
+      <description>修改hosts访问github</description>
+      <content:encoded><![CDATA[<p>浏览器中无法访问 <code>github.com</code>，出现 <strong>无法访问此网站</strong> 的提示。</p>
+<p>命令行中执行 <code>ping github.com</code> 出现如下结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ping github.com
+</span></span><span class="line"><span class="cl">PIING github.com<span class="o">(</span>127.0.0.1<span class="o">)</span>: <span class="m">56</span> data bytes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="解决方法-update-hostst">解决方法: update hostst</h2>
+<p>通过IP 查询网站（如：<code>www.ipaddress.com</code>）查到 <code>github.com</code> 的 IP (如：140.82.113.3)，在系统 <code>hosts</code> 文件中添加如下一行：</p>
+<pre tabindex="0"><code>140.82.113.3 github.com 
+</code></pre><p>如果在 <code>git pull</code> 时出现 <code>REMOTE HOST IDENTIFICATION HAS CHANGED</code> 的提示，可参考 <a href="https://blog.tomatostore.top/posts/2023/07/github-remote-host-identif-change">github: REMOTE HOST IDENTIFICATION HAS CHANGED</a>.</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
