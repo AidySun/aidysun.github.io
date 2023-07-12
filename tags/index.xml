@@ -6,11 +6,11 @@
     <description>Recent content in Tags on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2023</title>
       <link>https://blog.tomatostore.top/tags/2023/</link>
-      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/tags/2023/</guid>
       <description></description>
@@ -20,9 +20,49 @@
     <item>
       <title>2023-07</title>
       <link>https://blog.tomatostore.top/tags/2023-07/</link>
-      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/tags/2023-07/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>aigc</title>
+      <link>https://blog.tomatostore.top/tags/aigc/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/tags/aigc/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>chatgap</title>
+      <link>https://blog.tomatostore.top/tags/chatgap/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/tags/chatgap/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Development</title>
+      <link>https://blog.tomatostore.top/tags/development/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/tags/development/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Swift</title>
+      <link>https://blog.tomatostore.top/tags/swift/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/tags/swift/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
@@ -73,16 +113,6 @@
       <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/tags/c&#43;&#43;/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Development</title>
-      <link>https://blog.tomatostore.top/tags/development/</link>
-      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.tomatostore.top/tags/development/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>
@@ -233,16 +263,6 @@
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/tags/markdown/</guid>
-      <description></description>
-      <content:encoded><![CDATA[]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Swift</title>
-      <link>https://blog.tomatostore.top/tags/swift/</link>
-      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.tomatostore.top/tags/swift/</guid>
       <description></description>
       <content:encoded><![CDATA[]]></content:encoded>
     </item>

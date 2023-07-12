@@ -6,7 +6,273 @@
     <description>Recent content in Development on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChatGPT AI 协助 iOS 开发: customized sheet</title>
+      <link>https://blog.tomatostore.top/posts/2023/07/swift-shared-customize-sheet/</link>
+      <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/07/swift-shared-customize-sheet/</guid>
+      <description>程序员走在被 OpenAI 取代的路上</description>
+      <content:encoded><![CDATA[<h2 id="需求">需求</h2>
+<p>App 中想加入一个订阅页面，期望 iOS 上按 bottom sheet 展示，iPad 上居中显示，同时支持横屏和竖屏，效果如下：</p>
+<p><img loading="lazy" src="/images/iphone-subscription.png" alt="subscription in iPhone"  />
+<img loading="lazy" src="/images/ipad-subsciption.png" alt="subscription in iPad"  /></p>
+<p>iOS 15 提供了 <code>UISheetPresentationController</code> 可以令 Bottom Sheet 更方便，具体可参考<a href="https://sarunw.com/posts/bottom-sheet-in-ios-15-with-uisheetpresentationcontroller/">How to present a Bottom Sheet in iOS 15</a>还有<a href="https://www.avanderlee.com/swift/presenting-sheets-uikit-uisheetpresentationcontroller/">Presenting sheets with UIKit using a UISheetPresentationController</a>。</p>
+<p><code>UISheetPresentationController</code> 不满足需求因为它只有 <code>medium</code> 和 <code>large</code> 两种高度，并且宽度是满屏，不符合需求。
+通过 <code>OpenAI</code> 问答，找到了可以满足需求的方法来在一个页面中弹出订阅页面。</p>
+<p>然后不出意外的，新问题又出现了：想要在另外一个页面中也弹出同样的订阅页面，当时这两个页面的父类是不同 <code>UIViewController</code>，也就是说没办法给他们定义一个共同的定制化的 <code>UIViewController</code>  子类，而 <code>Swift</code> 又不支持多继承，尝试了带默认实现的 <code>Protocol</code>，无法实现。最终还是通过询问 <code>AI</code> 找到了实现方法：</p>
+<p><img loading="lazy" src="/images/chatgpt-swift-question.png" alt="dns analysis"  /></p>
+<h2 id="最终实现">最终实现：</h2>
+<ul>
+<li><code>SubscriptionSheetPresenter.swift</code></li>
+</ul>
+<p>共享的 presenter</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">SubscriptionSheetPresenter</span><span class="p">:</span> <span class="n">NSObject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">instance</span> <span class="p">=</span> <span class="n">SubscriptionSheetPresenter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">presentBottomSheetForSubscription</span><span class="p">(</span><span class="n">from</span> <span class="n">vc</span><span class="p">:</span> <span class="n">UIViewController</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// storyboard 中定义了定制页面的布局</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">dashboard</span> <span class="p">=</span> <span class="n">UIStoryboard</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&#34;Main&#34;</span><span class="p">,</span> <span class="n">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">guard</span> <span class="kd">let</span> <span class="nv">subscriptionVC</span> <span class="p">=</span> <span class="n">dashboard</span><span class="p">.</span><span class="n">instantiateViewController</span><span class="p">(</span><span class="n">withIdentifier</span><span class="p">:</span> <span class="s">&#34;subscriptionViewController&#34;</span><span class="p">)</span> <span class="k">as</span><span class="p">?</span> <span class="n">SubscriptionViewController</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">subscriptionVC</span><span class="p">.</span><span class="n">modalPresentationStyle</span> <span class="p">=</span> <span class="p">.</span><span class="n">custom</span>
+</span></span><span class="line"><span class="cl">        <span class="n">subscriptionVC</span><span class="p">.</span><span class="n">transitioningDelegate</span> <span class="p">=</span> <span class="kc">self</span>
+</span></span><span class="line"><span class="cl">        <span class="n">vc</span><span class="p">.</span><span class="n">present</span><span class="p">(</span><span class="n">subscriptionVC</span><span class="p">,</span> <span class="n">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="n">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// </span><span class="cs">MARK:</span><span class="c1"> - Bottom Sheet for Subscription</span>
+</span></span><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">SubscriptionSheetPresenter</span><span class="p">:</span> <span class="n">UIViewControllerTransitioningDelegate</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">presentationController</span><span class="p">(</span><span class="n">forPresented</span> <span class="n">presented</span><span class="p">:</span> <span class="n">UIViewController</span><span class="p">,</span> <span class="n">presenting</span><span class="p">:</span> <span class="n">UIViewController</span><span class="p">?,</span> <span class="n">source</span><span class="p">:</span> <span class="n">UIViewController</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">UIPresentationController</span><span class="p">?</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">SubscriptionSheetPresentationController</span><span class="p">(</span><span class="n">presentedViewController</span><span class="p">:</span> <span class="n">presented</span><span class="p">,</span> <span class="n">presenting</span><span class="p">:</span> <span class="n">presenting</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>SubscriptionViewController.swift</code></li>
+</ul>
+<p>Storyboard 中订阅页面的 UIViewController class:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">SubscriptionViewController</span><span class="p">:</span> <span class="n">UIViewController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">monthlyBuy</span><span class="p">:</span> <span class="n">UIButton</span><span class="p">!</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">yearlyBuy</span><span class="p">:</span> <span class="n">UIButton</span><span class="p">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewWillLayoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kc">super</span><span class="p">.</span><span class="n">viewWillLayoutSubviews</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">updateUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewWillTransition</span><span class="p">(</span><span class="n">to</span> <span class="n">size</span><span class="p">:</span> <span class="n">CGSize</span><span class="p">,</span> <span class="n">with</span> <span class="n">coordinator</span><span class="p">:</span> <span class="n">UIViewControllerTransitionCoordinator</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kc">super</span><span class="p">.</span><span class="n">viewWillTransition</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">size</span><span class="p">,</span> <span class="n">with</span><span class="p">:</span> <span class="n">coordinator</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">updateUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateUI</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// update layour for diff device (iPhone/iPad) and view (Landscape/Protraint)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>SubscriptionSheetPresentationController.swift</code></li>
+</ul>
+<p>定制订阅页面的宽度和高度</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">SubscriptionSheetPresentationController</span><span class="p">:</span> <span class="n">UIPresentationController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">override</span> <span class="kd">var</span> <span class="nv">frameOfPresentedViewInContainerView</span><span class="p">:</span> <span class="n">CGRect</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">screenWidth</span> <span class="p">=</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">width</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">screenHeight</span> <span class="p">=</span> <span class="n">UIScreen</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">height</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         <span class="c1">// default is iPhone+portrait for non-SE</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">width</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="p">=</span> <span class="n">screenWidth</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">height</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="p">=</span> <span class="n">screenHeight</span> <span class="o">*</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nv">yOffset</span> <span class="p">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">UIDevice</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">userInterfaceIdiom</span> <span class="p">==</span> <span class="p">.</span><span class="n">phone</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">UIDevice</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">isLandscape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">width</span> <span class="p">=</span> <span class="n">screenWidth</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">                <span class="n">height</span> <span class="p">=</span> <span class="n">screenHeight</span> <span class="o">*</span> <span class="mf">0.95</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">screenHeight</span> <span class="o">&lt;</span> <span class="mi">700</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">height</span> <span class="p">=</span> <span class="n">screenHeight</span> <span class="o">*</span> <span class="mf">2.5</span><span class="o">/</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// iPad or Mac</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">UIDevice</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">isLandscape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">width</span> <span class="p">=</span> <span class="n">screenWidth</span> <span class="o">/</span> <span class="mf">2.5</span>
+</span></span><span class="line"><span class="cl">                <span class="n">height</span> <span class="p">=</span> <span class="n">screenHeight</span> <span class="o">*</span> <span class="mf">0.65</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">width</span> <span class="p">=</span> <span class="n">screenWidth</span> <span class="o">/</span> <span class="mf">1.8</span>
+</span></span><span class="line"><span class="cl">                <span class="n">height</span> <span class="p">=</span> <span class="n">screenHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">yOffset</span> <span class="p">=</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="p">=</span> <span class="p">(</span><span class="n">screenWidth</span> <span class="o">-</span> <span class="n">width</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">CGRect</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">containerView</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="n">yOffset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">height</span><span class="p">:</span> <span class="n">height</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">containerViewWillLayoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kc">super</span><span class="p">.</span><span class="n">containerViewWillLayoutSubviews</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="kd">let</span> <span class="nv">presentedView</span> <span class="p">=</span> <span class="n">presentedView</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">presentedView</span><span class="p">.</span><span class="n">frame</span> <span class="p">=</span> <span class="n">frameOfPresentedViewInContainerView</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在需要弹出订阅页面的 <code>UIViewController</code> 中直接调用即可：</p>
+<ul>
+<li><code>&lt;Any&gt;ViewController.swift</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">class</span> <span class="p">&lt;</span><span class="nb">Any</span><span class="p">&gt;</span><span class="n">ViewController</span><span class="p">:</span> <span class="p">&lt;</span><span class="n">XXX</span><span class="p">&gt;</span><span class="n">ViewController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">showSubscription</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SubscriptionSheetPresenter</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">presentBottomSheetForSubscription</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="kc">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>&lt;Another&gt;ViewController.swift</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">class</span> <span class="p">&lt;</span><span class="n">Anyother</span><span class="p">&gt;</span><span class="n">ViewController</span><span class="p">:</span> <span class="p">&lt;</span><span class="n">YYY</span><span class="p">&gt;</span><span class="n">ViewController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">goPremium</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SubscriptionSheetPresenter</span><span class="p">.</span><span class="n">instance</span><span class="p">.</span><span class="n">presentBottomSheetForSubscription</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="kc">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="usefull-links">Usefull links</h2>
+<ul>
+<li><a href="https://blog.tomatostore.top/posts/2023/04/swift-block-based-animation/">Swift: beginAnimations(_:context:) was deprecated in iOS 13.0: Use the block-based animation API instead
+</a></li>
+<li><a href="https://blog.tomatostore.top/posts/2023/04/swift-substring/">Swift String Substring
+</a></li>
+</ul>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>C&#43;&#43; template&lt;class&gt; v.s. template&lt;typename&gt;</title>
       <link>https://blog.tomatostore.top/posts/2023/06/cpp-template-parameter-class-vs-typename/</link>
