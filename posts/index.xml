@@ -6,7 +6,66 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to run fsck to check and fix filesystem of Ubuntu 20</title>
+      <link>https://blog.tomatostore.top/posts/2023/08/how-to-run-fsck-in-ubuntu20-to-fix-filesystem/</link>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/08/how-to-run-fsck-in-ubuntu20-to-fix-filesystem/</guid>
+      <description>/dev/sda1: UNEXPECTED INCONSISTENCY: RUN fsck MANUALLY. fsck exited with status code 4</description>
+      <content:encoded><![CDATA[<p>当在 <code>VMware</code> 虚拟机中运行 <code>Ubuntu 20</code> 时，有时可能会遇到启动时出现 &ldquo;需要 fsck&rdquo; 的问题。</p>
+<pre tabindex="0"><code>/dev/sda1 contains a file system with errors, check forced.
+Inodes that were part of a corrupted orphan linked list found.
+
+/dev/sda1: UNEXPECTED INCONSISTENCY: RUN fsck MANUALLY.
+         (i.e., without -a or -p options)
+fsck exited with status code 4
+The root filesystem on /dev/sda1 requires a manual fsck
+
+BusyBox v1.22.1 (Ubuntu 1:1.22.0-19ubuntuu2) built-in shell (ash)
+Enter &#39;help&#39; for a list of built-in commands.
+
+(initramfs)_
+</code></pre><p>这是由于文件系统 <code>/dev/sda1</code> 出现了严重错误或不一致性，需要运行 <code>fsck</code>（文件系统检查）来解决。</p>
+<p>以下是解决方法的步骤：</p>
+<h2 id="1进入grub">1：进入GRUB</h2>
+<p>启动虚拟机，并在 <code>GRUB</code> 启动加载器菜单中选择 <code>Advanced options for Ubuntu</code>。
+<img loading="lazy" src="/images/grub-ubuntu.png" alt="GRUB"  /></p>
+<h2 id="2进入恢复模式">2：进入恢复模式</h2>
+<p>然后，选择当前内核版本的恢复模式 <code>Ubuntu, with Linux x.x.x-generic (recovery mode)</code>。
+虚拟机将进入恢复模式，并显示一个带有多个选项的菜单。</p>
+<h2 id="3选择-root-shell-如果有">3：选择 <code>Root Shell</code> (如果有)</h2>
+<p>选择恢复模式菜单中的 <code>Drop to root shell prompt</code>。若无此选项可跳过此步。</p>
+<h2 id="4将根文件系统重新挂载为读写">4：将根文件系统重新挂载为读写</h2>
+<p>恢复模式下，根文件系统通常以只读模式挂载。为了能够运行 fsck 并修复文件系统，您需要将根文件系统重新挂载为读写模式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mount -o remount,rw /
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5手动运行-fsck">5：手动运行 <code>fsck</code></h2>
+<p>在根文件系统上运行 fsck 来检查和修复错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">fsck -f /dev/sda1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>-f</code> 选项告诉 <code>fsck</code> 要强制进行检查。</li>
+</ul>
+<p>运行后会有多个提示需要手动输入，一般全部默认回车即可。</p>
+<h2 id="6重新启动">6：重新启动</h2>
+<p>在 <code>fsck</code> 完成检查和修复后，输入 <code>reboot</code> 或通过 VMWare 菜单重新启动虚拟机。</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>ChatGPT AI 协助 iOS 开发: customized sheet</title>
       <link>https://blog.tomatostore.top/posts/2023/07/swift-shared-customize-sheet/</link>
