@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Variadic Template and Fold Expression in C&#43;&#43; | 番茄🍅杂货铺</title>
+<meta name="keywords" content="c&#43;&#43;11, c&#43;&#43;17, variadic template, fold expression, cpp, cplusplus, c&#43;&#43;">
+<meta name="description" content="C&#43;&#43; 可变模板和折叠表达式">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/">
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4973773111704076"
+     crossorigin="anonymous"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7b49c1dcff9f821bef8b93e39d824080";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.d13dc9670c54a799901d8f51eb366234127600b84f76504283993a1e6bb2ffd7.css" integrity="sha256-0T3JZwxUp5mQHY9R6zZiNBJ2ALhPdlBCg5k6Hmuy/9c=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
+<link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-7DGG8VLCZY', { 'anonymize_ip': false });
+}
+</script>
+
+<meta name="twitter:title" content="Variadic Template and Fold Expression in C&#43;&#43; | 番茄🍅杂货铺" />
+<meta name="twitter:description" content="C&#43;&#43; 可变模板和折叠表达式" />
+<meta property="og:title" content="Variadic Template and Fold Expression in C&#43;&#43; | 番茄🍅杂货铺" />
+<meta property="og:description" content="C&#43;&#43; 可变模板和折叠表达式" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/" />
+<meta property="article:section" content="posts" />
+  <meta property="article:published_time" content="2023-08-21T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2023-08-21T00:00:00&#43;00:00" />
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://blog.tomatostore.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Variadic Template and Fold Expression in C++",
+      "item": "https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Variadic Template and Fold Expression in C++ | 番茄🍅杂货铺",
+  "name": "Variadic Template and Fold Expression in C\u002b\u002b",
+  "description": "C++ 可变模板和折叠表达式",
+  "keywords": [
+    "c++11", "c++17", "variadic template", "fold expression", "cpp", "cplusplus", "c++"
+  ],
+  "wordCount" : "785",
+  "inLanguage": "en",
+  "datePublished": "2023-08-21T00:00:00Z",
+  "dateModified": "2023-08-21T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "番茄🍅杂货铺",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.tomatostore.top/favicon.ico"
+    }
+  }
+}
+</script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary-bg: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list-page {
+                background: var(--theme);
+            }
+
+            .list-page:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list-page:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+</head>
+
+<body class=" type-posts kind-page layout-" id="top"><script data-no-instant>
+function switchTheme(theme) {
+  switch (theme) {
+    case 'light':
+      document.body.classList.remove('dark');
+      break;
+    case 'dark':
+      document.body.classList.add('dark');
+      break;
+    
+    default:
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+      }
+  }
+}
+
+function isDarkTheme() {
+  return document.body.className.includes("dark");
+}
+
+function getPrefTheme() {
+  return localStorage.getItem("pref-theme");
+}
+
+function setPrefTheme(theme) {
+  switchTheme(theme)
+  localStorage.setItem("pref-theme", theme);
+}
+
+const toggleThemeCallbacks = {}
+toggleThemeCallbacks['main'] = (isDark) => {
+  
+  if (isDark) {
+    setPrefTheme('light');
+  } else {
+    setPrefTheme('dark');
+  }
+}
+
+
+
+
+window.addEventListener('toggle-theme', function() {
+  
+  const isDark = isDarkTheme()
+  for (const key in toggleThemeCallbacks) {
+    toggleThemeCallbacks[key](isDark)
+  }
+});
+
+
+function toggleThemeListener() {
+  
+  window.dispatchEvent(new CustomEvent('toggle-theme'));
+}
+
+</script>
+<script>
+  
+  (function() {
+    const defaultTheme = 'auto';
+    const prefTheme = getPrefTheme();
+    const theme = prefTheme ? prefTheme : defaultTheme;
+
+    switchTheme(theme);
+  })();
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.tomatostore.top" accesskey="h" title="番茄🍅杂货铺 (Alt + H)">番茄🍅杂货铺</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.tomatostore.top/" title="番茄🍅杂货铺" class="active"
+                >Home
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.tomatostore.top/tags/development/" title="Development"
+                >Development
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.tomatostore.top/tags/2023/" title="2023"
+                >2023
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main post">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://blog.tomatostore.top">Home</a>&nbsp;»&nbsp;<a href="https://blog.tomatostore.top/posts/">Posts</a></div><h1 class="post-title">Variadic Template and Fold Expression in C&#43;&#43;</h1>
+    <div class="post-description">C&#43;&#43; 可变模板和折叠表达式</div>
+    <div class="post-meta"><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
+  <span>August 21, 2023</span></span><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
+  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/cpp/">cpp</a><a href="https://blog.tomatostore.top/tags/2023/">2023</a><a href="https://blog.tomatostore.top/tags/2023-08/">2023-08</a><a href="https://blog.tomatostore.top/tags/development/">Development</a></span></span><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 15"></polyline></svg>
+  <span>2 min</span></span>
+
+      
+      
+    </div>
+  </header> <div class="toc side right">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%8f%af%e5%8f%98%e6%a8%a1%e6%9d%bfvariadic-template" aria-label="可变模板（Variadic Template）">可变模板（Variadic Template）</a></li>
+                <li>
+                    <a href="#%e6%8a%98%e5%8f%a0%e8%a1%a8%e8%be%be%e5%bc%8ffold-expression" aria-label="折叠表达式（Fold Expression）">折叠表达式（Fold Expression）</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>遇到如下代码，对于 <code>func2</code> 没有看懂。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">DataStruct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DataStruct</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="n">n</span><span class="p">)</span><span class="o">:</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">T</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">func1</span><span class="p">(</span><span class="n">string</span> <span class="n">prefix</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">__FUNCTION__</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;(&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">prefix</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// mark 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mark 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span>  <span class="c1">// mark 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">func2</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;hi &#34;</span><span class="p">,</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s">&#34;Tom&#34;</span><span class="p">),</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="s">&#34;Mason&#34;</span><span class="p">),</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">999</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;done</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// execute result
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 12, Tom)
+</span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 29, Mason)
+</span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 100, 999)
+</span></span></span><span class="line"><span class="cl"><span class="cm">done
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查询后得知是 <code>C++</code> 的可变模板(<code>variadic template</code>)和折叠表达式(<code>fold expression</code>)。</p>
+<h2 id="可变模板variadic-template">可变模板（Variadic Template）<a hidden class="anchor" aria-hidden="true" href="#可变模板variadic-template">¶</a></h2>
+<p>可变模板是 C++11 引入的功能，允许模板接受<em>不定数量的模板参数</em>。这对于需要处理多个参数类型或数量的情况非常有用。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">coutX</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 终止条件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Types</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">coutX</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// cout 1st argument
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">coutX</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span> <span class="c1">// 对可变参数递归调用 coutX
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中非模板重载函数 <code>contX()</code> 是递归调用的终止条件。</p>
+<h2 id="折叠表达式fold-expression">折叠表达式（Fold Expression）<a hidden class="anchor" aria-hidden="true" href="#折叠表达式fold-expression">¶</a></h2>
+<p>折叠表达式是 <code>C++17</code> 为配合 <code>Variadic Template</code> 使用引入的功能，它允许在模板展开过程中进行一元或二元操作。折叠表达式有两种形式：左折叠和右折叠。</p>
+<p>对应的展开关系如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Fold Expression</th>
+<th style="text-align:right">Evaluation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>(E op ...)</code></td>
+<td style="text-align:right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>(... op E)</code></td>
+<td style="text-align:right"><code>(((E1 op E2) op ...) op EN)</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>(E op ... op I)</code></td>
+<td style="text-align:right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>(I op ... op E)</code></td>
+<td style="text-align:right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
+</tr>
+</tbody>
+</table>
+<p>其中</p>
+<ul>
+<li>左折叠形式：<code>(expr op ...)</code>，其中 <code>expr</code> 是一个表达式，<code>op</code> 是二元操作符。</li>
+<li>右折叠形式：<code>(... op expr)</code>，同样，<code>expr</code> 是一个表达式，<code>op</code> 是二元操作符。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// variadic template
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// variadic template
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span> <span class="c1">// fold expression
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，<code>func2</code> 函数的实现使用了右折叠表达式<code>(expr op ...)</code>。其对应关系如下：</p>
+<ul>
+<li><code>expr</code> : <code>func1(p, s.index, s.value)</code></li>
+<li><code>op</code> : <code>, </code></li>
+<li><code>...</code> : <code>...</code></li>
+</ul>
+<p>另一个 <code>(I op ... op E)</code> 折叠表达式的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Values</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">sum</span><span class="p">(</span><span class="n">Values</span> <span class="k">const</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">values</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// same as (0 + 1 + 2 + 3 + 4)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中</p>
+<ul>
+<li><code>I</code> : <code>0</code></li>
+<li><code>op</code> : <code>+</code></li>
+<li><code>...</code> : <code>...</code></li>
+<li><code>op</code> : <code>+</code></li>
+<li><code>E</code> : <code>values</code></li>
+</ul>
+<p>对于前面 <code>contX</code> 的例子，在使用 <code>C++17</code> 的 <code>Fold Expression</code> 后就不需要再手动实现递归和终止条件，可简化如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">coutX</span><span class="p">(</span><span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">...</span> <span class="o">&lt;&lt;</span> <span class="n">args</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+<nav class="paginav">
+  <a class="next" href="https://blog.tomatostore.top/posts/2023/08/how-to-run-fsck-in-ubuntu20-to-fix-filesystem/">
+    <span class="title">Next Page&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" style="user-select: text;"><line x1="5" y1="12" x2="19" y2="12" style="user-select: text;"></line><polyline points="12 5 19 12 12 19" style="user-select: text;"></polyline></svg>
+    </span>
+    <br>
+    <span>How to run fsck to check and fix filesystem of Ubuntu 20</span>
+  </a>
+</nav>
+
+  </footer>
+    <div class="comments-separator"></div>
+</article>
+    </main>
+    
+<footer class="footer">
+  <span>&copy; 2023 <a href="https://blog.tomatostore.top">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>
+  </div>
+
+  <span style="display: inline-block; margin-left: 1em;">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+  </span>
+  <span style="display: inline-block; margin-left: 1em;">
+    Powered by
+    <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+    <a href="https://github.com/reorx/hugo-PaperModX/" rel="noopener" target="_blank">PaperModX</a>
+  </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+    <path d="M12 6H0l6-6z" />
+  </svg>
+</a>
+
+<script>
+  (function() {
+     
+    const disableThemeToggle = '' == '1';
+    if (disableThemeToggle) {
+      return;
+    }
+
+    let button = document.getElementById("theme-toggle")
+    
+    button.removeEventListener('click', toggleThemeListener)
+    
+    button.addEventListener('click', toggleThemeListener)
+  })();
+</script>
+
+<script>
+  (function () {
+    let menu = document.getElementById('menu')
+    if (menu) {
+      menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+      menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+      }
+    }
+
+    const disableSmoothScroll = '' == '1';
+    const enableInstantClick = '1' == '1';
+    
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || disableSmoothScroll || enableInstantClick) {
+      return;
+    }
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        var id = this.getAttribute("href").substr(1);
+        document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+          behavior: "smooth"
+        });
+        if (id === "top") {
+          history.replaceState(null, null, " ");
+        } else {
+          history.pushState(null, null, `#${id}`);
+        }
+      });
+    });
+  })();
+</script>
+<script>
+  var mybutton = document.getElementById("top-link");
+  window.onscroll = function () {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      mybutton.style.visibility = "visible";
+      mybutton.style.opacity = "1";
+    } else {
+      mybutton.style.visibility = "hidden";
+      mybutton.style.opacity = "0";
+    }
+  };
+</script>
+<script>
+  if (window.scrollListeners) {
+    
+    for (const listener of scrollListeners) {
+      window.removeEventListener('scroll', listener)
+    }
+  }
+  window.scrollListeners = []
+</script>
+
+
+
+<script src="/js/medium-zoom.min.js" data-no-instant
+></script>
+<script>
+  document.querySelectorAll('pre > code').forEach((codeblock) => {
+    const container = codeblock.parentNode.parentNode;
+
+    const copybutton = document.createElement('button');
+    copybutton.classList.add('copy-code');
+    copybutton.innerText = 'copy';
+
+    function copyingDone() {
+      copybutton.innerText = 'copied!';
+      setTimeout(() => {
+        copybutton.innerText = 'copy';
+      }, 2000);
+    }
+
+    copybutton.addEventListener('click', (cb) => {
+      if ('clipboard' in navigator) {
+        navigator.clipboard.writeText(codeblock.textContent);
+        copyingDone();
+        return;
+      }
+
+      const range = document.createRange();
+      range.selectNodeContents(codeblock);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      try {
+        document.execCommand('copy');
+        copyingDone();
+      } catch (e) { };
+      selection.removeRange(range);
+    });
+
+    if (container.classList.contains("highlight")) {
+      container.appendChild(copybutton);
+    } else if (container.parentNode.firstChild == container) {
+      
+    } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+      
+      codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+    } else {
+      
+      codeblock.parentNode.appendChild(copybutton);
+    }
+  });
+</script>
+
+
+
+
+<script>
+  
+  
+  (function() {
+    const enableTocScroll = '1' == '1'
+    if (!enableTocScroll) {
+      return
+    }
+    if (!document.querySelector('.toc')) {
+      console.log('no toc found, ignore toc scroll')
+      return
+    }
+    
+
+    
+    const scrollListeners = window.scrollListeners
+    const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]');
+    const activeClass = 'active';
+
+    
+    let activeHeading = headings[0];
+    getLinkByHeading(activeHeading).classList.add(activeClass);
+
+    const onScroll = () => {
+      const passedHeadings = [];
+      for (const h of headings) {
+        
+        if (getOffsetTop(h) < 5) {
+          passedHeadings.push(h)
+        } else {
+          break;
+        }
+      }
+      if (passedHeadings.length > 0) {
+        newActiveHeading = passedHeadings[passedHeadings.length - 1];
+      } else {
+        newActiveHeading = headings[0];
+      }
+      if (activeHeading != newActiveHeading) {
+        getLinkByHeading(activeHeading).classList.remove(activeClass);
+        activeHeading = newActiveHeading;
+        getLinkByHeading(activeHeading).classList.add(activeClass);
+      }
+    }
+
+    let timer = null;
+    const scrollListener = () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(onScroll, 50)
+    }
+    window.addEventListener('scroll', scrollListener, false);
+    scrollListeners.push(scrollListener)
+
+    function getLinkByHeading(heading) {
+      const id = encodeURI(heading.getAttribute('id')).toLowerCase();
+      return document.querySelector(`.toc ul li a[href="#${id}"]`);
+    }
+
+    function getOffsetTop(heading) {
+      if (!heading.getClientRects().length) {
+        return 0;
+      }
+      let rect = heading.getBoundingClientRect();
+      return rect.top
+    }
+  })();
+  </script>
+
+<script src="/js/instantclick.min.js" data-no-instant
+></script>
+<script data-no-instant>
+  
+  
+  
+  
+  
+  
+  InstantClick.init();
+</script>
+</body>
+
+</html>
