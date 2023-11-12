@@ -6,7 +6,89 @@
     <description>Recent content in Swift on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/swift/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/swift/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iOS开发-加载其他语言的String资源</title>
+      <link>https://blog.tomatostore.top/posts/2023/11/ios-localized-string-in-diff-languages/</link>
+      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/11/ios-localized-string-in-diff-languages/</guid>
+      <description>Load Settings.bundle in diff languages</description>
+      <content:encoded><![CDATA[<p>在开发iOS应用时，我们可能会遇到需要使用不同语言的字符串资源的情况。比如，当iOS的语言设置为A，而我们的应用需要使用语言B。
+这里有一个语音计算器，用户可以在计算时选择不同的语音朗读语言，而无需改变整个iOS的语言设置。例如，如果我们的手机语言设置为英语，但我们希望计算器能用中文朗读计算结果。</p>
+<a href="https://apps.apple.com/cn/app/id1501166219">
+  <img src="/images/calculator-settings.jpg" align="center" style="width: 80%; height: 80%;"/>
+</a>
+<p>为了实现这个功能，我们可以使用iOS的本地化机制。有两种常见的解决方案：</p>
+<ol>
+<li><strong>加载相应语言的资源文件</strong></li>
+</ol>
+<p>我们可以为每种语言创建一个资源文件，并在其中添加我们的本地化字符串。然后，我们可以根据用户选择的语言，从相应的资源文件中加载字符串。</p>
+<p>在Swift中，我们可以使用如下方式实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">localized</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// TalkingNumCalUserDefaults.voiceLang has value like &#39;en-US&#39;, &#39;fr-FR&#39;, &#39;de-DE&#39; etc.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="kd">let</span> <span class="nv">lang</span> <span class="p">=</span> <span class="n">Locale</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">TalkingNumCalUserDefaults</span><span class="p">.</span><span class="n">voiceLang</span><span class="p">).</span><span class="n">languageCode</span> <span class="p">{</span> <span class="c1">// e.g. en, jp, zh ...</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="kd">let</span> <span class="nv">path</span> <span class="p">=</span> <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="n">forResource</span><span class="p">:</span> <span class="n">lang</span><span class="p">,</span> <span class="n">ofType</span><span class="p">:</span> <span class="s">&#34;lproj&#34;</span><span class="p">),</span> <span class="kd">let</span> <span class="nv">bundle</span> <span class="p">=</span> <span class="n">Bundle</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nv">string</span> <span class="p">=</span> <span class="n">bundle</span><span class="p">.</span><span class="n">localizedString</span><span class="p">(</span><span class="n">forKey</span><span class="p">:</span> <span class="kc">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">comment</span><span class="p">:</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个解决方案需要我们预先准备好所有可能用到的语言的资源文件。当用户选择了一种语言后，我们从对应的资源文件中加载字符串。如果没有找到对应的资源文件，我们就返回一个未本地化的字符串。</p>
+<ol start="2">
+<li><strong>设置Bundle的语言</strong></li>
+</ol>
+<p>我们可以先通过用户选择的语言设置Bundle的语言，然后直接从Bundle中获取本地化的字符串。</p>
+<p>在Swift中，我们可以使用如下方式实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nv">localized</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// TalkingNumCalUserDefaults.voiceLang has value like &#39;en-US&#39;, &#39;fr-FR&#39;, &#39;de-DE&#39; etc.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="kd">let</span> <span class="nv">lang</span> <span class="p">=</span> <span class="n">Locale</span><span class="p">(</span><span class="n">identifier</span><span class="p">:</span> <span class="n">TalkingNumCalUserDefaults</span><span class="p">.</span><span class="n">voiceLang</span><span class="p">).</span><span class="n">languageCode</span> <span class="p">{</span> <span class="c1">// e.g. en, jp, zh ...</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Bundle</span><span class="p">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="kc">self</span><span class="p">,</span> <span class="n">tableName</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">.</span><span class="n">main</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="n">comment</span><span class="p">:</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个解决方案需要我们在每次用户选择一种新的语言时，都重新设置一次Bundle的语言。然后，我们从Bundle中获取本地化的字符串。如果没有找到对应的字符串，我们就返回一个未本地化的字符串。</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>ChatGPT AI 协助 iOS 开发: customized sheet</title>
       <link>https://blog.tomatostore.top/posts/2023/07/swift-shared-customize-sheet/</link>

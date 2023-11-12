@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>iOS on 番茄🍅杂货铺</title>
-    <link>https://blog.tomatostore.top/tags/ios/</link>
-    <description>Recent content in iOS on 番茄🍅杂货铺</description>
+    <title>2023-11 on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/2023-11/</link>
+    <description>Recent content in 2023-11 on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 21 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-11/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>iOS开发-加载其他语言的String资源</title>
       <link>https://blog.tomatostore.top/posts/2023/11/ios-localized-string-in-diff-languages/</link>
@@ -87,90 +87,6 @@
 </div>
 </div><p>这个解决方案需要我们在每次用户选择一种新的语言时，都重新设置一次Bundle的语言。然后，我们从Bundle中获取本地化的字符串。如果没有找到对应的字符串，我们就返回一个未本地化的字符串。</p>
 ]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>如何从 App Store Connect 中删除一个未发布版本</title>
-      <link>https://blog.tomatostore.top/posts/2023/04/app-store-connect-rm-a-version/</link>
-      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.tomatostore.top/posts/2023/04/app-store-connect-rm-a-version/</guid>
-      <description>苹果商店Connect无法删除App版本</description>
-      <content:encoded><![CDATA[<p>一个 iOS App 最新已发布版本: <code>4.0</code>，在 <code>App Store Connect</code> 中添加了一个版本 <code>4.1</code>，状态为 <code>准备提交（Prepare for Submission）</code> (或其他未发布状态)。</p>
-<p>后来改动有点大，打算做个大版本升级——把<code>4.1</code> 改为 <code>5.0</code>。</p>
-<p>没有找到删除 <code>4.1</code> 的方法，但是可以通过如下途径更改版本为 <code>5.0</code>:</p>
-<p>在 <code>version 4.1</code> 构建页面的 版本信息（Version Information） 模块下将版本 <code>4.1</code> 直接改为 <code>5.0</code>:</p>
-<p><img loading="lazy" src="/images/v4.1.png" alt="v5.0"  /></p>
-<p>点击 保存（Save）按钮，版本 <code>4.1</code> 就变成 <code>5.0</code> 啦：</p>
-<p><img loading="lazy" src="/images/v5.0.png" alt="v5.0"  /></p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Swift: beginAnimations(_:context:) was deprecated in iOS 13.0: Use the block-based animation API instead</title>
-      <link>https://blog.tomatostore.top/posts/2023/04/swift-block-based-animation/</link>
-      <pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.tomatostore.top/posts/2023/04/swift-block-based-animation/</guid>
-      <description>Swift / Objective-C block-based animation</description>
-      <content:encoded><![CDATA[<p>用 <code>Xcode 14.2</code> 升级一个 <code>Swift</code> 项目时有编译警告️⚠提示 <code>beginAnimations()</code> 在 <code>iOS 13.0</code> 后已经不推荐使用，应该用 <code>block-based animation</code> 代替。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt">1
-</span></span><span class="hl"><span class="lnt">2
-</span></span><span class="hl"><span class="lnt">3
-</span></span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line hl"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">beginAnimations</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="c1">// &#39;beginAnimations(_:context:)&#39; was deprecated in iOS 13.0: Use the block-based animation API instead</span>
-</span></span><span class="line hl"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">setAnimationDuration</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1">// &#39;setAnimationDuration&#39; was deprecated in iOS 13.0: Use the block-based animation API instead</span>
-</span></span><span class="line hl"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">commitAnimations</span><span class="p">()</span> <span class="c1">// &#39;commitAnimations()&#39; was deprecated in iOS 13.0: Use the block-based animation API instead </span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">currentOverlay</span> <span class="p">=</span> <span class="n">overlay</span>
-</span></span><span class="line"><span class="cl"><span class="n">currentOverlayTarget</span> <span class="p">=</span> <span class="n">overlayTarget</span>
-</span></span><span class="line"><span class="cl"><span class="n">currentLoadingText</span> <span class="p">=</span> <span class="n">loadingText</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
-<p>修改为使用 <code>Block-based animation</code> 的代码：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="n">UIView</span><span class="p">.</span><span class="n">animate</span><span class="p">(</span><span class="n">withDuration</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">currentOverlay</span> <span class="p">=</span> <span class="n">overlay</span>
-</span></span><span class="line"><span class="cl">    <span class="n">currentOverlayTarget</span> <span class="p">=</span> <span class="n">overlayTarget</span>
-</span></span><span class="line"><span class="cl">    <span class="n">currentLoadingText</span> <span class="p">=</span> <span class="n">loadingText</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果用 <code>Objective-C</code> 则修改如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-objc" data-lang="objc"><span class="line"><span class="cl"><span class="p">[</span><span class="n">UIView</span> <span class="nl">animateWithDuration</span><span class="p">:</span> <span class="mf">0.5</span>
-</span></span><span class="line"><span class="cl">                 <span class="nl">animations</span><span class="p">:</span> <span class="o">^</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">currentOverlay</span> <span class="o">=</span> <span class="n">overlay</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">currentOverlayTarget</span> <span class="o">=</span> <span class="n">overlayTarget</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">currentLoadingText</span> <span class="o">=</span> <span class="n">loadingText</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}];</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div>]]></content:encoded>
     </item>
     
   </channel>
