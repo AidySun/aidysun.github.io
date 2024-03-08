@@ -28,7 +28,7 @@
 </div><p>效果：</p>
 <ul>
 <li><a href="https://www.baidu.com/s?wd=markdown%20link%20space">百度搜索 markdown link space</a></li>
-<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>🕷️404预警</code></li>
+<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>:spider:404预警</code></li>
 </ul>
 <h2 id="方法二-用--把带空格的路径url括起来">方法二： 用 <code>&lt;&gt;</code> 把带空格的路径/URL括起来</h2>
 <div class="highlight"><div class="chroma">
@@ -43,7 +43,7 @@
 </div>
 </div><ul>
 <li><a href="https://cn.bing.com/search?q=markdown%20link%20with%20space">Bing搜索 markdown link with space</a></li>
-<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>🐞404预警</code></li>
+<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>:lady_beetle:404预警</code></li>
 </ul>
 ]]></content:encoded>
     </item>

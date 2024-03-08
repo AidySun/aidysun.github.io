@@ -6,11 +6,27 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 21 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DP接口无法连接显示器的解决办法</title>
+      <link>https://blog.tomatostore.top/posts/2024/03/cannot-connect-display-via-dp-channel/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/03/cannot-connect-display-via-dp-channel/</guid>
+      <description>Cannot connect to display via DP channel</description>
+      <content:encoded><![CDATA[<p>AOC的显示器之前一直可以用miniDP转DP的线连接MacBookPro，突然有一天就连不上了。
+尝试了重现插拔、重启电脑、关闭/打开显示器，都不行。所以怀疑是线的问题，买了一根新的线，结果还是不行。尝试了HDMI线连接是没问题的。</p>
+<p>在准备联系显示器维修之前发现了这个网页 <a href="https://zhuanlan.zhihu.com/p/466826180">https://zhuanlan.zhihu.com/p/466826180</a>，没想到的是在<strong>拔掉显示器电源线再插回去</strong>之后，竟然就好了。。。</p>
+<p>My AOC monitor, which used to connect to my MacBook Pro with a miniDP-to-DP cable, suddenly stopped working one day.</p>
+<p>I tried re-plugging the cable, restarting my computer, and turning the monitor off and on, but nothing worked. So I suspected it might be the cable&rsquo;s fault and bought a new one, but it still didn&rsquo;t work. I tried connecting with an HDMI cable and it worked fine.</p>
+<p>Before I was about to contact the monitor repair service, I found this webpage: <a href="https://zhuanlan.zhihu.com/p/466826180">https://zhuanlan.zhihu.com/p/466826180</a>. Surprisingly, after <strong>unplugging the monitor&rsquo;s power cord and plugging it back in</strong>, it worked again&hellip;</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>iOS开发-加载其他语言的String资源</title>
       <link>https://blog.tomatostore.top/posts/2023/11/ios-localized-string-in-diff-languages/</link>
-      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/posts/2023/11/ios-localized-string-in-diff-languages/</guid>
       <description>Load Settings.bundle in diff languages</description>
@@ -2807,7 +2823,7 @@ Jerry earned reward : 5
 </div><p>效果：</p>
 <ul>
 <li><a href="https://www.baidu.com/s?wd=markdown%20link%20space">百度搜索 markdown link space</a></li>
-<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>🕷️404预警</code></li>
+<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>:spider:404预警</code></li>
 </ul>
 <h2 id="方法二-用--把带空格的路径url括起来">方法二： 用 <code>&lt;&gt;</code> 把带空格的路径/URL括起来</h2>
 <div class="highlight"><div class="chroma">
@@ -2822,7 +2838,7 @@ Jerry earned reward : 5
 </div>
 </div><ul>
 <li><a href="https://cn.bing.com/search?q=markdown%20link%20with%20space">Bing搜索 markdown link with space</a></li>
-<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>🐞404预警</code></li>
+<li><a href="../READ%20ME.md">父目录中的READ ME.md</a> <code>:lady_beetle:404预警</code></li>
 </ul>
 ]]></content:encoded>
     </item>
