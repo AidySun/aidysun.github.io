@@ -151,7 +151,7 @@ function toggleThemeListener() {
 <script>
   
   (function() {
-    const defaultTheme = 'auto';
+    const defaultTheme = 'light';
     const prefTheme = getPrefTheme();
     const theme = prefTheme ? prefTheme : defaultTheme;
 
@@ -198,8 +198,8 @@ function toggleThemeListener() {
                 </a>
             </li>
             <li>
-                <a href="https://blog.tomatostore.top/tags/2023/" title="2023"
-                >2023
+                <a href="https://blog.tomatostore.top/tags/c&#43;&#43;/" title="C&#43;&#43;"
+                >C&#43;&#43;
                 </a>
             </li>
         </ul>
@@ -377,7 +377,7 @@ function toggleThemeListener() {
     }
 
     const disableSmoothScroll = '' == '1';
-    const enableInstantClick = '1' == '1';
+    const enableInstantClick = '' == '1';
     
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || disableSmoothScroll || enableInstantClick) {
       return;
@@ -425,17 +425,6 @@ function toggleThemeListener() {
 
 <script src="/js/medium-zoom.min.js" data-no-instant
 ></script>
-<script src="/js/instantclick.min.js" data-no-instant
-></script>
-<script data-no-instant>
-  
-  
-  
-  
-  
-  
-  InstantClick.init();
-</script>
 </body>
 
 </html>
