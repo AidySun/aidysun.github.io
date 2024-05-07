@@ -6,7 +6,21 @@
     <description>Recent content in 2024 on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2024/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2024/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode: 正则搜索匹配多行多个关键字</title>
+      <link>https://blog.tomatostore.top/posts/2024/05/vscode-regexp-match-multiple-words-in-diff-lines/</link>
+      <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/05/vscode-regexp-match-multiple-words-in-diff-lines/</guid>
+      <description>Match two words in diff lines in VSCode</description>
+      <content:encoded><![CDATA[<p>场景：<code>QML</code> 项目中搜索 <code>Button</code> 控件并使用了 <code>background</code> 属性的代码。</p>
+<p>正则表达式写法： <code>Button.*(?:\n.*(?:\n.*)){0,10}.*background</code></p>
+<p>匹配效果：</p>
+<p><img loading="lazy" src="/images/vscode-regexp-match-multiple-words-in-diff-lines.png" alt="vscode-regexp-match-multiple-words-in-diff-lines"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>DP接口无法连接显示器的解决办法</title>
       <link>https://blog.tomatostore.top/posts/2024/03/cannot-connect-display-via-dp-channel/</link>
