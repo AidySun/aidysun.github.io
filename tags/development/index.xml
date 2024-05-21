@@ -6,7 +6,179 @@
     <description>Recent content in Development on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install docker in Ubuntu 20 and config netowrk proxy</title>
+      <link>https://blog.tomatostore.top/posts/2024/05/install-docker-on-ubuntu-20/</link>
+      <pubDate>Tue, 21 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/05/install-docker-on-ubuntu-20/</guid>
+      <description>在Ubuntu 20中安装 Docker、配置网络代理</description>
+      <content:encoded><![CDATA[<h2 id="steps-to-install-docker-on-ubuntu-20">steps to install docker on Ubuntu 20</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+</span></span><span class="line"><span class="cl">curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
+</span></span><span class="line"><span class="cl">sudo add-apt-repository <span class="s2">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span>
+</span></span><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install docker-ce
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="verify-the-installation">verify the installation</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo systemctl status docker
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="add-current-user-to-docker-group">add current user to docker group</h2>
+<ul>
+<li>in order to avoid adding <code>sudo</code> when running docker command</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo usermod -aG docker <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="network-proxy-settings">Network proxy settings</h2>
+<h3 id="dockerd-proxy">Dockerd Proxy</h3>
+<p>To configure the proxy for <code>dockerd</code>, which is managed by <code>systemd</code>, create and edit a configuration file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo mkdir -p /etc/systemd/system/docker.service.d
+</span></span><span class="line"><span class="cl">sudo touch /etc/systemd/system/docker.service.d/proxy.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Add the following to <code>proxy.conf</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Service]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Environment</span><span class="o">=</span><span class="s">&#34;HTTP_PROXY=http://proxy.example.com:8080/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">Environment</span><span class="o">=</span><span class="s">&#34;HTTPS_PROXY=http://proxy.example.com:8080/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="na">Environment</span><span class="o">=</span><span class="s">&#34;NO_PROXY=localhost,127.0.0.1,.example.com&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Replace <code>proxy.example.com:8080</code> with your proxy address.</p>
+<h3 id="container-proxy">Container Proxy</h3>
+<p>To configure proxy settings for containers, edit <code>~/.docker/config.json</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;proxies&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&#34;default&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;httpProxy&#34;</span><span class="p">:</span> <span class="s2">&#34;http://proxy.example.com:8080&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;httpsProxy&#34;</span><span class="p">:</span> <span class="s2">&#34;http://proxy.example.com:8080&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;noProxy&#34;</span><span class="p">:</span> <span class="s2">&#34;localhost,127.0.0.1,.example.com&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>For container runtime proxies, use the <code>-e</code> option to set environment variables.</p>
+<h3 id="docker-build-proxy">Docker Build Proxy</h3>
+<p>For <code>docker build</code>, inject proxy settings using <code>--build-arg</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">docker build . <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --build-arg <span class="s2">&#34;HTTP_PROXY=http://proxy.example.com:8080/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --build-arg <span class="s2">&#34;HTTPS_PROXY=http://proxy.example.com:8080/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --build-arg <span class="s2">&#34;NO_PROXY=localhost,127.0.0.1,.example.com&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -t your/image:tag
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="applying-changes">Applying Changes</h3>
+<p>To apply the changes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl daemon-reload
+</span></span><span class="line"><span class="cl">sudo systemctl restart docker
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="trouble-shooting">Trouble shooting</h2>
+<h3 id="when-running-command-sudo-apt-update-it-has-following-error">when running command <code>sudo apt update</code>, it has following error</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Err:5 https://download.docker.com/linux/ubuntu focal Release                                            
+</span></span><span class="line"><span class="cl">  Could not handshake: The TLS connection was non-properly terminated. <span class="o">[</span>IP: &lt;xx.xxx.xx.xxx&gt; 3128<span class="o">]</span>
+</span></span><span class="line"><span class="cl">Hit:6 http://security.ubuntu.com/ubuntu focal-security InRelease                                        
+</span></span><span class="line"><span class="cl">Hit:7 http://us.archive.ubuntu.com/ubuntu focal-security InRelease
+</span></span><span class="line"><span class="cl">Reading package lists... Done
+</span></span><span class="line"><span class="cl">E: The repository <span class="s1">&#39;https://download.docker.com/linux/ubuntu focal Release&#39;</span> does not have a Release file.
+</span></span><span class="line"><span class="cl">N: Updating from such a repository can<span class="err">&#39;</span>t be <span class="k">done</span> securely, and is therefore disabled by default.
+</span></span><span class="line"><span class="cl">N: See apt-secure<span class="o">(</span>8<span class="o">)</span> manpage <span class="k">for</span> repository creation and user configuration details.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="solution">Solution</h4>
+<p>According to <a href="https://askubuntu.com/a/1289675/1578724">this answer</a>, modify <code>/etc/apt/apt.config</code> to make sure the proxy settings are correct, especially the <code>https</code> settings.</p>
+<ul>
+<li><strong>Wrong config:</strong></li>
+</ul>
+<pre tabindex="0"><code>Acquire::http::proxy &#34;http://proxy.mydom.it:8080&#34;;
+Acquire::https::proxy &#34;https://proxy.mydom.it:8080&#34;;
+</code></pre><ul>
+<li><strong>Good config:</strong></li>
+</ul>
+<pre tabindex="0"><code>Acquire::http::proxy &#34;http://proxy.mydom.it:8080&#34;;
+Acquire::https::proxy &#34;http://proxy.mydom.it:8080&#34;;
+</code></pre>]]></content:encoded>
+    </item>
+    
     <item>
       <title>VSCode: 正则搜索匹配多行多个关键字</title>
       <link>https://blog.tomatostore.top/posts/2024/05/vscode-regexp-match-multiple-words-in-diff-lines/</link>
