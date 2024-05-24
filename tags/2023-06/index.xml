@@ -307,7 +307,7 @@ java -jar plantuml.jar -testdot
 </ol>
 <p>在 github.io 的 repo 设置，选择 pages, 在 Custom Domain 中输入自定义的域名，保存即可。</p>
 <p><img loading="lazy" src="/images/github-io-customize-domain-setting.png" alt="github io customize domain setting"  /></p>
-<p><strong>注意⚠</strong>️：这一步保存之后会在 github.io 的根目录下自动添加一个 <code>CNAME</code> 的文件。<code>CNAME</code>的内容就是在 setting 中设置的 Custom domain 的内容。</p>
+<p>**注意⚠**️：这一步保存之后会在 github.io 的根目录下自动添加一个 <code>CNAME</code> 的文件。<code>CNAME</code>的内容就是在 setting 中设置的 Custom domain 的内容。</p>
 <p>如果你的网站并不是直接在 github.io 下管理的，比如是通过其他 repo 的action更新到 github.io 的 repo 的。那么需要确保在后面自动更新github.io后也要有这个CNAME文件。</p>
 <p>比如我用的是 hugo 在另一个repo中，那我需要在 hugo 的 static 文件夹下新建一个 CNAME 文件，内容为我的custom域名：blog.tomatostore.top。这样在hugo build之后push到github.io的根目录下就会有 CNAME。</p>
 <ul>

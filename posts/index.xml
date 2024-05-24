@@ -6,7 +6,43 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to enable AddressSanitizer(ASan) for C&#43;&#43; Project</title>
+      <link>https://blog.tomatostore.top/posts/2024/05/how-to-enable-asan-in-cpp-project/</link>
+      <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/05/how-to-enable-asan-in-cpp-project/</guid>
+      <description>The tool to detect runtime memory leak</description>
+      <content:encoded><![CDATA[<p>To integrate AddressSanitizer(ASan) to an existing project, just add the compile option <code>-fsanitize=address</code> and generate debug infor with <code>-g</code> in <code>CMakeLists.txt</code>.</p>
+<pre tabindex="0"><code>option(ENABLE_ASAN &#34;enable AddressSanitizer&#34; OFF)
+
+if(ENABLE_ASAN)
+    set(CMAKE_CXX_FLAGS &#34;${CMAKE_CXX_FLAGS} -fsanitize=address&#34;)
+    set(CMAKE_CXX_FLAGS &#34;-O -g&#34;)
+    set(CMAKE_C_FLAGS &#34;-O -g&#34;)
+endif()
+</code></pre><p>Compile the project:</p>
+<pre tabindex="0"><code>mkdir build
+cd build
+cmake -DENABLE_ASAN=ON ..
+cmake --build .
+</code></pre><p>After the build, using following command to start the program:</p>
+<pre tabindex="0"><code>ASAN_OPTIONS=detect_leaks=1 ./a.out
+</code></pre><p>It will print detail info when memory leak occurs.</p>
+<pre tabindex="0"><code>=================================================================
+==12345==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7f3d8b4fbb90 in __interceptor_new (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xde90)
+    #1 0x4006d6 in createLeak /path/to/your/project/main.cpp:4
+    #2 0x4006f8 in main /path/to/your/project/main.cpp:9
+    #3 0x7f3d8b0d283f in __libc_start_main (/lib64/libc.so.6+0x2383f)
+
+SUMMARY: AddressSanitizer: 40 byte(s) leaked in 1 allocation(s).
+</code></pre>]]></content:encoded>
+    </item>
+    
     <item>
       <title>Install docker in Ubuntu 20 and config network proxy</title>
       <link>https://blog.tomatostore.top/posts/2024/05/install-docker-on-ubuntu-20/</link>
@@ -1181,7 +1217,7 @@ java -jar plantuml.jar -testdot
 </ol>
 <p>在 github.io 的 repo 设置，选择 pages, 在 Custom Domain 中输入自定义的域名，保存即可。</p>
 <p><img loading="lazy" src="/images/github-io-customize-domain-setting.png" alt="github io customize domain setting"  /></p>
-<p><strong>注意⚠</strong>️：这一步保存之后会在 github.io 的根目录下自动添加一个 <code>CNAME</code> 的文件。<code>CNAME</code>的内容就是在 setting 中设置的 Custom domain 的内容。</p>
+<p>**注意⚠**️：这一步保存之后会在 github.io 的根目录下自动添加一个 <code>CNAME</code> 的文件。<code>CNAME</code>的内容就是在 setting 中设置的 Custom domain 的内容。</p>
 <p>如果你的网站并不是直接在 github.io 下管理的，比如是通过其他 repo 的action更新到 github.io 的 repo 的。那么需要确保在后面自动更新github.io后也要有这个CNAME文件。</p>
 <p>比如我用的是 hugo 在另一个repo中，那我需要在 hugo 的 static 文件夹下新建一个 CNAME 文件，内容为我的custom域名：blog.tomatostore.top。这样在hugo build之后push到github.io的根目录下就会有 CNAME。</p>
 <ul>
