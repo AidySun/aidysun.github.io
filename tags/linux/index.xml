@@ -6,7 +6,50 @@
     <description>Recent content in Linux on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Linux] Share environment variables with root user</title>
+      <link>https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/</link>
+      <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/</guid>
+      <description>Keep current user&amp;#39;s env variables when running sudo command</description>
+      <content:encoded><![CDATA[<h2 id="linux-share-environment-variables-with-root-user">[Linux] Share environment variables with root user</h2>
+<h4 id="problem">Problem</h4>
+<p>There are some environment variabels (e.g. <code>http_proxy</code>) set for current user on Ubuntu 20.4, but when running some commands with <code>sudo</code> (like <code>sudo apt update</code>), those environment variables are not available anymore.</p>
+<h4 id="solution">Solution</h4>
+<ol>
+<li><code>sudo -E</code></li>
+</ol>
+<p>If you are running commands manually, it&rsquo;s possible to preserve evn setting by adding <code>-E</code> option.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo -E apt update
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><code>sudo visudo</code></li>
+</ol>
+<p>Using option <code>-E</code> may not work in the cases that the commands with <code>sudo</code> are run in script.
+To make the specific environment settings shared with <code>sudo</code>, it can be configured with <code>visudo</code>.</p>
+<p>Using following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo visudo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In opened nano editor, find the line begins with <code>Defaults        env_keep</code>, modify it as following to make <code>http_proxy</code> and <code>https_proxy</code> settings be keeped when running commands using <code>sudo</code>:</p>
+<pre tabindex="0"><code>Defaults        env_keep += &#34;https_proxy http_proxy&#34;
+</code></pre><p>Then, when running <code>sudo apt update</code>, those proxy env variables will kept.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>How to run fsck to check and fix filesystem of Ubuntu 20</title>
       <link>https://blog.tomatostore.top/posts/2023/08/how-to-run-fsck-in-ubuntu20-to-fix-filesystem/</link>

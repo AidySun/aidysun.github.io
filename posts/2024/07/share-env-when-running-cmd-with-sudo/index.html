@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Posts | 番茄🍅杂货铺</title>
-<meta name="keywords" content="">
-<meta name="description" content="Posts - 番茄🍅杂货铺">
+<title>[Linux] Share environment variables with root user | 番茄🍅杂货铺</title>
+<meta name="keywords" content="Ubuntu, Ubuntu 20.4, Linux, Shell, sudo, env">
+<meta name="description" content="Keep current user&#39;s env variables when running sudo command">
 <meta name="author" content="">
-<link rel="canonical" href="https://blog.tomatostore.top/posts/">
+<link rel="canonical" href="https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/">
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4973773111704076"
@@ -29,8 +29,7 @@
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.8dd6f57454653644cba6929524e195dff93a26fa61dce2b3b2629e50b8d12816.css" integrity="sha256-jdb1dFRlNkTLppKVJOGV3/k6Jvph3OKzsmKeULjRKBY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
-<link rel="alternate" type="application/rss+xml" href="https://blog.tomatostore.top/posts/index.xml">
-<link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/">
+<link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/">
 
   
     
@@ -52,13 +51,15 @@
   
 
 
-<meta name="twitter:title" content="Posts | 番茄🍅杂货铺" />
-<meta name="twitter:description" content="" />
-<meta property="og:title" content="Posts | 番茄🍅杂货铺" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.tomatostore.top/posts/" />
-
+<meta name="twitter:title" content="[Linux] Share environment variables with root user | 番茄🍅杂货铺" />
+<meta name="twitter:description" content="Keep current user&#39;s env variables when running sudo command" />
+<meta property="og:title" content="[Linux] Share environment variables with root user | 番茄🍅杂货铺" />
+<meta property="og:description" content="Keep current user&#39;s env variables when running sudo command" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/" />
+<meta property="article:section" content="posts" />
+  <meta property="article:published_time" content="2024-07-25T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2024-07-25T00:00:00&#43;00:00" />
 
 
 <script type="application/ld+json">
@@ -71,8 +72,42 @@
       "position":  1 ,
       "name": "Posts",
       "item": "https://blog.tomatostore.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[Linux] Share environment variables with root user",
+      "item": "https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/"
     }
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[Linux] Share environment variables with root user | 番茄🍅杂货铺",
+  "name": "[Linux] Share environment variables with root user",
+  "description": "Keep current user's env variables when running sudo command",
+  "keywords": [
+    "Ubuntu", "Ubuntu 20.4", "Linux", "Shell", "sudo", "env"
+  ],
+  "wordCount" : "150",
+  "inLanguage": "en",
+  "datePublished": "2024-07-25T00:00:00Z",
+  "dateModified": "2024-07-25T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "番茄🍅杂货铺",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.tomatostore.top/favicon.ico"
+    }
+  }
 }
 </script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
 
@@ -115,7 +150,7 @@
 
 </head>
 
-<body class="list-page type-posts kind-section layout-" id="top"><script data-no-instant>
+<body class=" type-posts kind-page layout-" id="top"><script data-no-instant>
 function switchTheme(theme) {
   switch (theme) {
     case 'light':
@@ -230,100 +265,63 @@ function toggleThemeListener() {
         </ul>
     </nav>
 </header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    Posts</h1><div class="inline-links">
-  
-  
-  <span><a href="https://blog.tomatostore.top/posts/index.xml" target="_blank">RSS</a></span></div>
-</header>
+<main class="main post">
 
-
-
-
-
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Markdown 路径中有空格的链接(link)
-    </h2>
-  </header>
-  <section class="entry-content">
-    
-      <p>Markdown 中加入超链接指向文件，但文件名中包含空格，怎么办？</p>
-    
-  </section>
-  <footer class="entry-footer"><span class="meta-item">
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">[Linux] Share environment variables with root user</h1>
+    <div class="post-description">Keep current user&#39;s env variables when running sudo command</div>
+    <div class="post-meta"><span class="meta-item">
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>March 30, 2023</span></span><span class="meta-item">
+  <span>July 25, 2024</span></span><span class="meta-item">
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
-  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/markdown/">Markdown</a><a href="https://blog.tomatostore.top/tags/2023/">2023</a><a href="https://blog.tomatostore.top/tags/2023-03/">2023-03</a></span></span>
-</footer>
-  <a class="entry-link" aria-label="post link to Markdown 路径中有空格的链接(link)" href="https://blog.tomatostore.top/posts/2023/03/markdown-link-to-url-with-space/"></a>
-</article>
+  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/2024/">2024</a><a href="https://blog.tomatostore.top/tags/2024-07/">2024-07</a><a href="https://blog.tomatostore.top/tags/linux/">Linux</a><a href="https://blog.tomatostore.top/tags/ubuntu/">Ubuntu</a><a href="https://blog.tomatostore.top/tags/shell/">Shell</a><a href="https://blog.tomatostore.top/tags/development/">Development</a></span></span>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>hugo 主题本地没问题，github.io中不起作用
-    </h2>
-  </header>
-  <section class="entry-content">
-    
-      <p>Failed to find a valid digest in the &#39;integrity&#39; attribute for resource &#39;https://.....css&#39; with computed SHA-256 integrity &#39;.....&#39;. The resource has been blocked.</p>
-    
-  </section>
-  <footer class="entry-footer"><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>March 28, 2023</span></span><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
-  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/hugo/">Hugo</a><a href="https://blog.tomatostore.top/tags/2023/">2023</a><a href="https://blog.tomatostore.top/tags/2023-03/">2023-03</a></span></span>
-</footer>
-  <a class="entry-link" aria-label="post link to hugo 主题本地没问题，github.io中不起作用" href="https://blog.tomatostore.top/posts/2023/03/hugo-theme-not-work-online/"></a>
-</article>
+      
+      
+    </div>
+  </header> 
+  <div class="post-content"><h2 id="linux-share-environment-variables-with-root-user">[Linux] Share environment variables with root user<a hidden class="anchor" aria-hidden="true" href="#linux-share-environment-variables-with-root-user">¶</a></h2>
+<h4 id="problem">Problem<a hidden class="anchor" aria-hidden="true" href="#problem">¶</a></h4>
+<p>There are some environment variabels (e.g. <code>http_proxy</code>) set for current user on Ubuntu 20.4, but when running some commands with <code>sudo</code> (like <code>sudo apt update</code>), those environment variables are not available anymore.</p>
+<h4 id="solution">Solution<a hidden class="anchor" aria-hidden="true" href="#solution">¶</a></h4>
+<ol>
+<li><code>sudo -E</code></li>
+</ol>
+<p>If you are running commands manually, it&rsquo;s possible to preserve evn setting by adding <code>-E</code> option.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo -E apt update
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><code>sudo visudo</code></li>
+</ol>
+<p>Using option <code>-E</code> may not work in the cases that the commands with <code>sudo</code> are run in script.
+To make the specific environment settings shared with <code>sudo</code>, it can be configured with <code>visudo</code>.</p>
+<p>Using following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo visudo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In opened nano editor, find the line begins with <code>Defaults        env_keep</code>, modify it as following to make <code>http_proxy</code> and <code>https_proxy</code> settings be keeped when running commands using <code>sudo</code>:</p>
+<pre tabindex="0"><code>Defaults        env_keep += &#34;https_proxy http_proxy&#34;
+</code></pre><p>Then, when running <code>sudo apt update</code>, those proxy env variables will kept.</p>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>能否在 C&#43;&#43; 的构造函数中使用 this 指针
-    </h2>
-  </header>
-  <section class="entry-content">
-    
-      <p>构造函数没执行完，this不可以用？继承多态中父类能否用this指针触发多态调用？</p>
-    
-  </section>
-  <footer class="entry-footer"><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>March 27, 2023</span></span><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
-  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/c&#43;&#43;/">C&#43;&#43;</a><a href="https://blog.tomatostore.top/tags/development/">Development</a><a href="https://blog.tomatostore.top/tags/2023/">2023</a><a href="https://blog.tomatostore.top/tags/2023-03/">2023-03</a></span></span>
-</footer>
-  <a class="entry-link" aria-label="post link to 能否在 C&#43;&#43; 的构造函数中使用 this 指针" href="https://blog.tomatostore.top/posts/2023/03/this-pointer-in-cpp-ctor/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>如何删除本地 git 中未追踪的文件/文件夹
-    </h2>
-  </header>
-  <section class="entry-content">
-    
-      <p>git clean/delete untracked files, folders</p>
-    
-  </section>
-  <footer class="entry-footer"><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>March 24, 2023</span></span><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
-  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/git/">Git</a><a href="https://blog.tomatostore.top/tags/development/">Development</a><a href="https://blog.tomatostore.top/tags/2023/">2023</a><a href="https://blog.tomatostore.top/tags/2023-03/">2023-03</a></span></span>
-</footer>
-  <a class="entry-link" aria-label="post link to 如何删除本地 git 中未追踪的文件/文件夹" href="https://blog.tomatostore.top/posts/2023/03/git-rm-untracked-file-dir/"></a>
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+    <div class="comments-separator"></div>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://blog.tomatostore.top/posts/page/3/">« Prev Page</a>
-  </nav>
-</footer>
     </main>
     
 <footer class="footer">
@@ -423,6 +421,80 @@ function toggleThemeListener() {
 
 <script src="/js/medium-zoom.min.js" data-no-instant
 ></script>
+
+
+
+
+<script>
+  
+  
+  (function() {
+    const enableTocScroll = '' == '1'
+    if (!enableTocScroll) {
+      return
+    }
+    if (!document.querySelector('.toc')) {
+      console.log('no toc found, ignore toc scroll')
+      return
+    }
+    
+
+    
+    const scrollListeners = window.scrollListeners
+    const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]');
+    const activeClass = 'active';
+
+    
+    let activeHeading = headings[0];
+    getLinkByHeading(activeHeading).classList.add(activeClass);
+
+    const onScroll = () => {
+      const passedHeadings = [];
+      for (const h of headings) {
+        
+        if (getOffsetTop(h) < 5) {
+          passedHeadings.push(h)
+        } else {
+          break;
+        }
+      }
+      if (passedHeadings.length > 0) {
+        newActiveHeading = passedHeadings[passedHeadings.length - 1];
+      } else {
+        newActiveHeading = headings[0];
+      }
+      if (activeHeading != newActiveHeading) {
+        getLinkByHeading(activeHeading).classList.remove(activeClass);
+        activeHeading = newActiveHeading;
+        getLinkByHeading(activeHeading).classList.add(activeClass);
+      }
+    }
+
+    let timer = null;
+    const scrollListener = () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(onScroll, 50)
+    }
+    window.addEventListener('scroll', scrollListener, false);
+    scrollListeners.push(scrollListener)
+
+    function getLinkByHeading(heading) {
+      const id = encodeURI(heading.getAttribute('id')).toLowerCase();
+      return document.querySelector(`.toc ul li a[href="#${id}"]`);
+    }
+
+    function getOffsetTop(heading) {
+      if (!heading.getClientRects().length) {
+        return 0;
+      }
+      let rect = heading.getBoundingClientRect();
+      return rect.top
+    }
+  })();
+  </script>
+
 </body>
 
 </html>
