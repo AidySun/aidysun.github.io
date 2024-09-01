@@ -6,7 +6,31 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解决 Xcode 15.4 在 macOS 14.5 上开发 Adobe Illustrator Plugin 时 Python 命令未找到问题</title>
+      <link>https://blog.tomatostore.top/posts/2024/09/python/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/09/python/</guid>
+      <description>Solving the Python Command Not Found Issue When Developing Adobe Illustrator Plugin with Xcode 15.4 on macOS 14.5</description>
+      <content:encoded><![CDATA[<h2 id="一问题描述">一、问题描述</h2>
+<p>在使用 Xcode 15.4 在 macOS 14.5 上尝试开发 Adobe Illustrator Plugin 时，在编译 Adobe Illustrator 2023 SDK 的 sample 过程中出现错误：</p>
+<pre tabindex="0"><code>/Users/aidy/Workspace/Adobe Illustrator 2023 SDK/samplecode/StrokeFilter/build/StrokeFilter.build/Default/StrokeFilter.build/Script-FDD9160721AC093D0018B958.sh: line 2: python: command not found
+Command PhaseScriptExecution failed with a nonzero exit code
+</code></pre><p>查看 <code>Script-FDD9160721AC093D0018B958.sh</code> 文件内容为：</p>
+<pre tabindex="0"><code>#!/bin/sh
+python ../../tools/pipl/create_pipl.py -input &#39;[{&#34;name&#34;:&#34;StrokeFilter&#34;,&#34;entry_point&#34; : &#34;PluginMain&#34;}]&#39;
+</code></pre><h2 id="二尝试过程">二、尝试过程</h2>
+<p>首先怀疑是没有安装 <code>xcode command line tool</code>，但确认已经安装过了。
+接着考虑可能是没有安装 <code>Python</code>。通过 <code>brew install python</code> 安装了 <code>Python3</code>，但 <code>Xcode</code> 中仍然提示<code>python: command not found</code>。
+从 <code>Adobe Community</code> 搜索得知这里需要 <code>Python2</code>，于是使用 <code>pyenv</code> 安装了 <code>Python2</code>，并设置 <code>pyenv global 2.7.18</code>。在 <code>Terminal</code> 中执行 <code>python -V</code> 输出是 <code>Python 2.7.18</code>，然而 <code>Xcode build</code> 依旧报错。
+尝试了 <code>sudo ln /Users/&lt;user&gt;/.pyenv/shims/python /Library/Developer/CommandLineTools/usr/bin/python</code>，但没有作用。</p>
+<h2 id="三最终解决办法">三、最终解决办法</h2>
+<p>通过 <code>sudo ln /Users/&lt;user&gt;/.pyenv/shims/python /usr/local/bin/python</code> 设置 <code>/usr/local/bin</code> 的 <code>link</code>，解决了问题。</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>[Linux] Share environment variables with root user</title>
       <link>https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/</link>
