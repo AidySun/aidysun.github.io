@@ -3,7 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.tomatostore.top/tags/2024/</loc>
-    <lastmod>2024-09-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/2024-10/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/2024/10/preprocessor-macro-in-swift/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/chatgpt/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/cursor/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/development/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/ios/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/preprocessor-macro/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/swift/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/</loc>
+    <lastmod>2024-10-08T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -17,17 +72,7 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://blog.tomatostore.top/tags/development/</loc>
-    <lastmod>2024-09-01T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://blog.tomatostore.top/tags/macos-14/</loc>
-    <lastmod>2024-09-01T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/posts/</loc>
     <lastmod>2024-09-01T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -38,16 +83,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/tags/python3/</loc>
-    <lastmod>2024-09-01T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/</loc>
-    <lastmod>2024-09-01T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/</loc>
     <lastmod>2024-09-01T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -157,17 +192,7 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://blog.tomatostore.top/tags/ios/</loc>
-    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://blog.tomatostore.top/posts/2023/11/ios-localized-string-in-diff-languages/</loc>
-    <lastmod>2023-11-11T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/swift/</loc>
     <lastmod>2023-11-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

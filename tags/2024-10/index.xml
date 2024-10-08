@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>2024-10 on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/2024-10/</link>
+    <description>Recent content in 2024-10 on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 08 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2024-10/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ask ChatGPT/Cursor: Preprocessor Macro Doesn&#39;t Work in Swift</title>
+      <link>https://blog.tomatostore.top/posts/2024/10/preprocessor-macro-in-swift/</link>
+      <pubDate>Tue, 08 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/10/preprocessor-macro-in-swift/</guid>
+      <description>Xcode 中如何定义 Swift 适用的预处理宏</description>
+      <content:encoded><![CDATA[<h2 id="the-problem">The Problem</h2>
+<p>I defined the preprocessor macro <code>USING_REVENUE_CAT=1</code> in my project target&rsquo;s Build Settings under <strong>Preprocessor Macros</strong>.</p>
+<p>However, when I tried to use it in my <code>Swift</code> file with the following code, I received an error indicating that the module <code>SwiftyStoreKit</code> could not be found. This was puzzling because I expected the macro to work similarly to how it does in <code>Objective-C</code>.</p>
+<p><img loading="lazy" src="/images/Preprocessor-Macros.png" alt="Preprocessor-Macros in Xcode"  /></p>
+<h2 id="the-solution">The Solution</h2>
+<p>Asked both <code>ChatGPT</code> and <code>Cursor</code> for help, and they gave me similar answers as following:</p>
+<p><code>Swift</code> does not recognize preprocessor macros defined in the Build Settings the same way <code>Objective-C</code> does. Instead, you need to define custom flags specifically for <code>Swift</code>.</p>
+<h3 id="steps-to-define-a-preprocessor-macro-for-swift">Steps to Define a Preprocessor Macro for Swift</h3>
+<ol>
+<li>
+<p><strong>Navigate to Build Settings:</strong>
+Open your project in Xcode and select your target. Then, go to the <strong>Build Settings</strong> tab.</p>
+</li>
+<li>
+<p><strong>Find Swift Compiler - Custom Flags:</strong>
+Scroll down to the <strong>Swift Compiler - Custom Flags</strong> section.</p>
+</li>
+<li>
+<p><strong>Add the Custom Flag:</strong>
+In the <strong>Other Swift Flags</strong> field, add the following:</p>
+<pre tabindex="0"><code>USING_REVENUE_CAT
+</code></pre></li>
+</ol>
+<p>This tells the <code>Swift</code> compiler to define the <code>USING_REVENUE_CAT</code> flag, allowing you to use it in your <code>Swift</code> code.</p>
+<h3 id="updated-swift-code">Updated Swift Code</h3>
+<p>After adding the custom flag, your <code>Swift</code> code should work as intended:</p>
+<p><img loading="lazy" src="/images/Swift-Compiler_Customer-Flags.png" alt="Swift-Compiler_Customer-Flags"  /></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
