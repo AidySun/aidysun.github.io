@@ -6,7 +6,34 @@
     <description>Recent content on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 08 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HowTo: make links between Apple notes</title>
+      <link>https://blog.tomatostore.top/posts/2024/11/hyperlink-between-apple-notes/</link>
+      <pubDate>Sun, 24 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/11/hyperlink-between-apple-notes/</guid>
+      <description>如何在苹果🍎的备忘录间链接跳转</description>
+      <content:encoded><![CDATA[<h2 id="how-to-add-a-link-to-other-note">How to add a link to other note</h2>
+<h3 id="1-typing-">1. Typing &ldquo;&raquo;&rdquo;</h3>
+<p>Type &ldquo;&raquo;&rdquo; in the body of your note, enter the title of the note that you want to link to, and select it from the list. It works both on iOS and macOS.
+<img loading="lazy" src="/images/typeing-add-link-in-notes.png" alt="typing &amp;raquo;"  /></p>
+<h3 id="2-menu">2. Menu</h3>
+<p>On iOS, long press to open the options menu. Swipe left the menu to find <code>Add Link</code>.
+
+  <img loading="lazy" src="https://cdsassets.apple.com/live/7WUAS350/images/ios/ios-18-iphone-16-pro-notes-formatting-add-link-callout.png" alt="Add link on iOS"  /></p>
+<p>On macOS, right click in a note and choose <code>Add link</code> in the options menu.
+<img loading="lazy" src="/images/notes-option-menu-macos.png" alt="options menu on macOS"  /></p>
+<h2 id="how-to-navigate-back-to-previous-note">How to navigate back to previous note</h2>
+<p>Now we have a link to another note, it will jump to the linked note when clicking the link.
+Then, how can we go back to the previous note?</p>
+<p>On iOS, click <code>...</code> to open menu, select <code>Recent Notes</code>.
+<img loading="lazy" src="/images/navigation-back-in-notes-ios.jpeg" alt="recent notes on iOS"  /></p>
+<p>On macOS, open <code>View</code> menu to select <code>Previous Note</code>.
+<img loading="lazy" src="/images/navigate-back-in-notes-macos.png" alt="navigate between notes on macOS"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Ask ChatGPT/Cursor: Preprocessor Macro Doesn&#39;t Work in Swift</title>
       <link>https://blog.tomatostore.top/posts/2024/10/preprocessor-macro-in-swift/</link>
