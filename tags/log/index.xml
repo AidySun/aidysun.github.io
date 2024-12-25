@@ -30,46 +30,46 @@
 </ul>
 <h2 id="常用日志库">常用日志库</h2>
 <table>
-<thead>
-<tr>
-<th>编程语言</th>
-<th>日志库</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C++</td>
-<td><a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://www.boost.org/doc/libs/1_75_0/libs/log/doc/html/index.html">Boost.Log</a></td>
-</tr>
-<tr>
-<td>Java</td>
-<td><a href="https://logging.apache.org/log4j/2.x/">Log4j</a>, <a href="http://www.slf4j.org/">Slf4j</a></td>
-</tr>
-<tr>
-<td>Python</td>
-<td><a href="https://docs.python.org/3/library/logging.html">Python logging</a>, <a href="https://github.com/Delgan/loguru">Loguru</a></td>
-</tr>
-<tr>
-<td>JavaScript</td>
-<td><a href="https://github.com/winstonjs/winston">Winston</a>, <a href="https://github.com/trentm/node-bunyan">Bunyan</a></td>
-</tr>
-<tr>
-<td>C#</td>
-<td><a href="https://nlog-project.org/">NLog</a>, <a href="https://serilog.net/">Serilog</a></td>
-</tr>
-<tr>
-<td>Go</td>
-<td><a href="https://github.com/sirupsen/logrus">logrus</a>, <a href="https://github.com/uber-go/zap">zap</a></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><a href="https://github.com/colbygk/log4r">Log4r</a>, <a href="https://ruby-doc.org/stdlib-3.0.2/libdoc/logger/rdoc/Logger.html">Logger</a></td>
-</tr>
-<tr>
-<td>PHP</td>
-<td><a href="https://github.com/Seldaek/monolog">Monolog</a>, <a href="https://laravel.com/docs/8.x/logging">Laravel Log</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>编程语言</th>
+          <th>日志库</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>C++</td>
+          <td><a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://www.boost.org/doc/libs/1_75_0/libs/log/doc/html/index.html">Boost.Log</a></td>
+      </tr>
+      <tr>
+          <td>Java</td>
+          <td><a href="https://logging.apache.org/log4j/2.x/">Log4j</a>, <a href="http://www.slf4j.org/">Slf4j</a></td>
+      </tr>
+      <tr>
+          <td>Python</td>
+          <td><a href="https://docs.python.org/3/library/logging.html">Python logging</a>, <a href="https://github.com/Delgan/loguru">Loguru</a></td>
+      </tr>
+      <tr>
+          <td>JavaScript</td>
+          <td><a href="https://github.com/winstonjs/winston">Winston</a>, <a href="https://github.com/trentm/node-bunyan">Bunyan</a></td>
+      </tr>
+      <tr>
+          <td>C#</td>
+          <td><a href="https://nlog-project.org/">NLog</a>, <a href="https://serilog.net/">Serilog</a></td>
+      </tr>
+      <tr>
+          <td>Go</td>
+          <td><a href="https://github.com/sirupsen/logrus">logrus</a>, <a href="https://github.com/uber-go/zap">zap</a></td>
+      </tr>
+      <tr>
+          <td>Ruby</td>
+          <td><a href="https://github.com/colbygk/log4r">Log4r</a>, <a href="https://ruby-doc.org/stdlib-3.0.2/libdoc/logger/rdoc/Logger.html">Logger</a></td>
+      </tr>
+      <tr>
+          <td>PHP</td>
+          <td><a href="https://github.com/Seldaek/monolog">Monolog</a>, <a href="https://laravel.com/docs/8.x/logging">Laravel Log</a></td>
+      </tr>
+  </tbody>
 </table>
 ]]></content:encoded>
     </item>

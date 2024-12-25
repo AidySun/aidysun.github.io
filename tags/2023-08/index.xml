@@ -113,30 +113,30 @@
 <p>折叠表达式是 <code>C++17</code> 为配合 <code>Variadic Template</code> 使用引入的功能，它允许在模板展开过程中进行一元或二元操作。折叠表达式有两种形式：左折叠和右折叠。</p>
 <p>对应的展开关系如下：</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">Fold Expression</th>
-<th style="text-align:right">Evaluation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>(E op ...)</code></td>
-<td style="text-align:right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(... op E)</code></td>
-<td style="text-align:right"><code>(((E1 op E2) op ...) op EN)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(E op ... op I)</code></td>
-<td style="text-align:right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(I op ... op E)</code></td>
-<td style="text-align:right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Fold Expression</th>
+          <th style="text-align: right">Evaluation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>(E op ...)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(... op E)</code></td>
+          <td style="text-align: right"><code>(((E1 op E2) op ...) op EN)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(E op ... op I)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(I op ... op E)</code></td>
+          <td style="text-align: right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
+      </tr>
+  </tbody>
 </table>
 <p>其中</p>
 <ul>

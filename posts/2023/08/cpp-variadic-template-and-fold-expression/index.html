@@ -26,30 +26,10 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.8dd6f57454653644cba6929524e195dff93a26fa61dce2b3b2629e50b8d12816.css" integrity="sha256-jdb1dFRlNkTLppKVJOGV3/k6Jvph3OKzsmKeULjRKBY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7da7716a1f2d0725f74c6ae7f8d6adafc43aabe2b366b65bfbf433448e2a2001.css" integrity="sha256-fadxah8tByX3TGrn&#43;Natr8Q6q&#43;KzZrZb&#43;/QzRI4qIAE=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/">
-
-  
-    
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
-      <script>
-        var doNotTrack = false;
-        if ( false ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-7DGG8VLCZY');
-        }
-      </script>
-    
-  
-
 
 <meta name="twitter:title" content="Variadic Template and Fold Expression in C&#43;&#43; | 番茄🍅杂货铺" />
 <meta name="twitter:description" content="C&#43;&#43; 可变模板和折叠表达式" />
@@ -380,30 +360,30 @@ function toggleThemeListener() {
 <p>折叠表达式是 <code>C++17</code> 为配合 <code>Variadic Template</code> 使用引入的功能，它允许在模板展开过程中进行一元或二元操作。折叠表达式有两种形式：左折叠和右折叠。</p>
 <p>对应的展开关系如下：</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">Fold Expression</th>
-<th style="text-align:right">Evaluation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>(E op ...)</code></td>
-<td style="text-align:right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(... op E)</code></td>
-<td style="text-align:right"><code>(((E1 op E2) op ...) op EN)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(E op ... op I)</code></td>
-<td style="text-align:right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(I op ... op E)</code></td>
-<td style="text-align:right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Fold Expression</th>
+          <th style="text-align: right">Evaluation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>(E op ...)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(... op E)</code></td>
+          <td style="text-align: right"><code>(((E1 op E2) op ...) op EN)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(E op ... op I)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(I op ... op E)</code></td>
+          <td style="text-align: right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
+      </tr>
+  </tbody>
 </table>
 <p>其中</p>
 <ul>

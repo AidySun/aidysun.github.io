@@ -176,31 +176,31 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <p><img loading="lazy" src="/images/git-clean-fd.png" alt="git clean -f -d"  /></p>
 <p>还有一种情况就是已经在 <code>.gitignore</code> 中的文件或文件夹是不会被删除的。</p>
 <p><img loading="lazy" src="/images/cat-.gitignore.png" alt="cat .gitignore"  /></p>
-<p><img loading="lazy" src="/images/git-status---ignored.png" alt="git status &amp;ndash;ignored"  /></p>
+<p><img loading="lazy" src="/images/git-status---ignored.png" alt="git status &ndash;ignored"  /></p>
 <p>需要通过 <code>-x</code> 选项来删除被 <code>.gitignore</code> 包含的文件或文件夹：</p>
 <p><img loading="lazy" src="/images/git-clean--fdx.png" alt="git clean -f -d -x"  /></p>
 <h2 id="git-clean-options"><code>git clean</code> options</h2>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Option</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>-f</code></td>
-<td><em>Delete files or diretories</em></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>-d</code></td>
-<td><em>Recurse into untracked directories</em></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>-x</code></td>
-<td><em>Don’t use the standard ignore rules</em></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Option</th>
+          <th>Comments</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>-f</code></td>
+          <td><em>Delete files or diretories</em></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>-d</code></td>
+          <td><em>Recurse into untracked directories</em></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>-x</code></td>
+          <td><em>Don’t use the standard ignore rules</em></td>
+      </tr>
+  </tbody>
 </table>
 ]]></content:encoded>
     </item>

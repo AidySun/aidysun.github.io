@@ -57,28 +57,28 @@
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">字符串</th>
-<th>UTF-8</th>
-<th>UTF-16</th>
-<th>空间比较</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>AI</code></td>
-<td><code>4149</code></td>
-<td><code>0041 0049</code></td>
-<td><code>UTF-8</code>&lt;<code>UTF-16</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>射雕</code></td>
-<td><code>E5B0 84E9 9B95</code></td>
-<td><code>5C04 96D5</code></td>
-<td><code>UTF-8</code>&gt;<code>UTF-16</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">字符串</th>
+          <th>UTF-8</th>
+          <th>UTF-16</th>
+          <th>空间比较</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>AI</code></td>
+          <td><code>4149</code></td>
+          <td><code>0041 0049</code></td>
+          <td><code>UTF-8</code>&lt;<code>UTF-16</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>射雕</code></td>
+          <td><code>E5B0 84E9 9B95</code></td>
+          <td><code>5C04 96D5</code></td>
+          <td><code>UTF-8</code>&gt;<code>UTF-16</code></td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>

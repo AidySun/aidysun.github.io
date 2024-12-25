@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>RevenueCat on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/revenuecat/</link>
+    <description>Recent content in RevenueCat on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/revenuecat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修复 RevenueCat 国内访问，App Store Connect 审核加速</title>
+      <link>https://blog.tomatostore.top/posts/2024/12/revenuecat-connection-fix-with-proxy/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/12/revenuecat-connection-fix-with-proxy/</guid>
+      <description>Fix connection to RevenueCat from China and expedite App Store Connect review</description>
+      <content:encoded><![CDATA[<p>2024年12月突发，国内无法访问 RevenueCat 导致很多 App 无法进行正常 IAP。</p>
+<blockquote>
+<p>In December 2024, RevenueCat became inaccessible in China, affecting IAP functionality in many apps.</p>
+</blockquote>
+<p>官方给出了紧急修复方案：https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</p>
+<blockquote>
+<p>Official emergency fix: <a href="https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china">https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</a></p>
+</blockquote>
+<p><img loading="lazy" src="/images/revenuecat-proxy.png" alt="Configuration for users in Mainland China"  /></p>
+<p>你说巧不巧，就在一周前，我的一个 iOS app 刚通过审核发布成功，就正好使用了 RevenueCat。🤣
+没办法，现改实现方案移除 RC 肯定不是一时半会能搞定的，再说这个状态还不确定是不是常态。所以紧急按照官方方案提交了修改。（虽然实际上我的 app 也没啥用户，也没有收到任何消息抱怨说无法购买）。</p>
+<blockquote>
+<p>Coincidentally, my iOS app using RevenueCat was just approved a week ago. 🤣 Instead of removing RC, I quickly applied the official fix, though my app has few users and no complaints yet.</p>
+</blockquote>
+<p>修改后测试效果是可以去到产品信息了（我没有 RC 的 paywall，只是定义了产品），然后按照之前学习过的 App Store Connect 加急审核的步骤走了一遍，没想到的是，加急申请之后，仅仅3分钟就审核通过了🫨。这里给水果审核点个赞，然后再分享加速审核流程。</p>
+<blockquote>
+<p>After the fix, product info was accessible again. I requested an expedited review, and surprisingly, it was approved in just 3 minutes! 🫨 Here&rsquo;s how to request expedited review:</p>
+</blockquote>
+<ol>
+<li>登录 <a href="https://developer.apple.com/">https://developer.apple.com/</a> 后，找到页面下方的 Contact Us。</li>
+</ol>
+<blockquote>
+<p>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a> and find &ldquo;Contact Us&rdquo; at the bottom.</p>
+</blockquote>
+<p><img loading="lazy" src="/images/apple-contact-us.png" alt="contact us"  /></p>
+<ol start="2">
+<li>选择 <strong>App 审核</strong> -&gt; <strong>App 审核加快请求</strong></li>
+</ol>
+<blockquote>
+<p>Choose <strong>App Review</strong> -&gt; <strong>Request Expedited Review</strong></p>
+</blockquote>
+<p><img loading="lazy" src="/images/apple-app-review.png" alt="App review"  /></p>
+<ol start="3">
+<li>点击 <strong>联系 App Review</strong>，在 <strong>App Information</strong>中选择对应的 App 即可。</li>
+</ol>
+<blockquote>
+<p>Click <strong>Contact App Review</strong> and select your app.</p>
+</blockquote>
+<p><img loading="lazy" src="/images/apple-app-info.png" alt="app info"  /></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

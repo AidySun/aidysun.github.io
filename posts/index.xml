@@ -6,7 +6,56 @@
     <description>Recent content in Posts on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 24 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修复 RevenueCat 国内访问，App Store Connect 审核加速</title>
+      <link>https://blog.tomatostore.top/posts/2024/12/revenuecat-connection-fix-with-proxy/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2024/12/revenuecat-connection-fix-with-proxy/</guid>
+      <description>Fix connection to RevenueCat from China and expedite App Store Connect review</description>
+      <content:encoded><![CDATA[<p>2024年12月突发，国内无法访问 RevenueCat 导致很多 App 无法进行正常 IAP。</p>
+<blockquote>
+<p>In December 2024, RevenueCat became inaccessible in China, affecting IAP functionality in many apps.</p>
+</blockquote>
+<p>官方给出了紧急修复方案：https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</p>
+<blockquote>
+<p>Official emergency fix: <a href="https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china">https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</a></p>
+</blockquote>
+<p><img loading="lazy" src="/images/revenuecat-proxy.png" alt="Configuration for users in Mainland China"  /></p>
+<p>你说巧不巧，就在一周前，我的一个 iOS app 刚通过审核发布成功，就正好使用了 RevenueCat。🤣
+没办法，现改实现方案移除 RC 肯定不是一时半会能搞定的，再说这个状态还不确定是不是常态。所以紧急按照官方方案提交了修改。（虽然实际上我的 app 也没啥用户，也没有收到任何消息抱怨说无法购买）。</p>
+<blockquote>
+<p>Coincidentally, my iOS app using RevenueCat was just approved a week ago. 🤣 Instead of removing RC, I quickly applied the official fix, though my app has few users and no complaints yet.</p>
+</blockquote>
+<p>修改后测试效果是可以去到产品信息了（我没有 RC 的 paywall，只是定义了产品），然后按照之前学习过的 App Store Connect 加急审核的步骤走了一遍，没想到的是，加急申请之后，仅仅3分钟就审核通过了🫨。这里给水果审核点个赞，然后再分享加速审核流程。</p>
+<blockquote>
+<p>After the fix, product info was accessible again. I requested an expedited review, and surprisingly, it was approved in just 3 minutes! 🫨 Here&rsquo;s how to request expedited review:</p>
+</blockquote>
+<ol>
+<li>登录 <a href="https://developer.apple.com/">https://developer.apple.com/</a> 后，找到页面下方的 Contact Us。</li>
+</ol>
+<blockquote>
+<p>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a> and find &ldquo;Contact Us&rdquo; at the bottom.</p>
+</blockquote>
+<p><img loading="lazy" src="/images/apple-contact-us.png" alt="contact us"  /></p>
+<ol start="2">
+<li>选择 <strong>App 审核</strong> -&gt; <strong>App 审核加快请求</strong></li>
+</ol>
+<blockquote>
+<p>Choose <strong>App Review</strong> -&gt; <strong>Request Expedited Review</strong></p>
+</blockquote>
+<p><img loading="lazy" src="/images/apple-app-review.png" alt="App review"  /></p>
+<ol start="3">
+<li>点击 <strong>联系 App Review</strong>，在 <strong>App Information</strong>中选择对应的 App 即可。</li>
+</ol>
+<blockquote>
+<p>Click <strong>Contact App Review</strong> and select your app.</p>
+</blockquote>
+<p><img loading="lazy" src="/images/apple-app-info.png" alt="app info"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>HowTo: make links between Apple notes</title>
       <link>https://blog.tomatostore.top/posts/2024/11/hyperlink-between-apple-notes/</link>
@@ -17,7 +66,7 @@
       <content:encoded><![CDATA[<h2 id="how-to-add-a-link-to-other-note">How to add a link to other note</h2>
 <h3 id="1-typing-">1. Typing &ldquo;&raquo;&rdquo;</h3>
 <p>Type &ldquo;&raquo;&rdquo; in the body of your note, enter the title of the note that you want to link to, and select it from the list. It works both on iOS and macOS.
-<img loading="lazy" src="/images/typeing-add-link-in-notes.png" alt="typing &amp;raquo;"  /></p>
+<img loading="lazy" src="/images/typeing-add-link-in-notes.png" alt="typing &raquo;"  /></p>
 <h3 id="2-menu">2. Menu</h3>
 <p>On iOS, long press to open the options menu. Swipe left the menu to find <code>Add Link</code>.
 
@@ -564,30 +613,30 @@ Acquire::https::proxy &#34;http://proxy.mydom.it:8080&#34;;
 <p>折叠表达式是 <code>C++17</code> 为配合 <code>Variadic Template</code> 使用引入的功能，它允许在模板展开过程中进行一元或二元操作。折叠表达式有两种形式：左折叠和右折叠。</p>
 <p>对应的展开关系如下：</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">Fold Expression</th>
-<th style="text-align:right">Evaluation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>(E op ...)</code></td>
-<td style="text-align:right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(... op E)</code></td>
-<td style="text-align:right"><code>(((E1 op E2) op ...) op EN)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(E op ... op I)</code></td>
-<td style="text-align:right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>(I op ... op E)</code></td>
-<td style="text-align:right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Fold Expression</th>
+          <th style="text-align: right">Evaluation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>(E op ...)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(... op E)</code></td>
+          <td style="text-align: right"><code>(((E1 op E2) op ...) op EN)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(E op ... op I)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(I op ... op E)</code></td>
+          <td style="text-align: right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
+      </tr>
+  </tbody>
 </table>
 <p>其中</p>
 <ul>
@@ -1224,46 +1273,46 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 </ul>
 <h2 id="常用日志库">常用日志库</h2>
 <table>
-<thead>
-<tr>
-<th>编程语言</th>
-<th>日志库</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C++</td>
-<td><a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://www.boost.org/doc/libs/1_75_0/libs/log/doc/html/index.html">Boost.Log</a></td>
-</tr>
-<tr>
-<td>Java</td>
-<td><a href="https://logging.apache.org/log4j/2.x/">Log4j</a>, <a href="http://www.slf4j.org/">Slf4j</a></td>
-</tr>
-<tr>
-<td>Python</td>
-<td><a href="https://docs.python.org/3/library/logging.html">Python logging</a>, <a href="https://github.com/Delgan/loguru">Loguru</a></td>
-</tr>
-<tr>
-<td>JavaScript</td>
-<td><a href="https://github.com/winstonjs/winston">Winston</a>, <a href="https://github.com/trentm/node-bunyan">Bunyan</a></td>
-</tr>
-<tr>
-<td>C#</td>
-<td><a href="https://nlog-project.org/">NLog</a>, <a href="https://serilog.net/">Serilog</a></td>
-</tr>
-<tr>
-<td>Go</td>
-<td><a href="https://github.com/sirupsen/logrus">logrus</a>, <a href="https://github.com/uber-go/zap">zap</a></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td><a href="https://github.com/colbygk/log4r">Log4r</a>, <a href="https://ruby-doc.org/stdlib-3.0.2/libdoc/logger/rdoc/Logger.html">Logger</a></td>
-</tr>
-<tr>
-<td>PHP</td>
-<td><a href="https://github.com/Seldaek/monolog">Monolog</a>, <a href="https://laravel.com/docs/8.x/logging">Laravel Log</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>编程语言</th>
+          <th>日志库</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>C++</td>
+          <td><a href="https://github.com/gabime/spdlog">spdlog</a>, <a href="https://www.boost.org/doc/libs/1_75_0/libs/log/doc/html/index.html">Boost.Log</a></td>
+      </tr>
+      <tr>
+          <td>Java</td>
+          <td><a href="https://logging.apache.org/log4j/2.x/">Log4j</a>, <a href="http://www.slf4j.org/">Slf4j</a></td>
+      </tr>
+      <tr>
+          <td>Python</td>
+          <td><a href="https://docs.python.org/3/library/logging.html">Python logging</a>, <a href="https://github.com/Delgan/loguru">Loguru</a></td>
+      </tr>
+      <tr>
+          <td>JavaScript</td>
+          <td><a href="https://github.com/winstonjs/winston">Winston</a>, <a href="https://github.com/trentm/node-bunyan">Bunyan</a></td>
+      </tr>
+      <tr>
+          <td>C#</td>
+          <td><a href="https://nlog-project.org/">NLog</a>, <a href="https://serilog.net/">Serilog</a></td>
+      </tr>
+      <tr>
+          <td>Go</td>
+          <td><a href="https://github.com/sirupsen/logrus">logrus</a>, <a href="https://github.com/uber-go/zap">zap</a></td>
+      </tr>
+      <tr>
+          <td>Ruby</td>
+          <td><a href="https://github.com/colbygk/log4r">Log4r</a>, <a href="https://ruby-doc.org/stdlib-3.0.2/libdoc/logger/rdoc/Logger.html">Logger</a></td>
+      </tr>
+      <tr>
+          <td>PHP</td>
+          <td><a href="https://github.com/Seldaek/monolog">Monolog</a>, <a href="https://laravel.com/docs/8.x/logging">Laravel Log</a></td>
+      </tr>
+  </tbody>
 </table>
 ]]></content:encoded>
     </item>
@@ -2278,7 +2327,9 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/posts/2023/04/swift-substring/</guid>
-      <description>Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的</description>
+      <description>&lt;p&gt;Swift 中对 &lt;code&gt;String&lt;/code&gt; 类型的 &lt;code&gt;substring()&lt;/code&gt; 方法都被标记为&lt;code&gt;不推荐(deprecated)&lt;/code&gt;了，那该如何实现 substring 的功能呢？&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.tomatostore.top/images/swift-string-substring-deprecated.jpg&#34; alt=&#34;substring is deprecated&#34;  title=&#34;XCode 中对String.substring的提示&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;根据Xcode的提示&lt;strong&gt;可以使用&lt;code&gt;slicing（切片）&lt;/code&gt;的方式来实现&lt;code&gt;substring&lt;/code&gt;的功能&lt;/strong&gt;：&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Swift 中对 <code>String</code> 类型的 <code>substring()</code> 方法都被标记为<code>不推荐(deprecated)</code>了，那该如何实现 substring 的功能呢？</p>
 <p><img loading="lazy" src="/images/swift-string-substring-deprecated.jpg" alt="substring is deprecated"  title="XCode 中对String.substring的提示"  /></p>
 <p>根据Xcode的提示<strong>可以使用<code>slicing（切片）</code>的方式来实现<code>substring</code>的功能</strong>：</p>
@@ -2390,28 +2441,28 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">字符串</th>
-<th>UTF-8</th>
-<th>UTF-16</th>
-<th>空间比较</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>AI</code></td>
-<td><code>4149</code></td>
-<td><code>0041 0049</code></td>
-<td><code>UTF-8</code>&lt;<code>UTF-16</code></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>射雕</code></td>
-<td><code>E5B0 84E9 9B95</code></td>
-<td><code>5C04 96D5</code></td>
-<td><code>UTF-8</code>&gt;<code>UTF-16</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">字符串</th>
+          <th>UTF-8</th>
+          <th>UTF-16</th>
+          <th>空间比较</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>AI</code></td>
+          <td><code>4149</code></td>
+          <td><code>0041 0049</code></td>
+          <td><code>UTF-8</code>&lt;<code>UTF-16</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>射雕</code></td>
+          <td><code>E5B0 84E9 9B95</code></td>
+          <td><code>5C04 96D5</code></td>
+          <td><code>UTF-8</code>&gt;<code>UTF-16</code></td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
@@ -3492,31 +3543,31 @@ Jerry earned reward : 5
 <p><img loading="lazy" src="/images/git-clean-fd.png" alt="git clean -f -d"  /></p>
 <p>还有一种情况就是已经在 <code>.gitignore</code> 中的文件或文件夹是不会被删除的。</p>
 <p><img loading="lazy" src="/images/cat-.gitignore.png" alt="cat .gitignore"  /></p>
-<p><img loading="lazy" src="/images/git-status---ignored.png" alt="git status &amp;ndash;ignored"  /></p>
+<p><img loading="lazy" src="/images/git-status---ignored.png" alt="git status &ndash;ignored"  /></p>
 <p>需要通过 <code>-x</code> 选项来删除被 <code>.gitignore</code> 包含的文件或文件夹：</p>
 <p><img loading="lazy" src="/images/git-clean--fdx.png" alt="git clean -f -d -x"  /></p>
 <h2 id="git-clean-options"><code>git clean</code> options</h2>
 <table>
-<thead>
-<tr>
-<th style="text-align:center">Option</th>
-<th>Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>-f</code></td>
-<td><em>Delete files or diretories</em></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>-d</code></td>
-<td><em>Recurse into untracked directories</em></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>-x</code></td>
-<td><em>Don’t use the standard ignore rules</em></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Option</th>
+          <th>Comments</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><code>-f</code></td>
+          <td><em>Delete files or diretories</em></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>-d</code></td>
+          <td><em>Recurse into untracked directories</em></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><code>-x</code></td>
+          <td><em>Don’t use the standard ignore rules</em></td>
+      </tr>
+  </tbody>
 </table>
 ]]></content:encoded>
     </item>

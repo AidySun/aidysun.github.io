@@ -398,7 +398,9 @@ In the <strong>Other Swift Flags</strong> field, add the following:</p>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://blog.tomatostore.top/posts/2023/04/swift-substring/</guid>
-      <description>Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的</description>
+      <description>&lt;p&gt;Swift 中对 &lt;code&gt;String&lt;/code&gt; 类型的 &lt;code&gt;substring()&lt;/code&gt; 方法都被标记为&lt;code&gt;不推荐(deprecated)&lt;/code&gt;了，那该如何实现 substring 的功能呢？&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.tomatostore.top/images/swift-string-substring-deprecated.jpg&#34; alt=&#34;substring is deprecated&#34;  title=&#34;XCode 中对String.substring的提示&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;根据Xcode的提示&lt;strong&gt;可以使用&lt;code&gt;slicing（切片）&lt;/code&gt;的方式来实现&lt;code&gt;substring&lt;/code&gt;的功能&lt;/strong&gt;：&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Swift 中对 <code>String</code> 类型的 <code>substring()</code> 方法都被标记为<code>不推荐(deprecated)</code>了，那该如何实现 substring 的功能呢？</p>
 <p><img loading="lazy" src="/images/swift-string-substring-deprecated.jpg" alt="substring is deprecated"  title="XCode 中对String.substring的提示"  /></p>
 <p>根据Xcode的提示<strong>可以使用<code>slicing（切片）</code>的方式来实现<code>substring</code>的功能</strong>：</p>

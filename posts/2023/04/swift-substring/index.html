@@ -7,7 +7,9 @@
 <meta name="robots" content="index, follow">
 <title>Swift String Substring | 番茄🍅杂货铺</title>
 <meta name="keywords" content="swift string, swift substring, swift slicing, WWDC 2017, ios string substring, objective-C substring">
-<meta name="description" content="Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的">
+<meta name="description" content="Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？
+
+根据Xcode的提示可以使用slicing（切片）的方式来实现substring的功能：">
 <meta name="author" content="SZH">
 <link rel="canonical" href="https://blog.tomatostore.top/posts/2023/04/swift-substring/">
 
@@ -26,35 +28,19 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.8dd6f57454653644cba6929524e195dff93a26fa61dce2b3b2629e50b8d12816.css" integrity="sha256-jdb1dFRlNkTLppKVJOGV3/k6Jvph3OKzsmKeULjRKBY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7da7716a1f2d0725f74c6ae7f8d6adafc43aabe2b366b65bfbf433448e2a2001.css" integrity="sha256-fadxah8tByX3TGrn&#43;Natr8Q6q&#43;KzZrZb&#43;/QzRI4qIAE=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2023/04/swift-substring/">
 
-  
-    
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
-      <script>
-        var doNotTrack = false;
-        if ( false ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-7DGG8VLCZY');
-        }
-      </script>
-    
-  
-
-
 <meta name="twitter:title" content="Swift String Substring | 番茄🍅杂货铺" />
-<meta name="twitter:description" content="Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的" />
+<meta name="twitter:description" content="Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？
+
+根据Xcode的提示可以使用slicing（切片）的方式来实现substring的功能：" />
 <meta property="og:title" content="Swift String Substring | 番茄🍅杂货铺" />
-<meta property="og:description" content="Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的" />
+<meta property="og:description" content="Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？
+
+根据Xcode的提示可以使用slicing（切片）的方式来实现substring的功能：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.tomatostore.top/posts/2023/04/swift-substring/" />
 <meta property="article:section" content="posts" />
@@ -88,7 +74,7 @@
   "@type": "BlogPosting",
   "headline": "Swift String Substring | 番茄🍅杂货铺",
   "name": "Swift String Substring",
-  "description": "Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？ 根据Xcode的提示可以使用slicing（切片）的",
+  "description": "Swift 中对 String 类型的 substring() 方法都被标记为不推荐(deprecated)了，那该如何实现 substring 的功能呢？\n根据Xcode的提示可以使用slicing（切片）的方式来实现substring的功能：\n",
   "keywords": [
     "swift string", "swift substring", "swift slicing", "WWDC 2017", "ios string substring", "objective-C substring"
   ],

@@ -17,7 +17,7 @@
       <content:encoded><![CDATA[<h2 id="how-to-add-a-link-to-other-note">How to add a link to other note</h2>
 <h3 id="1-typing-">1. Typing &ldquo;&raquo;&rdquo;</h3>
 <p>Type &ldquo;&raquo;&rdquo; in the body of your note, enter the title of the note that you want to link to, and select it from the list. It works both on iOS and macOS.
-<img loading="lazy" src="/images/typeing-add-link-in-notes.png" alt="typing &amp;raquo;"  /></p>
+<img loading="lazy" src="/images/typeing-add-link-in-notes.png" alt="typing &raquo;"  /></p>
 <h3 id="2-menu">2. Menu</h3>
 <p>On iOS, long press to open the options menu. Swipe left the menu to find <code>Add Link</code>.
 
