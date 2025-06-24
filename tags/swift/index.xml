@@ -453,12 +453,10 @@ In the <strong>Other Swift Flags</strong> field, add the following:</p>
 <h2 id="struct-substring">struct Substring</h2>
 <p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
 <blockquote>
-<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
-</blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p></blockquote>
 <hr>
 <blockquote>
-<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
-</blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p></blockquote>
 ]]></content:encoded>
     </item>
     

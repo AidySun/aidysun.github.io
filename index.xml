@@ -6,7 +6,221 @@
     <description>Recent content on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 30 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用AI高效搭建Hugo Landing Page实录</title>
+      <link>https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/</guid>
+      <description>记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查</description>
+      <content:encoded><![CDATA[<h1 id="利用ai高效搭建hugo-landing-page实录">利用AI高效搭建Hugo Landing Page实录</h1>
+<h2 id="背景">背景</h2>
+<p>为了推广我的App AMClock，我决定搭建一个产品落地页（Landing Page）。整个开发和部署过程中，AI助手（Cursor）是高效开发、排查问题的得力伙伴。</p>
+<hr>
+<h2 id="技术选型与准备">技术选型与准备</h2>
+<ul>
+<li><strong>静态站点生成器</strong>：Hugo，因之前搭建 blog 用的 hugo，相对熟悉，另外其构建速度快、支持多语言、支持屏幕适配</li>
+<li><strong>主题</strong>：hugo-saasify-theme（fork到自己仓库，方便后续定制和维护）。</li>
+<li><strong>前端工具</strong>：TailwindCSS + PostCSS，非单独引入，hugo-saasify-theme主题中使用。</li>
+<li><strong>自动化部署</strong>：GitHub Actions 实现CI/CD，自动同步到腾讯云服务器。</li>
+<li><strong>安全管理</strong>：敏感信息（如服务器IP、SSH密钥）通过 GitHub Secrets 管理。</li>
+</ul>
+<hr>
+<h2 id="先来看看成品效果">先来看看成品效果</h2>
+<ul>
+<li>访问地址：
+<ul>
+<li>English: <a href="https://amclock.online">https://amclock.online</a></li>
+<li>中文: <a href="https://amclock.online/zh">https://amclock.online/zh</a>
+<img loading="lazy" src="/images/amclock-online-screenshot.png" alt="Screenshot of amclock online"  /></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="项目开发历程">项目开发历程</h2>
+<h3 id="第一阶段基础搭建多语言支持6月15日">第一阶段：基础搭建、多语言支持（6月15日）</h3>
+<ul>
+<li><strong>中文版本实现</strong>：添加了完整的中文翻译文件（<code>i18n/zh.yaml</code>、<code>data/features/zh.yaml</code>）</li>
+<li><strong>产品图片资源</strong>：上传了18个产品相关图片，包括功能展示图、Hero区域图片和Logo</li>
+<li><strong>多语言配置</strong>：在 <code>hugo.toml</code> 中配置了中英文切换功能</li>
+</ul>
+<h3 id="第二阶段功能完善与优化图片设计6月16-21日">第二阶段：功能完善与优化、图片设计（6月16-21日）</h3>
+<ul>
+<li><strong>CTA按钮国际化</strong>：实现了Call-to-Action按钮的多语言支持</li>
+<li><strong>功能特性优化</strong>：动态调整功能特性展示，提升用户体验</li>
+<li><strong>主题定制</strong>：使用fork的主题分支，应用了多个修复和改进</li>
+</ul>
+<h3 id="第三阶段云端手动部署自动化发布6月22日">第三阶段：云端手动部署、自动化发布（6月22日）</h3>
+<ul>
+<li><strong>手动部署</strong>：上传 public 文件夹到服务器，修改 Nginx 配置文件</li>
+<li><strong>GitHub Actions配置</strong>：创建了完整的 <code>.github/workflows/deploy.yml</code> 部署流程</li>
+<li><strong>依赖安装优化</strong>：在Hugo构建前增加 <code>npm install</code> 步骤，解决PostCSS依赖缺失问题</li>
+<li><strong>部署流程完善</strong>：最终实现了从代码提交到自动部署的完整CI/CD流程</li>
+</ul>
+<h3 id="总结---常见坑处理">总结 - 常见&quot;坑&quot;处理</h3>
+<ul>
+<li><strong>baseURL 问题</strong>：AI建议在部署命令中指定 <code>--baseURL</code>，避免生产环境链接指向本地地址。</li>
+<li><strong>多语言菜单跳转</strong>：AI帮助我修正菜单配置，确保中英文切换正常。</li>
+<li><strong>404 页面跳转</strong>：AI协助自定义 <code>404.html</code>，并用 Hugo 变量生成正确跳转链接，提升用户体验。</li>
+</ul>
+<h3 id="references">References</h3>
+<h4 id="github-action-deployyml">Github action <code>deploy.yml</code></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to Tencent Cloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">public ] </span><span class="w"> </span><span class="c"># 当推送到主分支时触发</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c"># 初始化submodules，包括你的主题</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo v0.135.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;0.135.0&#39;</span><span class="w">  </span><span class="c"># 指定与你本地相同的版本</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Node.js</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-node@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;16&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install dependencies</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">npm install</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Hugo site</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">        hugo --minify --baseURL https://amclock.online/
+</span></span></span><span class="line"><span class="cl"><span class="sd">        </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/ssh-action@v0.1.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PORT }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # 备份当前版本
+</span></span></span><span class="line"><span class="cl"><span class="sd">          if [ -d &#34;/var/www/myconfig/amclock.online.public&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            sudo cp -r /var/www/myconfig/amclock.online.public /var/www/myconfig/amclock.online.public.backup.$(date +%Y%m%d_%H%M%S)
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fi
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # 清理目标目录
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo rm -rf /var/www/myconfig/amclock.online.public/*
+</span></span></span><span class="line"><span class="cl"><span class="sd">          </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/scp-action@v0.1.4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PORT }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;public/*&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/var/www/myconfig/amclock.online.public&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">strip_components</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set permissions and reload nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/ssh-action@v0.1.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PORT }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo chmod -R 755 /var/www/myconfig/amclock.online.public
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo systemctl reload nginx
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;部署完成！网站已更新到 https://amclock.online&#34; </span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded>
+    </item>
+    
     <item>
       <title>Mac 上浏览器可访问github，但命令行 SSH 连接超时</title>
       <link>https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/</link>
@@ -110,42 +324,35 @@
       <description>Fix connection to RevenueCat from China and expedite App Store Connect review</description>
       <content:encoded><![CDATA[<p>2024年12月突发，国内无法访问 RevenueCat 导致很多 App 无法进行正常 IAP。</p>
 <blockquote>
-<p>In December 2024, RevenueCat became inaccessible in China, affecting IAP functionality in many apps.</p>
-</blockquote>
+<p>In December 2024, RevenueCat became inaccessible in China, affecting IAP functionality in many apps.</p></blockquote>
 <p>官方给出了紧急修复方案：https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</p>
 <blockquote>
-<p>Official emergency fix: <a href="https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china">https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</a></p>
-</blockquote>
+<p>Official emergency fix: <a href="https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china">https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</a></p></blockquote>
 <p><img loading="lazy" src="/images/revenuecat-proxy.png" alt="Configuration for users in Mainland China"  /></p>
 <p>你说巧不巧，就在一周前，我的一个 iOS app 刚通过审核发布成功，就正好使用了 RevenueCat。🤣
 没办法，现改实现方案移除 RC 肯定不是一时半会能搞定的，再说这个状态还不确定是不是常态。所以紧急按照官方方案提交了修改。（虽然实际上我的 app 也没啥用户，也没有收到任何消息抱怨说无法购买）。</p>
 <blockquote>
-<p>Coincidentally, my iOS app using RevenueCat was just approved a week ago. 🤣 Instead of removing RC, I quickly applied the official fix, though my app has few users and no complaints yet.</p>
-</blockquote>
+<p>Coincidentally, my iOS app using RevenueCat was just approved a week ago. 🤣 Instead of removing RC, I quickly applied the official fix, though my app has few users and no complaints yet.</p></blockquote>
 <p>修改后测试效果是可以去到产品信息了（我没有 RC 的 paywall，只是定义了产品），然后按照之前学习过的 App Store Connect 加急审核的步骤走了一遍，没想到的是，加急申请之后，仅仅3分钟就审核通过了🫨。这里给水果审核点个赞，然后再分享加速审核流程。</p>
 <blockquote>
-<p>After the fix, product info was accessible again. I requested an expedited review, and surprisingly, it was approved in just 3 minutes! 🫨 Here&rsquo;s how to request expedited review:</p>
-</blockquote>
+<p>After the fix, product info was accessible again. I requested an expedited review, and surprisingly, it was approved in just 3 minutes! 🫨 Here&rsquo;s how to request expedited review:</p></blockquote>
 <ol>
 <li>登录 <a href="https://developer.apple.com/">https://developer.apple.com/</a> 后，找到页面下方的 Contact Us。</li>
 </ol>
 <blockquote>
-<p>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a> and find &ldquo;Contact Us&rdquo; at the bottom.</p>
-</blockquote>
+<p>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a> and find &ldquo;Contact Us&rdquo; at the bottom.</p></blockquote>
 <p><img loading="lazy" src="/images/apple-contact-us.png" alt="contact us"  /></p>
 <ol start="2">
 <li>选择 <strong>App 审核</strong> -&gt; <strong>App 审核加快请求</strong></li>
 </ol>
 <blockquote>
-<p>Choose <strong>App Review</strong> -&gt; <strong>Request Expedited Review</strong></p>
-</blockquote>
+<p>Choose <strong>App Review</strong> -&gt; <strong>Request Expedited Review</strong></p></blockquote>
 <p><img loading="lazy" src="/images/apple-app-review.png" alt="App review"  /></p>
 <ol start="3">
 <li>点击 <strong>联系 App Review</strong>，在 <strong>App Information</strong>中选择对应的 App 即可。</li>
 </ol>
 <blockquote>
-<p>Click <strong>Contact App Review</strong> and select your app.</p>
-</blockquote>
+<p>Click <strong>Contact App Review</strong> and select your app.</p></blockquote>
 <p><img loading="lazy" src="/images/apple-app-info.png" alt="app info"  /></p>
 ]]></content:encoded>
     </item>
@@ -2476,12 +2683,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <h2 id="struct-substring">struct Substring</h2>
 <p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
 <blockquote>
-<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
-</blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p></blockquote>
 <hr>
 <blockquote>
-<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
-</blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p></blockquote>
 ]]></content:encoded>
     </item>
     
@@ -2530,8 +2735,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最终得到字符<code>₤</code>的<code>UTF-8</code>表示为<code>1110-0010 1000-0010 1010-0100</code>。</p>
 <blockquote>
-<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p>
-</blockquote>
+<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p></blockquote>
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
@@ -2559,8 +2763,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
   </tbody>
 </table>
 <blockquote>
-<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
-</blockquote>
+<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p></blockquote>
 <h2 id="encodings编码">Encodings（编码）</h2>
 <p><img loading="lazy" src="/images/character-encoding.jpeg" alt="encoding"  /></p>
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
@@ -2610,8 +2813,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最基础的实现需要定义 2 个基类 <code>Subject</code> 和 <code>Observer</code>。</p>
 <blockquote>
-<p><code>C++</code>实现</p>
-</blockquote>
+<p><code>C++</code>实现</p></blockquote>
 <h3 id="观察者">观察者</h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
 <div class="highlight"><div class="chroma">
@@ -3430,16 +3632,13 @@ Jerry earned reward : 5
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
 根据<a href="https://isocpp.org/wiki/faq/ctors#using-this-in-ctors">Should you use the this pointer in the constructor?</a>的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。</p>
 <blockquote>
-<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p>
-</blockquote>
+<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p></blockquote>
 <p>但要<strong>注意</strong>在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。</p>
 <blockquote>
-<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p>
-</blockquote>
+<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p></blockquote>
 <p>这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。</p>
 <blockquote>
-<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p>
-</blockquote>
+<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p></blockquote>
 <p>可以用如下的例子类验证一下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

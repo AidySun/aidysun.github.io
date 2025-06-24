@@ -1784,12 +1784,10 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <h2 id="struct-substring">struct Substring</h2>
 <p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
 <blockquote>
-<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
-</blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p></blockquote>
 <hr>
 <blockquote>
-<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
-</blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p></blockquote>
 ]]></content:encoded>
     </item>
     
@@ -1838,8 +1836,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最终得到字符<code>₤</code>的<code>UTF-8</code>表示为<code>1110-0010 1000-0010 1010-0100</code>。</p>
 <blockquote>
-<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p>
-</blockquote>
+<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p></blockquote>
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
@@ -1867,8 +1864,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
   </tbody>
 </table>
 <blockquote>
-<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
-</blockquote>
+<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p></blockquote>
 <h2 id="encodings编码">Encodings（编码）</h2>
 <p><img loading="lazy" src="/images/character-encoding.jpeg" alt="encoding"  /></p>
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
@@ -1918,8 +1914,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最基础的实现需要定义 2 个基类 <code>Subject</code> 和 <code>Observer</code>。</p>
 <blockquote>
-<p><code>C++</code>实现</p>
-</blockquote>
+<p><code>C++</code>实现</p></blockquote>
 <h3 id="观察者">观察者</h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
 <div class="highlight"><div class="chroma">
@@ -2619,16 +2614,13 @@ Jerry earned reward : 5
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
 根据<a href="https://isocpp.org/wiki/faq/ctors#using-this-in-ctors">Should you use the this pointer in the constructor?</a>的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。</p>
 <blockquote>
-<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p>
-</blockquote>
+<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p></blockquote>
 <p>但要<strong>注意</strong>在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。</p>
 <blockquote>
-<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p>
-</blockquote>
+<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p></blockquote>
 <p>这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。</p>
 <blockquote>
-<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p>
-</blockquote>
+<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p></blockquote>
 <p>可以用如下的例子类验证一下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

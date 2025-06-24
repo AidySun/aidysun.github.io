@@ -3,7 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.tomatostore.top/tags/2025/</loc>
-    <lastmod>2025-04-30T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/2025-06/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/ai-development/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/ci/cd/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/github-actions/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/hugo/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/landing-page/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/tags/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://blog.tomatostore.top/</loc>
+    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -42,22 +92,7 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://blog.tomatostore.top/posts/</loc>
-    <lastmod>2025-04-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://blog.tomatostore.top/tags/ssh/</loc>
-    <lastmod>2025-04-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/</loc>
-    <lastmod>2025-04-30T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/</loc>
     <lastmod>2025-04-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -504,11 +539,6 @@
   </url><url>
     <loc>https://blog.tomatostore.top/posts/2023/03/markdown-link-to-url-with-space/</loc>
     <lastmod>2023-03-30T21:17:22+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/hugo/</loc>
-    <lastmod>2023-03-28T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>利用AI高效搭建Hugo Landing Page实录 | 番茄🍅杂货铺</title>
+<meta name="keywords" content="Hugo, GitHub Actions, CI/CD, Landing Page, AI Development, TailwindCSS, PostCSS">
+<meta name="description" content="记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查">
+<meta name="author" content="">
+<link rel="canonical" href="https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/">
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4973773111704076"
+     crossorigin="anonymous"></script>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7b49c1dcff9f821bef8b93e39d824080";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.7da7716a1f2d0725f74c6ae7f8d6adafc43aabe2b366b65bfbf433448e2a2001.css" integrity="sha256-fadxah8tByX3TGrn&#43;Natr8Q6q&#43;KzZrZb&#43;/QzRI4qIAE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
+<link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
+<link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-7DGG8VLCZY');
+        }
+      </script>
+<meta name="twitter:title" content="利用AI高效搭建Hugo Landing Page实录 | 番茄🍅杂货铺" />
+<meta name="twitter:description" content="记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查" />
+<meta property="og:title" content="利用AI高效搭建Hugo Landing Page实录 | 番茄🍅杂货铺" />
+<meta property="og:description" content="记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/" />
+<meta property="article:section" content="posts" />
+  <meta property="article:published_time" content="2025-06-22T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2025-06-22T00:00:00&#43;00:00" />
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://blog.tomatostore.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "利用AI高效搭建Hugo Landing Page实录",
+      "item": "https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "利用AI高效搭建Hugo Landing Page实录 | 番茄🍅杂货铺",
+  "name": "利用AI高效搭建Hugo Landing Page实录",
+  "description": "记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查",
+  "keywords": [
+    "Hugo", "GitHub Actions", "CI/CD", "Landing Page", "AI Development", "TailwindCSS", "PostCSS"
+  ],
+  "wordCount" : "1197",
+  "inLanguage": "en",
+  "datePublished": "2025-06-22T00:00:00Z",
+  "dateModified": "2025-06-22T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "番茄🍅杂货铺",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://blog.tomatostore.top/favicon.ico"
+    }
+  }
+}
+</script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary-bg: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list-page {
+                background: var(--theme);
+            }
+
+            .list-page:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list-page:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+</head>
+
+<body class=" type-posts kind-page layout-" id="top"><script data-no-instant>
+function switchTheme(theme) {
+  switch (theme) {
+    case 'light':
+      document.body.classList.remove('dark');
+      break;
+    case 'dark':
+      document.body.classList.add('dark');
+      break;
+    
+    default:
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+      }
+  }
+}
+
+function isDarkTheme() {
+  return document.body.className.includes("dark");
+}
+
+function getPrefTheme() {
+  return localStorage.getItem("pref-theme");
+}
+
+function setPrefTheme(theme) {
+  switchTheme(theme)
+  localStorage.setItem("pref-theme", theme);
+}
+
+const toggleThemeCallbacks = {}
+toggleThemeCallbacks['main'] = (isDark) => {
+  
+  if (isDark) {
+    setPrefTheme('light');
+  } else {
+    setPrefTheme('dark');
+  }
+}
+
+
+
+
+window.addEventListener('toggle-theme', function() {
+  
+  const isDark = isDarkTheme()
+  for (const key in toggleThemeCallbacks) {
+    toggleThemeCallbacks[key](isDark)
+  }
+});
+
+
+function toggleThemeListener() {
+  
+  window.dispatchEvent(new CustomEvent('toggle-theme'));
+}
+
+</script>
+<script>
+  
+  (function() {
+    const defaultTheme = 'light';
+    const prefTheme = getPrefTheme();
+    const theme = prefTheme ? prefTheme : defaultTheme;
+
+    switchTheme(theme);
+  })();
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://blog.tomatostore.top/" accesskey="h" title="番茄🍅杂货铺 (Alt + H)">番茄🍅杂货铺</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://blog.tomatostore.top/" title="番茄🍅杂货铺" class="active"
+                >Home
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.tomatostore.top/" title="Development" class="active"
+                >Development
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.tomatostore.top/" title="C&#43;&#43;" class="active"
+                >C&#43;&#43;
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main post">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">利用AI高效搭建Hugo Landing Page实录</h1>
+    <div class="post-description">记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查</div>
+    <div class="post-meta"><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
+  <span>June 22, 2025</span></span><span class="meta-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
+  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/2025/">2025</a><a href="https://blog.tomatostore.top/tags/2025-06/">2025-06</a><a href="https://blog.tomatostore.top/tags/hugo/">Hugo</a><a href="https://blog.tomatostore.top/tags/github-actions/">GitHub Actions</a><a href="https://blog.tomatostore.top/tags/ci/cd/">CI/CD</a><a href="https://blog.tomatostore.top/tags/landing-page/">Landing Page</a><a href="https://blog.tomatostore.top/tags/ai-development/">AI Development</a></span></span>
+
+      
+      
+    </div>
+  </header> 
+  <div class="post-content"><h1 id="利用ai高效搭建hugo-landing-page实录">利用AI高效搭建Hugo Landing Page实录<a hidden class="anchor" aria-hidden="true" href="#利用ai高效搭建hugo-landing-page实录">¶</a></h1>
+<h2 id="背景">背景<a hidden class="anchor" aria-hidden="true" href="#背景">¶</a></h2>
+<p>为了推广我的App AMClock，我决定搭建一个产品落地页（Landing Page）。整个开发和部署过程中，AI助手（Cursor）是高效开发、排查问题的得力伙伴。</p>
+<hr>
+<h2 id="技术选型与准备">技术选型与准备<a hidden class="anchor" aria-hidden="true" href="#技术选型与准备">¶</a></h2>
+<ul>
+<li><strong>静态站点生成器</strong>：Hugo，因之前搭建 blog 用的 hugo，相对熟悉，另外其构建速度快、支持多语言、支持屏幕适配</li>
+<li><strong>主题</strong>：hugo-saasify-theme（fork到自己仓库，方便后续定制和维护）。</li>
+<li><strong>前端工具</strong>：TailwindCSS + PostCSS，非单独引入，hugo-saasify-theme主题中使用。</li>
+<li><strong>自动化部署</strong>：GitHub Actions 实现CI/CD，自动同步到腾讯云服务器。</li>
+<li><strong>安全管理</strong>：敏感信息（如服务器IP、SSH密钥）通过 GitHub Secrets 管理。</li>
+</ul>
+<hr>
+<h2 id="先来看看成品效果">先来看看成品效果<a hidden class="anchor" aria-hidden="true" href="#先来看看成品效果">¶</a></h2>
+<ul>
+<li>访问地址：
+<ul>
+<li>English: <a href="https://amclock.online">https://amclock.online</a></li>
+<li>中文: <a href="https://amclock.online/zh">https://amclock.online/zh</a>
+<img loading="lazy" src="/images/amclock-online-screenshot.png" alt="Screenshot of amclock online"  /></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="项目开发历程">项目开发历程<a hidden class="anchor" aria-hidden="true" href="#项目开发历程">¶</a></h2>
+<h3 id="第一阶段基础搭建多语言支持6月15日">第一阶段：基础搭建、多语言支持（6月15日）<a hidden class="anchor" aria-hidden="true" href="#第一阶段基础搭建多语言支持6月15日">¶</a></h3>
+<ul>
+<li><strong>中文版本实现</strong>：添加了完整的中文翻译文件（<code>i18n/zh.yaml</code>、<code>data/features/zh.yaml</code>）</li>
+<li><strong>产品图片资源</strong>：上传了18个产品相关图片，包括功能展示图、Hero区域图片和Logo</li>
+<li><strong>多语言配置</strong>：在 <code>hugo.toml</code> 中配置了中英文切换功能</li>
+</ul>
+<h3 id="第二阶段功能完善与优化图片设计6月16-21日">第二阶段：功能完善与优化、图片设计（6月16-21日）<a hidden class="anchor" aria-hidden="true" href="#第二阶段功能完善与优化图片设计6月16-21日">¶</a></h3>
+<ul>
+<li><strong>CTA按钮国际化</strong>：实现了Call-to-Action按钮的多语言支持</li>
+<li><strong>功能特性优化</strong>：动态调整功能特性展示，提升用户体验</li>
+<li><strong>主题定制</strong>：使用fork的主题分支，应用了多个修复和改进</li>
+</ul>
+<h3 id="第三阶段云端手动部署自动化发布6月22日">第三阶段：云端手动部署、自动化发布（6月22日）<a hidden class="anchor" aria-hidden="true" href="#第三阶段云端手动部署自动化发布6月22日">¶</a></h3>
+<ul>
+<li><strong>手动部署</strong>：上传 public 文件夹到服务器，修改 Nginx 配置文件</li>
+<li><strong>GitHub Actions配置</strong>：创建了完整的 <code>.github/workflows/deploy.yml</code> 部署流程</li>
+<li><strong>依赖安装优化</strong>：在Hugo构建前增加 <code>npm install</code> 步骤，解决PostCSS依赖缺失问题</li>
+<li><strong>部署流程完善</strong>：最终实现了从代码提交到自动部署的完整CI/CD流程</li>
+</ul>
+<h3 id="总结---常见坑处理">总结 - 常见&quot;坑&quot;处理<a hidden class="anchor" aria-hidden="true" href="#总结---常见坑处理">¶</a></h3>
+<ul>
+<li><strong>baseURL 问题</strong>：AI建议在部署命令中指定 <code>--baseURL</code>，避免生产环境链接指向本地地址。</li>
+<li><strong>多语言菜单跳转</strong>：AI帮助我修正菜单配置，确保中英文切换正常。</li>
+<li><strong>404 页面跳转</strong>：AI协助自定义 <code>404.html</code>，并用 Hugo 变量生成正确跳转链接，提升用户体验。</li>
+</ul>
+<h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">¶</a></h3>
+<h4 id="github-action-deployyml">Github action <code>deploy.yml</code><a hidden class="anchor" aria-hidden="true" href="#github-action-deployyml">¶</a></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to Tencent Cloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">public ] </span><span class="w"> </span><span class="c"># 当推送到主分支时触发</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c"># 初始化submodules，包括你的主题</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo v0.135.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;0.135.0&#39;</span><span class="w">  </span><span class="c"># 指定与你本地相同的版本</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Node.js</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/setup-node@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;16&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install dependencies</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">npm install</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Hugo site</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">        hugo --minify --baseURL https://amclock.online/
+</span></span></span><span class="line"><span class="cl"><span class="sd">        </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/ssh-action@v0.1.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PORT }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # 备份当前版本
+</span></span></span><span class="line"><span class="cl"><span class="sd">          if [ -d &#34;/var/www/myconfig/amclock.online.public&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            sudo cp -r /var/www/myconfig/amclock.online.public /var/www/myconfig/amclock.online.public.backup.$(date +%Y%m%d_%H%M%S)
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fi
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # 清理目标目录
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo rm -rf /var/www/myconfig/amclock.online.public/*
+</span></span></span><span class="line"><span class="cl"><span class="sd">          </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload files</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/scp-action@v0.1.4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PORT }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;public/*&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/var/www/myconfig/amclock.online.public&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">strip_components</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set permissions and reload nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/ssh-action@v0.1.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.HOST }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.USERNAME }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.KEY }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.PORT }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo chmod -R 755 /var/www/myconfig/amclock.online.public
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo systemctl reload nginx
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;部署完成！网站已更新到 https://amclock.online&#34; </span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+    <div class="comments-separator"></div>
+</article>
+    </main>
+    
+<footer class="footer">
+  <span>&copy; 2025 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>
+  </div>
+
+  <span style="display: inline-block; margin-left: 1em;">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+  </span>
+  <span style="display: inline-block; margin-left: 1em;">
+    Powered by
+    <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+    <a href="https://github.com/reorx/hugo-PaperModX/" rel="noopener" target="_blank">PaperModX</a>
+  </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+    <path d="M12 6H0l6-6z" />
+  </svg>
+</a>
+
+<script>
+  (function() {
+     
+    const disableThemeToggle = '' == '1';
+    if (disableThemeToggle) {
+      return;
+    }
+
+    let button = document.getElementById("theme-toggle")
+    
+    button.removeEventListener('click', toggleThemeListener)
+    
+    button.addEventListener('click', toggleThemeListener)
+  })();
+</script>
+
+<script>
+  (function () {
+    let menu = document.getElementById('menu')
+    if (menu) {
+      menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+      menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+      }
+    }
+
+    const disableSmoothScroll = '' == '1';
+    const enableInstantClick = '' == '1';
+    
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || disableSmoothScroll || enableInstantClick) {
+      return;
+    }
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        var id = this.getAttribute("href").substr(1);
+        document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+          behavior: "smooth"
+        });
+        if (id === "top") {
+          history.replaceState(null, null, " ");
+        } else {
+          history.pushState(null, null, `#${id}`);
+        }
+      });
+    });
+  })();
+</script>
+<script>
+  var mybutton = document.getElementById("top-link");
+  window.onscroll = function () {
+    if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+      mybutton.style.visibility = "visible";
+      mybutton.style.opacity = "1";
+    } else {
+      mybutton.style.visibility = "hidden";
+      mybutton.style.opacity = "0";
+    }
+  };
+</script>
+<script>
+  if (window.scrollListeners) {
+    
+    for (const listener of scrollListeners) {
+      window.removeEventListener('scroll', listener)
+    }
+  }
+  window.scrollListeners = []
+</script>
+
+
+
+<script src="/js/medium-zoom.min.js" data-no-instant
+></script>
+
+
+
+
+<script>
+  
+  
+  (function() {
+    const enableTocScroll = '' == '1'
+    if (!enableTocScroll) {
+      return
+    }
+    if (!document.querySelector('.toc')) {
+      console.log('no toc found, ignore toc scroll')
+      return
+    }
+    
+
+    
+    const scrollListeners = window.scrollListeners
+    const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]');
+    const activeClass = 'active';
+
+    
+    let activeHeading = headings[0];
+    getLinkByHeading(activeHeading).classList.add(activeClass);
+
+    const onScroll = () => {
+      const passedHeadings = [];
+      for (const h of headings) {
+        
+        if (getOffsetTop(h) < 5) {
+          passedHeadings.push(h)
+        } else {
+          break;
+        }
+      }
+      if (passedHeadings.length > 0) {
+        newActiveHeading = passedHeadings[passedHeadings.length - 1];
+      } else {
+        newActiveHeading = headings[0];
+      }
+      if (activeHeading != newActiveHeading) {
+        getLinkByHeading(activeHeading).classList.remove(activeClass);
+        activeHeading = newActiveHeading;
+        getLinkByHeading(activeHeading).classList.add(activeClass);
+      }
+    }
+
+    let timer = null;
+    const scrollListener = () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(onScroll, 50)
+    }
+    window.addEventListener('scroll', scrollListener, false);
+    scrollListeners.push(scrollListener)
+
+    function getLinkByHeading(heading) {
+      const id = encodeURI(heading.getAttribute('id')).toLowerCase();
+      return document.querySelector(`.toc ul li a[href="#${id}"]`);
+    }
+
+    function getOffsetTop(heading) {
+      if (!heading.getClientRects().length) {
+        return 0;
+      }
+      let rect = heading.getBoundingClientRect();
+      return rect.top
+    }
+  })();
+  </script>
+
+</body>
+
+</html>
