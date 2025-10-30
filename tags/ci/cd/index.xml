@@ -14,8 +14,7 @@
       
       <guid>https://blog.tomatostore.top/posts/2025/06/amclock-landing-page/</guid>
       <description>记录使用AI助手开发AMClock产品落地页的完整过程，包括技术选型、自动化部署和问题排查</description>
-      <content:encoded><![CDATA[<h1 id="利用ai高效搭建hugo-landing-page实录">利用AI高效搭建Hugo Landing Page实录</h1>
-<h2 id="背景">背景</h2>
+      <content:encoded><![CDATA[<h2 id="背景">背景</h2>
 <p>为了推广我的App AMClock，我决定搭建一个产品落地页（Landing Page）。整个开发和部署过程中，AI助手（Cursor）是高效开发、排查问题的得力伙伴。</p>
 <hr>
 <h2 id="技术选型与准备">技术选型与准备</h2>
