@@ -12,12 +12,12 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://blog.tomatostore.top/posts/2025/10/cpp-crtp-intruduction/</loc>
+    <loc>https://blog.tomatostore.top/tags/c&#43;&#43;/</loc>
     <lastmod>2025-10-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://blog.tomatostore.top/tags/cpp/</loc>
+    <loc>https://blog.tomatostore.top/posts/2025/10/cpp-crtp-intruduction/</loc>
     <lastmod>2025-10-30T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -342,6 +342,11 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://blog.tomatostore.top/tags/cpp/</loc>
+    <lastmod>2023-08-21T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/</loc>
     <lastmod>2023-08-21T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -388,11 +393,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://blog.tomatostore.top/tags/2023-06/</loc>
-    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://blog.tomatostore.top/tags/c&#43;&#43;/</loc>
     <lastmod>2023-06-21T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

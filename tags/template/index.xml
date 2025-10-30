@@ -486,5 +486,202 @@
 ]]></content:encoded>
     </item>
     
+    <item>
+      <title>Variadic Template and Fold Expression in C&#43;&#43;</title>
+      <link>https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/</link>
+      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2023/08/cpp-variadic-template-and-fold-expression/</guid>
+      <description>C&#43;&#43; 可变模板和折叠表达式</description>
+      <content:encoded><![CDATA[<p>遇到如下代码，对于 <code>func2</code> 没有看懂。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">DataStruct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DataStruct</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="n">n</span><span class="p">)</span><span class="o">:</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">T</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">func1</span><span class="p">(</span><span class="n">string</span> <span class="n">prefix</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">__FUNCTION__</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;(&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">prefix</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;)&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// mark 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mark 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span>  <span class="c1">// mark 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">func2</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;hi &#34;</span><span class="p">,</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s">&#34;Tom&#34;</span><span class="p">),</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="s">&#34;Mason&#34;</span><span class="p">),</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">999</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;done</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// execute result
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 12, Tom)
+</span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 29, Mason)
+</span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 100, 999)
+</span></span></span><span class="line"><span class="cl"><span class="cm">done
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查询后得知是 <code>C++</code> 的可变模板(<code>variadic template</code>)和折叠表达式(<code>fold expression</code>)。</p>
+<h2 id="可变模板variadic-template">可变模板（Variadic Template）</h2>
+<p>可变模板是 C++11 引入的功能，允许模板接受<em>不定数量的模板参数</em>。这对于需要处理多个参数类型或数量的情况非常有用。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">coutX</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 终止条件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Types</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">coutX</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// cout 1st argument
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">coutX</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span> <span class="c1">// 对可变参数递归调用 coutX
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中非模板重载函数 <code>contX()</code> 是递归调用的终止条件。</p>
+<h2 id="折叠表达式fold-expression">折叠表达式（Fold Expression）</h2>
+<p>折叠表达式是 <code>C++17</code> 为配合 <code>Variadic Template</code> 使用引入的功能，它允许在模板展开过程中进行一元或二元操作。折叠表达式有两种形式：左折叠和右折叠。</p>
+<p>对应的展开关系如下：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Fold Expression</th>
+          <th style="text-align: right">Evaluation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>(E op ...)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN-1 op EN)))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(... op E)</code></td>
+          <td style="text-align: right"><code>(((E1 op E2) op ...) op EN)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(E op ... op I)</code></td>
+          <td style="text-align: right"><code>(E1 op (... op (EN−1 op (EN op I))))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(I op ... op E)</code></td>
+          <td style="text-align: right"><code>((((I op E1) op E2) op ...) op EN)</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>其中</p>
+<ul>
+<li>左折叠形式：<code>(expr op ...)</code>，其中 <code>expr</code> 是一个表达式，<code>op</code> 是二元操作符。</li>
+<li>右折叠形式：<code>(... op expr)</code>，同样，<code>expr</code> 是一个表达式，<code>op</code> 是二元操作符。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// variadic template
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// variadic template
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span> <span class="c1">// fold expression
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，<code>func2</code> 函数的实现使用了右折叠表达式<code>(expr op ...)</code>。其对应关系如下：</p>
+<ul>
+<li><code>expr</code> : <code>func1(p, s.index, s.value)</code></li>
+<li><code>op</code> : <code>, </code></li>
+<li><code>...</code> : <code>...</code></li>
+</ul>
+<p>另一个 <code>(I op ... op E)</code> 折叠表达式的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Values</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">sum</span><span class="p">(</span><span class="n">Values</span> <span class="k">const</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">values</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// same as (0 + 1 + 2 + 3 + 4)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中</p>
+<ul>
+<li><code>I</code> : <code>0</code></li>
+<li><code>op</code> : <code>+</code></li>
+<li><code>...</code> : <code>...</code></li>
+<li><code>op</code> : <code>+</code></li>
+<li><code>E</code> : <code>values</code></li>
+</ul>
+<p>对于前面 <code>contX</code> 的例子，在使用 <code>C++17</code> 的 <code>Fold Expression</code> 后就不需要再手动实现递归和终止条件，可简化如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">coutX</span><span class="p">(</span><span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">...</span> <span class="o">&lt;&lt;</span> <span class="n">args</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded>
+    </item>
+    
   </channel>
 </rss>
