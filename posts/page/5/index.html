@@ -26,7 +26,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55d5f8076e06189cd225788b61b1fe5bb6b11df6918103b10534ac292f7da8cd.css" integrity="sha256-VdX4B24GGJzSJXiLYbH&#43;W7axHfaRgQOxBTSsKS99qM0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f5b4b08753f9c8eea2b6d66457d9a2840e73996dc7abe6816dfb7ff582e7a7db.css" integrity="sha256-9bSwh1P5yO6ittZkV9mihA5zmW3Hq&#43;aBbft/9YLnp9s=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" href="https://blog.tomatostore.top/posts/index.xml">
@@ -35,7 +35,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -69,6 +69,51 @@
   ]
 }
 </script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+<script>
+  (function () {
+    
+    var DESKTOP_APP_LINKS = {
+      "1314360935": "https://apps.apple.com/us/app/dino-voice-calculator-mathtool/id1314360935",
+      "1528477391": "https://apps.apple.com/us/app/amclock-art-minimalist-clock/id1528477391",
+      "1501166219": "https://apps.apple.com/us/app/number-talking-calculator-plus/id1501166219"
+    };
+    var LINK_SELECTOR = ".home-info a[href*='apps.apple.com'], .footer-products-bar a[href*='apps.apple.com']";
+
+    function isMobileDevice() {
+      var ua = navigator.userAgent || "";
+      if (/iPhone|iPod|iPad|Android|Mobile/i.test(ua)) {
+        return true;
+      }
+      
+      return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    }
+
+    function useDesktopAppStoreLinks() {
+      if (isMobileDevice()) {
+        return;
+      }
+      var links = document.querySelectorAll(LINK_SELECTOR);
+      Array.prototype.forEach.call(links, function (link) {
+        var matched = (link.getAttribute("href") || "").match(/id(\d+)/);
+        if (matched && DESKTOP_APP_LINKS[matched[1]]) {
+          link.setAttribute("href", DESKTOP_APP_LINKS[matched[1]]);
+        }
+      });
+    }
+
+    useDesktopAppStoreLinks();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", useDesktopAppStoreLinks);
+    }
+    window.addEventListener("load", function () {
+      useDesktopAppStoreLinks();
+      
+      if (window.InstantClick && window.InstantClick.on) {
+        window.InstantClick.on("change", useDesktopAppStoreLinks);
+      }
+    });
+  })();
+</script>
 
 <noscript>
     <style>
@@ -267,6 +312,22 @@ function toggleThemeListener() {
 </footer>
   <a class="entry-link" aria-label="post link to 如何删除本地 git 中未追踪的文件/文件夹" href="https://blog.tomatostore.top/posts/2023/03/git-rm-untracked-file-dir/"></a>
 </article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>
+    </h2>
+  </header>
+  <section class="entry-content">
+    
+      <p>问题表现 可以通过浏览器正常访问github.com。 命令行中执行 git pull 时出现以下错误：
+1 2 ssh: connect to host github.com port 22: Operation timed out fatal: Could not read from remote repository. 核心解决步骤 第一步：验证 SSH 端口封锁 1 nc -vz github.com 22 预期正常响应：Connected to github.com... 异常响应：Operation timed out 表示端口 22 被阻断: nc: connectx to github.com port 22 (tcp) failed: Operation timed out 第二步：配置 SSH over 443 端口 创建 SSH 配置文件 1 vi ~/.ssh/config 写入配置内容 Host github.com Hostname ssh.github.com Port 443 User git 第三步：测试新配置 1 ssh -T git@github.com 如果有询问是否修改known_hosts, 输入 yes ： 1 2 3 This host key is known by the following other names/addresses: ~/.ssh/known_hosts:28: github.com Are you sure you want to continue connecting (yes/no/[fingerprint])? yes 成功标志：Hi username! You&#39;ve successfully authenticated... 补充方案 使用 HTTPS 协议代替 SSH 1 git config --global url.&#34;https://github.com/&#34;.insteadOf git@github.com: </p>
+    
+  </section>
+  <footer class="entry-footer">
+</footer>
+  <a class="entry-link" aria-label="post link to " href="https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://blog.tomatostore.top/posts/page/4/">« Prev Page</a>
@@ -325,7 +386,7 @@ function toggleThemeListener() {
 </div>
 
 
-  <span>&copy; 2025 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+  <span>&copy; 2026 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
     <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
     <span class="division">|</span>
     <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>

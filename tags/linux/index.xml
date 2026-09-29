@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 25 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>[Linux] Share environment variables with root user</title>
       <link>https://blog.tomatostore.top/posts/2024/07/share-env-when-running-cmd-with-sudo/</link>

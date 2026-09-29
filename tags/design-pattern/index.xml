@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>设计模式：观察者模式、订阅-发布模式、事件监听模式</title>
       <link>https://blog.tomatostore.top/posts/2023/04/design-pattern-observer/</link>
@@ -25,7 +26,8 @@
 </ul>
 <p>最基础的实现需要定义 2 个基类 <code>Subject</code> 和 <code>Observer</code>。</p>
 <blockquote>
-<p><code>C++</code>实现</p></blockquote>
+<p><code>C++</code>实现</p>
+</blockquote>
 <h3 id="观察者">观察者</h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
 <div class="highlight"><div class="chroma">
@@ -39,11 +41,11 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="被观察对象">被观察对象</h3>
@@ -65,7 +67,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -97,7 +99,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -166,7 +168,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">articles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
@@ -177,7 +179,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -273,7 +275,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Event 接口定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">EventType</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ARTICLE_UPDATED</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">VIP_ARTICLE_UPDATED</span>
@@ -286,7 +288,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 具体的 Event 类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -324,12 +326,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void update(string msg) = 0; // abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Subject</code>更新为：</p>
@@ -347,12 +349,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void notify(string msg);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
@@ -439,7 +441,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
@@ -457,7 +459,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -563,7 +565,7 @@ Jerry earned reward : 5
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -575,7 +577,7 @@ Jerry earned reward : 5
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>

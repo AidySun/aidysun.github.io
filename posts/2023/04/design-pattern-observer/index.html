@@ -26,7 +26,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55d5f8076e06189cd225788b61b1fe5bb6b11df6918103b10534ac292f7da8cd.css" integrity="sha256-VdX4B24GGJzSJXiLYbH&#43;W7axHfaRgQOxBTSsKS99qM0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f5b4b08753f9c8eea2b6d66457d9a2840e73996dc7abe6816dfb7ff582e7a7db.css" integrity="sha256-9bSwh1P5yO6ittZkV9mihA5zmW3Hq&#43;aBbft/9YLnp9s=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2023/04/design-pattern-observer/">
@@ -34,7 +34,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -108,6 +108,51 @@
   }
 }
 </script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+<script>
+  (function () {
+    
+    var DESKTOP_APP_LINKS = {
+      "1314360935": "https://apps.apple.com/us/app/dino-voice-calculator-mathtool/id1314360935",
+      "1528477391": "https://apps.apple.com/us/app/amclock-art-minimalist-clock/id1528477391",
+      "1501166219": "https://apps.apple.com/us/app/number-talking-calculator-plus/id1501166219"
+    };
+    var LINK_SELECTOR = ".home-info a[href*='apps.apple.com'], .footer-products-bar a[href*='apps.apple.com']";
+
+    function isMobileDevice() {
+      var ua = navigator.userAgent || "";
+      if (/iPhone|iPod|iPad|Android|Mobile/i.test(ua)) {
+        return true;
+      }
+      
+      return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    }
+
+    function useDesktopAppStoreLinks() {
+      if (isMobileDevice()) {
+        return;
+      }
+      var links = document.querySelectorAll(LINK_SELECTOR);
+      Array.prototype.forEach.call(links, function (link) {
+        var matched = (link.getAttribute("href") || "").match(/id(\d+)/);
+        if (matched && DESKTOP_APP_LINKS[matched[1]]) {
+          link.setAttribute("href", DESKTOP_APP_LINKS[matched[1]]);
+        }
+      });
+    }
+
+    useDesktopAppStoreLinks();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", useDesktopAppStoreLinks);
+    }
+    window.addEventListener("load", function () {
+      useDesktopAppStoreLinks();
+      
+      if (window.InstantClick && window.InstantClick.on) {
+        window.InstantClick.on("change", useDesktopAppStoreLinks);
+      }
+    });
+  })();
+</script>
 
 <noscript>
     <style>
@@ -301,7 +346,8 @@ function toggleThemeListener() {
 </ul>
 <p>最基础的实现需要定义 2 个基类 <code>Subject</code> 和 <code>Observer</code>。</p>
 <blockquote>
-<p><code>C++</code>实现</p></blockquote>
+<p><code>C++</code>实现</p>
+</blockquote>
 <h3 id="观察者">观察者<a hidden class="anchor" aria-hidden="true" href="#观察者">¶</a></h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
 <div class="highlight"><div class="chroma">
@@ -315,11 +361,11 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="被观察对象">被观察对象<a hidden class="anchor" aria-hidden="true" href="#被观察对象">¶</a></h3>
@@ -341,7 +387,7 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -373,7 +419,7 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -442,7 +488,7 @@ function toggleThemeListener() {
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">articles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
@@ -453,7 +499,7 @@ function toggleThemeListener() {
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -549,7 +595,7 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Event 接口定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">EventType</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ARTICLE_UPDATED</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">VIP_ARTICLE_UPDATED</span>
@@ -562,7 +608,7 @@ function toggleThemeListener() {
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 具体的 Event 类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -600,12 +646,12 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void update(string msg) = 0; // abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Subject</code>更新为：</p>
@@ -623,12 +669,12 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void notify(string msg);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
@@ -715,7 +761,7 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
@@ -733,7 +779,7 @@ function toggleThemeListener() {
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -839,7 +885,7 @@ Jerry earned reward : 5
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -851,7 +897,7 @@ Jerry earned reward : 5
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -981,7 +1027,7 @@ Jerry earned reward : 5
 </div>
 
 
-  <span>&copy; 2025 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+  <span>&copy; 2026 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
     <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
     <span class="division">|</span>
     <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>

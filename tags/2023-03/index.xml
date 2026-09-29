@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 30 Mar 2023 21:17:22 +0800</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-03/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>Markdown 路径中有空格的链接(link)</title>
       <link>https://blog.tomatostore.top/posts/2023/03/markdown-link-to-url-with-space/</link>
@@ -137,13 +138,16 @@
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
 根据<a href="https://isocpp.org/wiki/faq/ctors#using-this-in-ctors">Should you use the this pointer in the constructor?</a>的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。</p>
 <blockquote>
-<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p></blockquote>
+<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p>
+</blockquote>
 <p>但要<strong>注意</strong>在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。</p>
 <blockquote>
-<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p></blockquote>
+<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p>
+</blockquote>
 <p>这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。</p>
 <blockquote>
-<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p></blockquote>
+<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p>
+</blockquote>
 <p>可以用如下的例子类验证一下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -211,7 +215,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>

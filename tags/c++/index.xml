@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 30 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>C&#43;&#43;：CRTP（奇异递归模板模式）实用入门</title>
       <link>https://blog.tomatostore.top/posts/2025/10/cpp-crtp-intruduction/</link>
@@ -48,11 +49,11 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Derived</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 基类定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;</span> <span class="p">{</span>  <span class="c1">// 关键：派生类将自己作为模板参数传递给基类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 派生类定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 派生类定义
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="crtp-主要应用场景">CRTP 主要应用场景</h2>
@@ -105,7 +106,7 @@
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">speakImpl</span><span class="p">();</span>  <span class="c1">// 编译时绑定
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">runImpl</span><span class="p">();</span>
@@ -135,10 +136,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">makeAnimalSpeak</span><span class="p">(</span><span class="n">Animal</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">animal</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">animal</span><span class="p">.</span><span class="n">speak</span><span class="p">();</span>  <span class="c1">// 编译时确定调用哪个实现
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2-对象计数">2. 对象计数</h3>
@@ -183,17 +184,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 静态成员初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 自动获得计数功能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AnotherClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">AnotherClass</span><span class="o">&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 独立的计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3-链式调用">3. 链式调用</h3>
@@ -240,9 +241,9 @@
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">Derived</span><span class="o">&amp;</span> <span class="n">setX</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 具体实现由派生类提供
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">self</span><span class="p">().</span><span class="n">setXImpl</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">        <span class="n">self</span><span class="p">().</span><span class="n">setXImpl</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nf">self</span><span class="p">();</span>  <span class="c1">// 返回派生类引用，支持链式调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">Derived</span><span class="o">&amp;</span> <span class="n">setY</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">self</span><span class="p">().</span><span class="n">setYImpl</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
@@ -263,7 +264,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用：链式调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">setY</span><span class="p">(</span><span class="mi">20</span><span class="p">).</span><span class="n">print</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -544,9 +545,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// mark 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mark 2
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span>  <span class="c1">// mark 3
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mark 2
+</span></span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span>  <span class="c1">// mark 3
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -556,7 +557,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// execute result
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 12, Tom)
 </span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 29, Mason)
 </span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 100, 999)
@@ -579,12 +580,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">coutX</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 终止条件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Types</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">coutX</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// cout 1st argument
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">coutX</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span> <span class="c1">// 对可变参数递归调用 coutX
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">coutX</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span> <span class="c1">// 对可变参数递归调用 coutX
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中非模板重载函数 <code>contX()</code> 是递归调用的终止条件。</p>
@@ -631,9 +632,9 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// variadic template
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// variadic template
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span> <span class="c1">// fold expression
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// variadic template
+</span></span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span> <span class="c1">// fold expression
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的例子中，<code>func2</code> 函数的实现使用了右折叠表达式<code>(expr op ...)</code>。其对应关系如下：</p>
@@ -716,21 +717,21 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// template&lt;class&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass1</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// template&lt;typename&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyContainer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// internal usage
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// nested type
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -802,7 +803,7 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;set&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">A</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">;</span>
@@ -870,7 +871,7 @@
 </span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">setVal</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="n">val</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">// solution 1: operator &lt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">getVal</span><span class="p">();</span> <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">getVal</span><span class="p">();</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
@@ -919,7 +920,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// solution 2: delcare comparator
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">comparator</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">comparator</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
@@ -1012,7 +1013,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">Season</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Summer</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">isEqual</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">);</span> <span class="c1">// isEqual is true
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="problem">Problem</h3>
@@ -1101,20 +1102,20 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumOnly</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Week</span> <span class="p">{</span> <span class="n">Mon</span><span class="p">,</span> <span class="n">Tue</span><span class="p">,</span> <span class="n">Wed</span><span class="p">,</span> <span class="n">Thu</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Season</span> <span class="p">{</span> <span class="n">Sprint</span><span class="p">,</span> <span class="n">Summer</span><span class="p">,</span> <span class="n">Fall</span><span class="p">,</span> <span class="n">Winter</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumOnly
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumClass</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Month</span> <span class="p">{</span> <span class="n">Jan</span><span class="p">,</span> <span class="n">Feb</span><span class="p">,</span> <span class="n">Mar</span><span class="p">,</span> <span class="n">Apr</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Num</span> <span class="p">{</span> <span class="n">One</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Two</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumClass
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumOnly::Week::Mon = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span><span class="o">::</span><span class="n">Mon</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumClass::Month::Jan = &#34;</span> <span class="o">&lt;&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">::</span><span class="n">Jan</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -1136,7 +1137,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w == s, ohh!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// unmeaningful
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w != s&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  
@@ -1222,13 +1223,16 @@
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
 根据<a href="https://isocpp.org/wiki/faq/ctors#using-this-in-ctors">Should you use the this pointer in the constructor?</a>的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。</p>
 <blockquote>
-<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p></blockquote>
+<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p>
+</blockquote>
 <p>但要<strong>注意</strong>在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。</p>
 <blockquote>
-<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p></blockquote>
+<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p>
+</blockquote>
 <p>这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。</p>
 <blockquote>
-<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p></blockquote>
+<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p>
+</blockquote>
 <p>可以用如下的例子类验证一下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1296,7 +1300,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>

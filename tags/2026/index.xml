@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>2026 on 番茄🍅杂货铺</title>
+    <link>https://blog.tomatostore.top/tags/2026/</link>
+    <description>Recent content in 2026 on 番茄🍅杂货铺</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 29 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2026/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>芝兰生于深谷 不以无人而不芳</title>
+      <link>https://blog.tomatostore.top/posts/2026/09/in-remembrance-of-chenhao/</link>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2026/09/in-remembrance-of-chenhao/</guid>
+      <description>追忆陈皓（左耳朵耗子）与酷壳 CoolShell 对我的技术启蒙</description>
+      <content:encoded><![CDATA[<p>终于难得地静下心来，坐在自己的电脑前，认真地想一想自己的个人项目，曾经做过什么，接下来又可以改进哪里。打开本地仓库，<code>git status</code> 显示已经落后了很久。打开近乎荒废的博客站点，上次更新已经是将近一年前的事了。只一年么？恍惚中竟有十年之感。</p>
+<p>这一年，处理纯技术问题的机会越来越少，一来是因为 AI，二来是角色的被动转换。于是不禁怀念起来，一下就追忆到了上古时代——那时获取信息，除了搜索，也就只有主动订阅了。夏虫不可语冰，搜索能拓展的，往往仍是你已经了解的概念或名词；许多与程序员相关的未知领域，则是从阮一峰、云风、陈皓等技术人的博客中获得的。</p>
+<p>说起左耳朵耗子，记得他病逝时，我还和当时的技术伙伴唏嘘了一阵。查了一下，那已经是 2023 年的事了。打开 <a href="https://coolshell.org/">酷 壳 – CoolShell</a>，看到最新的更新停在了 2023 年 5 月，评论区里是众多网友的悼念。站点应该已鲜有人维护，标签跳转、搜索等功能都已失效。</p>
+<p>说起来，我至今在所有 <code>IDE</code> 中都坚持使用 <code>Vim</code> 模式，这个习惯正是源于左耳朵耗子当年的一篇文章《<a href="https://coolshell.org/articles/5426.html/">简明 Vim 练级攻略</a>》。记忆的碎片里，似乎还能搜寻出一点点当时对着文章练习的画面。还有 <code>Shell</code>、<code>Sed</code>、<code>AWK</code> 等相关技术博客，都曾被我反复翻阅参考，只是 <code>Linux</code> 相关的内容后来疏于使用，早已荒废了。</p>
+<p><img loading="lazy" src="/images/coolshell-vim.png" alt="CoolShell Vim Introduction"  /></p>
+<p>陈皓老师给我的印象，从技术上说，是一位能把底层概念、架构研究透彻，又能讲得清晰易懂的牛人；从程序员的身份看，则是一位踏实、珍视技术、足以视为榜样的高手。他身上自带传统文人那份含蓄沉厚的气度，心里始终恪守着有所不为的风骨。</p>
+<p>2023 年 5 月，当时最新的模型是 <code>GPT-4</code>，国内各大厂的大模型基本还处于内测状态，<code>Agent</code> 也尚未流行。而如今，一线大模型厂商已经开始担忧 <code>AI</code> 对人类终极命运的影响。真的很想知道，从程序员的视角，<strong>左耳朵耗子</strong>会如何看待如今的局面呢？</p>
+<p>斯人已逝，代码长存。陈皓老师自我介绍中的座右铭，或许是个合适的结尾：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">芝兰生于深谷，不以无人而不芳
+</span></span><span class="line"><span class="cl">君子修身养德，不以穷困而改志
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="/images/coolshell-self-intro.png" alt="CoolShell"  /></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

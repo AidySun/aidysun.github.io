@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-06/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>C&#43;&#43; template&lt;class&gt; v.s. template&lt;typename&gt;</title>
       <link>https://blog.tomatostore.top/posts/2023/06/cpp-template-parameter-class-vs-typename/</link>
@@ -40,21 +41,21 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// template&lt;class&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass1</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// template&lt;typename&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyContainer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// internal usage
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// nested type
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>

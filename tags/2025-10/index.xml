@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 30 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2025-10/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>C&#43;&#43;：CRTP（奇异递归模板模式）实用入门</title>
       <link>https://blog.tomatostore.top/posts/2025/10/cpp-crtp-intruduction/</link>
@@ -48,11 +49,11 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Derived</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 基类定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;</span> <span class="p">{</span>  <span class="c1">// 关键：派生类将自己作为模板参数传递给基类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 派生类定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 派生类定义
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="crtp-主要应用场景">CRTP 主要应用场景</h2>
@@ -105,7 +106,7 @@
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">speakImpl</span><span class="p">();</span>  <span class="c1">// 编译时绑定
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">runImpl</span><span class="p">();</span>
@@ -135,10 +136,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">makeAnimalSpeak</span><span class="p">(</span><span class="n">Animal</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">animal</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">animal</span><span class="p">.</span><span class="n">speak</span><span class="p">();</span>  <span class="c1">// 编译时确定调用哪个实现
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2-对象计数">2. 对象计数</h3>
@@ -183,17 +184,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 静态成员初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 自动获得计数功能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AnotherClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">AnotherClass</span><span class="o">&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 独立的计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3-链式调用">3. 链式调用</h3>
@@ -240,9 +241,9 @@
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">Derived</span><span class="o">&amp;</span> <span class="n">setX</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 具体实现由派生类提供
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">self</span><span class="p">().</span><span class="n">setXImpl</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">        <span class="n">self</span><span class="p">().</span><span class="n">setXImpl</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nf">self</span><span class="p">();</span>  <span class="c1">// 返回派生类引用，支持链式调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">Derived</span><span class="o">&amp;</span> <span class="n">setY</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">self</span><span class="p">().</span><span class="n">setYImpl</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
@@ -263,7 +264,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用：链式调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">setY</span><span class="p">(</span><span class="mi">20</span><span class="p">).</span><span class="n">print</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>

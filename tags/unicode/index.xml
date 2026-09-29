@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/unicode/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>关于ASCII、DBCS、Unicode、UCS-16、UTF-8和Encoding</title>
       <link>https://blog.tomatostore.top/posts/2023/04/unicode-and-character-sets/</link>
@@ -52,7 +53,8 @@
 </ul>
 <p>最终得到字符<code>₤</code>的<code>UTF-8</code>表示为<code>1110-0010 1000-0010 1010-0100</code>。</p>
 <blockquote>
-<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p></blockquote>
+<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p>
+</blockquote>
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
@@ -80,7 +82,8 @@
   </tbody>
 </table>
 <blockquote>
-<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p></blockquote>
+<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
+</blockquote>
 <h2 id="encodings编码">Encodings（编码）</h2>
 <p><img loading="lazy" src="/images/character-encoding.jpeg" alt="encoding"  /></p>
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>

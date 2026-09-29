@@ -6,7 +6,37 @@
     <description>Recent content on 番茄🍅杂货铺</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>芝兰生于深谷 不以无人而不芳</title>
+      <link>https://blog.tomatostore.top/posts/2026/09/in-remembrance-of-chenhao/</link>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2026/09/in-remembrance-of-chenhao/</guid>
+      <description>追忆陈皓（左耳朵耗子）与酷壳 CoolShell 对我的技术启蒙</description>
+      <content:encoded><![CDATA[<p>终于难得地静下心来，坐在自己的电脑前，认真地想一想自己的个人项目，曾经做过什么，接下来又可以改进哪里。打开本地仓库，<code>git status</code> 显示已经落后了很久。打开近乎荒废的博客站点，上次更新已经是将近一年前的事了。只一年么？恍惚中竟有十年之感。</p>
+<p>这一年，处理纯技术问题的机会越来越少，一来是因为 AI，二来是角色的被动转换。于是不禁怀念起来，一下就追忆到了上古时代——那时获取信息，除了搜索，也就只有主动订阅了。夏虫不可语冰，搜索能拓展的，往往仍是你已经了解的概念或名词；许多与程序员相关的未知领域，则是从阮一峰、云风、陈皓等技术人的博客中获得的。</p>
+<p>说起左耳朵耗子，记得他病逝时，我还和当时的技术伙伴唏嘘了一阵。查了一下，那已经是 2023 年的事了。打开 <a href="https://coolshell.org/">酷 壳 – CoolShell</a>，看到最新的更新停在了 2023 年 5 月，评论区里是众多网友的悼念。站点应该已鲜有人维护，标签跳转、搜索等功能都已失效。</p>
+<p>说起来，我至今在所有 <code>IDE</code> 中都坚持使用 <code>Vim</code> 模式，这个习惯正是源于左耳朵耗子当年的一篇文章《<a href="https://coolshell.org/articles/5426.html/">简明 Vim 练级攻略</a>》。记忆的碎片里，似乎还能搜寻出一点点当时对着文章练习的画面。还有 <code>Shell</code>、<code>Sed</code>、<code>AWK</code> 等相关技术博客，都曾被我反复翻阅参考，只是 <code>Linux</code> 相关的内容后来疏于使用，早已荒废了。</p>
+<p><img loading="lazy" src="/images/coolshell-vim.png" alt="CoolShell Vim Introduction"  /></p>
+<p>陈皓老师给我的印象，从技术上说，是一位能把底层概念、架构研究透彻，又能讲得清晰易懂的牛人；从程序员的身份看，则是一位踏实、珍视技术、足以视为榜样的高手。他身上自带传统文人那份含蓄沉厚的气度，心里始终恪守着有所不为的风骨。</p>
+<p>2023 年 5 月，当时最新的模型是 <code>GPT-4</code>，国内各大厂的大模型基本还处于内测状态，<code>Agent</code> 也尚未流行。而如今，一线大模型厂商已经开始担忧 <code>AI</code> 对人类终极命运的影响。真的很想知道，从程序员的视角，<strong>左耳朵耗子</strong>会如何看待如今的局面呢？</p>
+<p>斯人已逝，代码长存。陈皓老师自我介绍中的座右铭，或许是个合适的结尾：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">芝兰生于深谷，不以无人而不芳
+</span></span><span class="line"><span class="cl">君子修身养德，不以穷困而改志
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="/images/coolshell-self-intro.png" alt="CoolShell"  /></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>C&#43;&#43;：CRTP（奇异递归模板模式）实用入门</title>
       <link>https://blog.tomatostore.top/posts/2025/10/cpp-crtp-intruduction/</link>
@@ -48,11 +78,11 @@
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Derived</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 基类定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;</span> <span class="p">{</span>  <span class="c1">// 关键：派生类将自己作为模板参数传递给基类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 派生类定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// 派生类定义
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="crtp-主要应用场景">CRTP 主要应用场景</h2>
@@ -105,7 +135,7 @@
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">speakImpl</span><span class="p">();</span>  <span class="c1">// 编译时绑定
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">runImpl</span><span class="p">();</span>
@@ -135,10 +165,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">makeAnimalSpeak</span><span class="p">(</span><span class="n">Animal</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">animal</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">animal</span><span class="p">.</span><span class="n">speak</span><span class="p">();</span>  <span class="c1">// 编译时确定调用哪个实现
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2-对象计数">2. 对象计数</h3>
@@ -183,17 +213,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 静态成员初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 自动获得计数功能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AnotherClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Counter</span><span class="o">&lt;</span><span class="n">AnotherClass</span><span class="o">&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 独立的计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3-链式调用">3. 链式调用</h3>
@@ -240,9 +270,9 @@
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">Derived</span><span class="o">&amp;</span> <span class="n">setX</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 具体实现由派生类提供
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">self</span><span class="p">().</span><span class="n">setXImpl</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">        <span class="n">self</span><span class="p">().</span><span class="n">setXImpl</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nf">self</span><span class="p">();</span>  <span class="c1">// 返回派生类引用，支持链式调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">Derived</span><span class="o">&amp;</span> <span class="n">setY</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">self</span><span class="p">().</span><span class="n">setYImpl</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
@@ -263,7 +293,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 使用：链式调用
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">setY</span><span class="p">(</span><span class="mi">20</span><span class="p">).</span><span class="n">print</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -623,11 +653,11 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to Tencent Cloud</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">on</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">public ] </span><span class="w"> </span><span class="c"># 当推送到主分支时触发</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    
@@ -700,100 +730,6 @@
     </item>
     
     <item>
-      <title>Mac 上浏览器可访问github，但命令行 SSH 连接超时</title>
-      <link>https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/</link>
-      <pubDate>Wed, 30 Apr 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/</guid>
-      <description>using SSH over 443 port to access Github</description>
-      <content:encoded><![CDATA[<h2 id="问题表现">问题表现</h2>
-<p>可以通过浏览器正常访问<code>github.com</code>。
-命令行中执行 <code>git pull</code> 时出现以下错误：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh: connect to host github.com port 22: Operation timed out
-</span></span><span class="line"><span class="cl">fatal: Could not <span class="nb">read</span> from remote repository.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<h2 id="核心解决步骤">核心解决步骤</h2>
-<h3 id="第一步验证-ssh-端口封锁">第一步：验证 SSH 端口封锁</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nc -vz github.com <span class="m">22</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>预期正常响应：<code>Connected to github.com...</code></li>
-<li>异常响应：<code>Operation timed out</code> 表示端口 22 被阻断: <code>nc: connectx to github.com port 22 (tcp) failed: Operation timed out</code></li>
-</ul>
-<h3 id="第二步配置-ssh-over-443-端口">第二步：配置 SSH over 443 端口</h3>
-<ol>
-<li>创建 SSH 配置文件</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi ~/.ssh/config
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li>写入配置内容</li>
-</ol>
-<pre tabindex="0"><code class="language-config" data-lang="config">Host github.com
-  Hostname ssh.github.com
-  Port 443
-  User git
-</code></pre><h3 id="第三步测试新配置">第三步：测试新配置</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -T git@github.com
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>如果有询问是否修改<code>known_hosts</code>, 输入 <code>yes</code> ：
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">This host key is known by the following other names/addresses:
-</span></span><span class="line"><span class="cl">  ~/.ssh/known_hosts:28: github.com
-</span></span><span class="line"><span class="cl">Are you sure you want to <span class="k">continue</span> connecting <span class="o">(</span>yes/no/<span class="o">[</span>fingerprint<span class="o">])</span>? yes
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>成功标志：<code>Hi username! You've successfully authenticated...</code></li>
-</ul>
-<hr>
-<h2 id="补充方案">补充方案</h2>
-<h3 id="使用-https-协议代替-ssh">使用 HTTPS 协议代替 SSH</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global url.<span class="s2">&#34;https://github.com/&#34;</span>.insteadOf git@github.com:
-</span></span></code></pre></td></tr></table>
-</div>
-</div>]]></content:encoded>
-    </item>
-    
-    <item>
       <title>修复 RevenueCat 国内访问，App Store Connect 审核加速</title>
       <link>https://blog.tomatostore.top/posts/2024/12/revenuecat-connection-fix-with-proxy/</link>
       <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
@@ -802,35 +738,42 @@
       <description>Fix connection to RevenueCat from China and expedite App Store Connect review</description>
       <content:encoded><![CDATA[<p>2024年12月突发，国内无法访问 RevenueCat 导致很多 App 无法进行正常 IAP。</p>
 <blockquote>
-<p>In December 2024, RevenueCat became inaccessible in China, affecting IAP functionality in many apps.</p></blockquote>
+<p>In December 2024, RevenueCat became inaccessible in China, affecting IAP functionality in many apps.</p>
+</blockquote>
 <p>官方给出了紧急修复方案：https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</p>
 <blockquote>
-<p>Official emergency fix: <a href="https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china">https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</a></p></blockquote>
+<p>Official emergency fix: <a href="https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china">https://www.revenuecat.com/docs/getting-started/configuring-sdk#configuration-for-users-in-mainland-china</a></p>
+</blockquote>
 <p><img loading="lazy" src="/images/revenuecat-proxy.png" alt="Configuration for users in Mainland China"  /></p>
 <p>你说巧不巧，就在一周前，我的一个 iOS app 刚通过审核发布成功，就正好使用了 RevenueCat。🤣
 没办法，现改实现方案移除 RC 肯定不是一时半会能搞定的，再说这个状态还不确定是不是常态。所以紧急按照官方方案提交了修改。（虽然实际上我的 app 也没啥用户，也没有收到任何消息抱怨说无法购买）。</p>
 <blockquote>
-<p>Coincidentally, my iOS app using RevenueCat was just approved a week ago. 🤣 Instead of removing RC, I quickly applied the official fix, though my app has few users and no complaints yet.</p></blockquote>
+<p>Coincidentally, my iOS app using RevenueCat was just approved a week ago. 🤣 Instead of removing RC, I quickly applied the official fix, though my app has few users and no complaints yet.</p>
+</blockquote>
 <p>修改后测试效果是可以去到产品信息了（我没有 RC 的 paywall，只是定义了产品），然后按照之前学习过的 App Store Connect 加急审核的步骤走了一遍，没想到的是，加急申请之后，仅仅3分钟就审核通过了🫨。这里给水果审核点个赞，然后再分享加速审核流程。</p>
 <blockquote>
-<p>After the fix, product info was accessible again. I requested an expedited review, and surprisingly, it was approved in just 3 minutes! 🫨 Here&rsquo;s how to request expedited review:</p></blockquote>
+<p>After the fix, product info was accessible again. I requested an expedited review, and surprisingly, it was approved in just 3 minutes! 🫨 Here&rsquo;s how to request expedited review:</p>
+</blockquote>
 <ol>
 <li>登录 <a href="https://developer.apple.com/">https://developer.apple.com/</a> 后，找到页面下方的 Contact Us。</li>
 </ol>
 <blockquote>
-<p>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a> and find &ldquo;Contact Us&rdquo; at the bottom.</p></blockquote>
+<p>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a> and find &ldquo;Contact Us&rdquo; at the bottom.</p>
+</blockquote>
 <p><img loading="lazy" src="/images/apple-contact-us.png" alt="contact us"  /></p>
 <ol start="2">
 <li>选择 <strong>App 审核</strong> -&gt; <strong>App 审核加快请求</strong></li>
 </ol>
 <blockquote>
-<p>Choose <strong>App Review</strong> -&gt; <strong>Request Expedited Review</strong></p></blockquote>
+<p>Choose <strong>App Review</strong> -&gt; <strong>Request Expedited Review</strong></p>
+</blockquote>
 <p><img loading="lazy" src="/images/apple-app-review.png" alt="App review"  /></p>
 <ol start="3">
 <li>点击 <strong>联系 App Review</strong>，在 <strong>App Information</strong>中选择对应的 App 即可。</li>
 </ol>
 <blockquote>
-<p>Click <strong>Contact App Review</strong> and select your app.</p></blockquote>
+<p>Click <strong>Contact App Review</strong> and select your app.</p>
+</blockquote>
 <p><img loading="lazy" src="/images/apple-app-info.png" alt="app info"  /></p>
 ]]></content:encoded>
     </item>
@@ -1117,10 +1060,10 @@ SUMMARY: AddressSanitizer: 40 byte(s) leaked in 1 allocation(s).
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">docker build . <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --build-arg <span class="s2">&#34;HTTP_PROXY=http://proxy.example.com:8080/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --build-arg <span class="s2">&#34;HTTPS_PROXY=http://proxy.example.com:8080/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --build-arg <span class="s2">&#34;NO_PROXY=localhost,127.0.0.1,.example.com&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -t your/image:tag
+</span></span></span><span class="line"><span class="cl">    --build-arg <span class="s2">&#34;HTTP_PROXY=http://proxy.example.com:8080/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --build-arg <span class="s2">&#34;HTTPS_PROXY=http://proxy.example.com:8080/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --build-arg <span class="s2">&#34;NO_PROXY=localhost,127.0.0.1,.example.com&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    -t your/image:tag
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="applying-changes">Applying Changes</h3>
@@ -1344,9 +1287,9 @@ Acquire::https::proxy &#34;http://proxy.mydom.it:8080&#34;;
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// mark 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mark 2
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span>  <span class="c1">// mark 3
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mark 2
+</span></span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span>  <span class="c1">// mark 3
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1356,7 +1299,7 @@ Acquire::https::proxy &#34;http://proxy.mydom.it:8080&#34;;
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// execute result
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 12, Tom)
 </span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 29, Mason)
 </span></span></span><span class="line"><span class="cl"><span class="cm">func1(hi , 100, 999)
@@ -1379,12 +1322,12 @@ Acquire::https::proxy &#34;http://proxy.mydom.it:8080&#34;;
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">coutX</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 终止条件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Types</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">coutX</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// cout 1st argument
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">coutX</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span> <span class="c1">// 对可变参数递归调用 coutX
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">coutX</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span> <span class="c1">// 对可变参数递归调用 coutX
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中非模板重载函数 <code>contX()</code> 是递归调用的终止条件。</p>
@@ -1431,9 +1374,9 @@ Acquire::https::proxy &#34;http://proxy.mydom.it:8080&#34;;
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">T</span><span class="o">&gt;</span> <span class="c1">// variadic template
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// variadic template
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span> <span class="c1">// fold expression
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">func2</span><span class="p">(</span><span class="n">string</span> <span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">DataStruct</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;&amp;</span><span class="p">...</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// variadic template
+</span></span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">value</span><span class="p">),</span> <span class="p">...);</span> <span class="c1">// fold expression
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的例子中，<code>func2</code> 函数的实现使用了右折叠表达式<code>(expr op ...)</code>。其对应关系如下：</p>
@@ -1909,21 +1852,21 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// template&lt;class&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyClass1</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// template&lt;typename&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyContainer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// internal usage
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// nested type
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">typename</span> <span class="n">MyContainer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value_type</span> <span class="n">getValue</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -2251,7 +2194,7 @@ java -jar plantuml.jar -testdot
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;set&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">A</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">;</span>
@@ -2319,7 +2262,7 @@ java -jar plantuml.jar -testdot
 </span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">setVal</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="n">val</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">// solution 1: operator &lt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">getVal</span><span class="p">();</span> <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">rhs</span><span class="p">.</span><span class="n">getVal</span><span class="p">();</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
@@ -2368,7 +2311,7 @@ java -jar plantuml.jar -testdot
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// solution 2: delcare comparator
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">comparator</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">comparator</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
@@ -2502,7 +2445,7 @@ java -jar plantuml.jar -testdot
 </span></span><span class="line"><span class="cl"><span class="n">Season</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Summer</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">isEqual</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">);</span> <span class="c1">// isEqual is true
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="problem">Problem</h3>
@@ -2591,20 +2534,20 @@ java -jar plantuml.jar -testdot
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumOnly</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Week</span> <span class="p">{</span> <span class="n">Mon</span><span class="p">,</span> <span class="n">Tue</span><span class="p">,</span> <span class="n">Wed</span><span class="p">,</span> <span class="n">Thu</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Season</span> <span class="p">{</span> <span class="n">Sprint</span><span class="p">,</span> <span class="n">Summer</span><span class="p">,</span> <span class="n">Fall</span><span class="p">,</span> <span class="n">Winter</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumOnly
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumClass</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Month</span> <span class="p">{</span> <span class="n">Jan</span><span class="p">,</span> <span class="n">Feb</span><span class="p">,</span> <span class="n">Mar</span><span class="p">,</span> <span class="n">Apr</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Num</span> <span class="p">{</span> <span class="n">One</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Two</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumClass
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumOnly::Week::Mon = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span><span class="o">::</span><span class="n">Mon</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumClass::Month::Jan = &#34;</span> <span class="o">&lt;&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">::</span><span class="n">Jan</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -2626,7 +2569,7 @@ java -jar plantuml.jar -testdot
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w == s, ohh!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// unmeaningful
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w != s&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  
@@ -3161,10 +3104,12 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <h2 id="struct-substring">struct Substring</h2>
 <p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
 <blockquote>
-<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p></blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
+</blockquote>
 <hr>
 <blockquote>
-<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p></blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
+</blockquote>
 ]]></content:encoded>
     </item>
     
@@ -3213,7 +3158,8 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最终得到字符<code>₤</code>的<code>UTF-8</code>表示为<code>1110-0010 1000-0010 1010-0100</code>。</p>
 <blockquote>
-<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p></blockquote>
+<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p>
+</blockquote>
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
@@ -3241,7 +3187,8 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
   </tbody>
 </table>
 <blockquote>
-<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p></blockquote>
+<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
+</blockquote>
 <h2 id="encodings编码">Encodings（编码）</h2>
 <p><img loading="lazy" src="/images/character-encoding.jpeg" alt="encoding"  /></p>
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
@@ -3291,7 +3238,8 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最基础的实现需要定义 2 个基类 <code>Subject</code> 和 <code>Observer</code>。</p>
 <blockquote>
-<p><code>C++</code>实现</p></blockquote>
+<p><code>C++</code>实现</p>
+</blockquote>
 <h3 id="观察者">观察者</h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
 <div class="highlight"><div class="chroma">
@@ -3305,11 +3253,11 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="被观察对象">被观察对象</h3>
@@ -3331,7 +3279,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -3363,7 +3311,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -3432,7 +3380,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">articles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
@@ -3443,7 +3391,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -3539,7 +3487,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Event 接口定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">EventType</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ARTICLE_UPDATED</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">VIP_ARTICLE_UPDATED</span>
@@ -3552,7 +3500,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 具体的 Event 类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -3590,12 +3538,12 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void update(string msg) = 0; // abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Subject</code>更新为：</p>
@@ -3613,12 +3561,12 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void notify(string msg);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
@@ -3705,7 +3653,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
@@ -3723,7 +3671,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -3829,7 +3777,7 @@ Jerry earned reward : 5
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -3841,7 +3789,7 @@ Jerry earned reward : 5
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -4110,13 +4058,16 @@ Jerry earned reward : 5
 <p>有人认为在构造函数中，对象的构造还没有完成，不能使用 this 指针。
 根据<a href="https://isocpp.org/wiki/faq/ctors#using-this-in-ctors">Should you use the this pointer in the constructor?</a>的描述，在构造函数的函数体中使用this指针可以放心的访问父类和自己类中定义的数据成员（data members）。因为那些数据成员在构造函数开始执行时已经构造完成了。</p>
 <blockquote>
-<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p></blockquote>
+<p>Here is something that always works: the {body} of a constructor (or a function called from the constructor) can reliably access the data members declared in a base class and/or the data members declared in the constructor’s own class. This is because all those data members are guaranteed to have been fully constructed by the time the constructor’s {body} starts executing.</p>
+</blockquote>
 <p>但要<strong>注意</strong>在有继承的情况下，即使是正在构造一个子类实例，在父类的构造阶段，当前的实例还不是子类型。</p>
 <blockquote>
-<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p></blockquote>
+<p>The bottom line is this: even if the caller is constructing an object of a derived class, during the constructor of the base class, your object is not yet of that derived class. You have been warned.</p>
+</blockquote>
 <p>这也就导致了在父类的构造函数中，this指针是无法触发多态，也就是无法调用到正确的虚函数（virtual functions）。</p>
 <blockquote>
-<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p></blockquote>
+<p>Here is something that never works: the {body} of a constructor (or a function called from the constructor) cannot get down to a derived class by calling a virtual member function that is overridden in the derived class. If your goal was to get to the overridden function in the derived class, you won’t get what you want. Note that you won’t get to the override in the derived class independent of how you call the virtual member function: explicitly using the this pointer (e.g., this-&gt;method()), implicitly using the this pointer (e.g., method()), or even calling some other function that calls the virtual member function on your this object.</p>
+</blockquote>
 <p>可以用如下的例子类验证一下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4184,7 +4135,7 @@ Jerry earned reward : 5
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
@@ -4341,6 +4292,184 @@ Jerry earned reward : 5
   </tbody>
 </table>
 ]]></content:encoded>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/</guid>
+      <description>&lt;h2 id=&#34;问题表现&#34;&gt;问题表现&lt;/h2&gt;
+&lt;p&gt;可以通过浏览器正常访问&lt;code&gt;github.com&lt;/code&gt;。
+命令行中执行 &lt;code&gt;git pull&lt;/code&gt; 时出现以下错误：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh: connect to host github.com port 22: Operation timed out
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fatal: Could not &lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; from remote repository.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;核心解决步骤&#34;&gt;核心解决步骤&lt;/h2&gt;
+&lt;h3 id=&#34;第一步验证-ssh-端口封锁&#34;&gt;第一步：验证 SSH 端口封锁&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nc -vz github.com &lt;span class=&#34;m&#34;&gt;22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;预期正常响应：&lt;code&gt;Connected to github.com...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;异常响应：&lt;code&gt;Operation timed out&lt;/code&gt; 表示端口 22 被阻断: &lt;code&gt;nc: connectx to github.com port 22 (tcp) failed: Operation timed out&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;第二步配置-ssh-over-443-端口&#34;&gt;第二步：配置 SSH over 443 端口&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 SSH 配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi ~/.ssh/config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;写入配置内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-config&#34; data-lang=&#34;config&#34;&gt;Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;第三步测试新配置&#34;&gt;第三步：测试新配置&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh -T git@github.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;如果有询问是否修改&lt;code&gt;known_hosts&lt;/code&gt;, 输入 &lt;code&gt;yes&lt;/code&gt; ：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This host key is known by the following other names/addresses:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ~/.ssh/known_hosts:28: github.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Are you sure you want to &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt; connecting &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;yes/no/&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;fingerprint&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;? yes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;成功标志：&lt;code&gt;Hi username! You&#39;ve successfully authenticated...&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;补充方案&#34;&gt;补充方案&lt;/h2&gt;
+&lt;h3 id=&#34;使用-https-协议代替-ssh&#34;&gt;使用 HTTPS 协议代替 SSH&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global url.&lt;span class=&#34;s2&#34;&gt;&amp;#34;https://github.com/&amp;#34;&lt;/span&gt;.insteadOf git@github.com:
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      <content:encoded><![CDATA[<h2 id="问题表现">问题表现</h2>
+<p>可以通过浏览器正常访问<code>github.com</code>。
+命令行中执行 <code>git pull</code> 时出现以下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh: connect to host github.com port 22: Operation timed out
+</span></span><span class="line"><span class="cl">fatal: Could not <span class="nb">read</span> from remote repository.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="核心解决步骤">核心解决步骤</h2>
+<h3 id="第一步验证-ssh-端口封锁">第一步：验证 SSH 端口封锁</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nc -vz github.com <span class="m">22</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>预期正常响应：<code>Connected to github.com...</code></li>
+<li>异常响应：<code>Operation timed out</code> 表示端口 22 被阻断: <code>nc: connectx to github.com port 22 (tcp) failed: Operation timed out</code></li>
+</ul>
+<h3 id="第二步配置-ssh-over-443-端口">第二步：配置 SSH over 443 端口</h3>
+<ol>
+<li>创建 SSH 配置文件</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi ~/.ssh/config
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>写入配置内容</li>
+</ol>
+<pre tabindex="0"><code class="language-config" data-lang="config">Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+</code></pre><h3 id="第三步测试新配置">第三步：测试新配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -T git@github.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>如果有询问是否修改<code>known_hosts</code>, 输入 <code>yes</code> ：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">This host key is known by the following other names/addresses:
+</span></span><span class="line"><span class="cl">  ~/.ssh/known_hosts:28: github.com
+</span></span><span class="line"><span class="cl">Are you sure you want to <span class="k">continue</span> connecting <span class="o">(</span>yes/no/<span class="o">[</span>fingerprint<span class="o">])</span>? yes
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>成功标志：<code>Hi username! You've successfully authenticated...</code></li>
+</ul>
+<hr>
+<h2 id="补充方案">补充方案</h2>
+<h3 id="使用-https-协议代替-ssh">使用 HTTPS 协议代替 SSH</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global url.<span class="s2">&#34;https://github.com/&#34;</span>.insteadOf git@github.com:
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></content:encoded>
     </item>
     
   </channel>

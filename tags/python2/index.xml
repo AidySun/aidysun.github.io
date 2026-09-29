@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/python2/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>解决 Xcode 15.4 在 macOS 14.5 上开发 Adobe Illustrator Plugin 时 Python 命令未找到问题</title>
       <link>https://blog.tomatostore.top/posts/2024/09/python/</link>

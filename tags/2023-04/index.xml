@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.tomatostore.top/tags/2023-04/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>error: git object file .git/objects/xxx is empty 和 fatal: cannot read existing object info</title>
       <link>https://blog.tomatostore.top/posts/2023/04/git-object-file-is-empty/</link>
@@ -318,10 +319,12 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <h2 id="struct-substring">struct Substring</h2>
 <p><code>Substring</code> 不会为字符串额外分配空间，而是与原始字符串共享存储。</p>
 <blockquote>
-<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p></blockquote>
+<p><strong>划重点：</strong> 因为<code>Substring</code>会持有对原始字符存储的引用计数，所以要确保子串的生命周期不长于源字符串的生命周期，以免内存泄漏。</p>
+</blockquote>
 <hr>
 <blockquote>
-<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p></blockquote>
+<p>Ref: <a href="https://swiftunboxed.com/stdlib/substrings">https://swiftunboxed.com/stdlib/substrings</a></p>
+</blockquote>
 ]]></content:encoded>
     </item>
     
@@ -370,7 +373,8 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最终得到字符<code>₤</code>的<code>UTF-8</code>表示为<code>1110-0010 1000-0010 1010-0100</code>。</p>
 <blockquote>
-<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p></blockquote>
+<p>对于英文文档来说，<code>UTF-8</code> 和 <code>ASCII</code>是一样的，不需要任何转换。</p>
+</blockquote>
 <h3 id="utf-8-比-utf-16-省空间吗">UTF-8 比 UTF-16 省空间吗？</h3>
 <p><strong>不一定</strong>。</p>
 <table>
@@ -398,7 +402,8 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
   </tbody>
 </table>
 <blockquote>
-<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p></blockquote>
+<p>如果存储数据英文字符较多，<code>UTF-8</code>肯定会比<code>UTF-16</code>节省空间。</p>
+</blockquote>
 <h2 id="encodings编码">Encodings（编码）</h2>
 <p><img loading="lazy" src="/images/character-encoding.jpeg" alt="encoding"  /></p>
 <p><code>Unicode</code>是字符集，上面说的 <code>UCS-2</code>、<code>UTF-8</code>等是实现<code>Unicode</code>的方法——<code>Encoding</code>。<code>Encoding</code>有多种实现，如<code>UTF-7</code>、<code>UTF-32</code>、<code>ISO8859-1</code>。</p>
@@ -448,7 +453,8 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </ul>
 <p>最基础的实现需要定义 2 个基类 <code>Subject</code> 和 <code>Observer</code>。</p>
 <blockquote>
-<p><code>C++</code>实现</p></blockquote>
+<p><code>C++</code>实现</p>
+</blockquote>
 <h3 id="观察者">观察者</h3>
 <p>先定义接口类 <code>class Observer</code>，该类没有默认实现，子类必须实现 <code>update()</code> 接口。</p>
 <div class="highlight"><div class="chroma">
@@ -462,11 +468,11 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">string</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="被观察对象">被观察对象</h3>
@@ -488,7 +494,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -520,7 +526,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -589,7 +595,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">articles</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">article</span><span class="p">);</span>
@@ -600,7 +606,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -696,7 +702,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Event 接口定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">EventType</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ARTICLE_UPDATED</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">VIP_ARTICLE_UPDATED</span>
@@ -709,7 +715,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 具体的 Event 类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ArticleUpdatedEvent</span><span class="o">:</span> <span class="k">public</span> <span class="n">Event</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">EventType</span> <span class="n">type</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ARTICLE_UPDATED</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -747,12 +753,12 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Observer.h 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void update(string msg) = 0; // abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// abstract virtual
+</span></span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Subject</code>更新为：</p>
@@ -770,12 +776,12 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// virtual void notify(string msg);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">notify</span><span class="p">(</span><span class="n">shared_pointer</span><span class="o">&lt;</span><span class="n">Event</span><span class="o">&gt;</span> <span class="n">event</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
@@ -862,7 +868,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 公众号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Publisher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">addArticle</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">article</span><span class="p">)</span> <span class="p">{</span>
@@ -880,7 +886,7 @@ warning: unable to unlink &#39;(null)&#39;: Bad address
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 订阅者
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subscriber</span><span class="o">:</span> <span class="k">public</span> <span class="n">Observer</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Subscriber</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span><span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -986,7 +992,7 @@ Jerry earned reward : 5
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subject.h
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Subject</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span> <span class="o">*</span> <span class="n">observer</span><span class="p">);</span>
@@ -998,7 +1004,7 @@ Jerry earned reward : 5
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Subjet.cpp
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Subject</span><span class="o">::</span><span class="n">addObserver</span><span class="p">(</span><span class="n">EventType</span> <span class="n">type</span><span class="p">,</span> <span class="n">Observer</span><span class="o">*</span> <span class="n">observer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">observers</span><span class="p">[</span><span class="n">type</span><span class="p">].</span><span class="n">insert</span><span class="p">(</span><span class="n">observer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>

@@ -5,9 +5,93 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Mac 上浏览器可访问github，但命令行 SSH 连接超时 | 番茄🍅杂货铺</title>
-<meta name="keywords" content="github, ssh, macOS, https, ">
-<meta name="description" content="using SSH over 443 port to access Github">
+<title>番茄🍅杂货铺</title>
+<meta name="keywords" content="">
+<meta name="description" content="问题表现
+可以通过浏览器正常访问github.com。
+命令行中执行 git pull 时出现以下错误：
+
+
+1
+2
+
+
+ssh: connect to host github.com port 22: Operation timed out
+fatal: Could not read from remote repository.
+
+
+
+核心解决步骤
+第一步：验证 SSH 端口封锁
+
+
+1
+
+
+nc -vz github.com 22
+
+
+
+预期正常响应：Connected to github.com...
+异常响应：Operation timed out 表示端口 22 被阻断: nc: connectx to github.com port 22 (tcp) failed: Operation timed out
+
+第二步：配置 SSH over 443 端口
+
+创建 SSH 配置文件
+
+
+
+1
+
+
+vi ~/.ssh/config
+
+
+
+写入配置内容
+
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+第三步：测试新配置
+
+
+1
+
+
+ssh -T git@github.com
+
+
+
+如果有询问是否修改known_hosts, 输入 yes ：
+
+
+1
+2
+3
+
+
+This host key is known by the following other names/addresses:
+  ~/.ssh/known_hosts:28: github.com
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+
+
+成功标志：Hi username! You&#39;ve successfully authenticated...
+
+
+补充方案
+使用 HTTPS 协议代替 SSH
+
+
+1
+
+
+git config --global url.&#34;https://github.com/&#34;.insteadOf git@github.com:
+
+
+">
 <meta name="author" content="">
 <link rel="canonical" href="https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/">
 
@@ -26,7 +110,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55d5f8076e06189cd225788b61b1fe5bb6b11df6918103b10534ac292f7da8cd.css" integrity="sha256-VdX4B24GGJzSJXiLYbH&#43;W7axHfaRgQOxBTSsKS99qM0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f5b4b08753f9c8eea2b6d66457d9a2840e73996dc7abe6816dfb7ff582e7a7db.css" integrity="sha256-9bSwh1P5yO6ittZkV9mihA5zmW3Hq&#43;aBbft/9YLnp9s=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/">
@@ -34,7 +118,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -45,15 +129,183 @@
           gtag('config', 'G-7DGG8VLCZY');
         }
       </script>
-<meta name="twitter:title" content="Mac 上浏览器可访问github，但命令行 SSH 连接超时 | 番茄🍅杂货铺" />
-<meta name="twitter:description" content="using SSH over 443 port to access Github" />
-<meta property="og:title" content="Mac 上浏览器可访问github，但命令行 SSH 连接超时 | 番茄🍅杂货铺" />
-<meta property="og:description" content="using SSH over 443 port to access Github" />
+<meta name="twitter:title" content="番茄🍅杂货铺" />
+<meta name="twitter:description" content="问题表现
+可以通过浏览器正常访问github.com。
+命令行中执行 git pull 时出现以下错误：
+
+
+1
+2
+
+
+ssh: connect to host github.com port 22: Operation timed out
+fatal: Could not read from remote repository.
+
+
+
+核心解决步骤
+第一步：验证 SSH 端口封锁
+
+
+1
+
+
+nc -vz github.com 22
+
+
+
+预期正常响应：Connected to github.com...
+异常响应：Operation timed out 表示端口 22 被阻断: nc: connectx to github.com port 22 (tcp) failed: Operation timed out
+
+第二步：配置 SSH over 443 端口
+
+创建 SSH 配置文件
+
+
+
+1
+
+
+vi ~/.ssh/config
+
+
+
+写入配置内容
+
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+第三步：测试新配置
+
+
+1
+
+
+ssh -T git@github.com
+
+
+
+如果有询问是否修改known_hosts, 输入 yes ：
+
+
+1
+2
+3
+
+
+This host key is known by the following other names/addresses:
+  ~/.ssh/known_hosts:28: github.com
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+
+
+成功标志：Hi username! You&#39;ve successfully authenticated...
+
+
+补充方案
+使用 HTTPS 协议代替 SSH
+
+
+1
+
+
+git config --global url.&#34;https://github.com/&#34;.insteadOf git@github.com:
+
+
+" />
+<meta property="og:title" content="番茄🍅杂货铺" />
+<meta property="og:description" content="问题表现
+可以通过浏览器正常访问github.com。
+命令行中执行 git pull 时出现以下错误：
+
+
+1
+2
+
+
+ssh: connect to host github.com port 22: Operation timed out
+fatal: Could not read from remote repository.
+
+
+
+核心解决步骤
+第一步：验证 SSH 端口封锁
+
+
+1
+
+
+nc -vz github.com 22
+
+
+
+预期正常响应：Connected to github.com...
+异常响应：Operation timed out 表示端口 22 被阻断: nc: connectx to github.com port 22 (tcp) failed: Operation timed out
+
+第二步：配置 SSH over 443 端口
+
+创建 SSH 配置文件
+
+
+
+1
+
+
+vi ~/.ssh/config
+
+
+
+写入配置内容
+
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+第三步：测试新配置
+
+
+1
+
+
+ssh -T git@github.com
+
+
+
+如果有询问是否修改known_hosts, 输入 yes ：
+
+
+1
+2
+3
+
+
+This host key is known by the following other names/addresses:
+  ~/.ssh/known_hosts:28: github.com
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+
+
+成功标志：Hi username! You&#39;ve successfully authenticated...
+
+
+补充方案
+使用 HTTPS 协议代替 SSH
+
+
+1
+
+
+git config --global url.&#34;https://github.com/&#34;.insteadOf git@github.com:
+
+
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/" />
 <meta property="article:section" content="posts" />
-  <meta property="article:published_time" content="2025-04-30T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2025-04-30T00:00:00&#43;00:00" />
+  
+  
 
 
 <script type="application/ld+json">
@@ -70,7 +322,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Mac 上浏览器可访问github，但命令行 SSH 连接超时",
+      "name": "",
       "item": "https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/"
     }
   ]
@@ -80,16 +332,16 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Mac 上浏览器可访问github，但命令行 SSH 连接超时 | 番茄🍅杂货铺",
-  "name": "Mac 上浏览器可访问github，但命令行 SSH 连接超时",
-  "description": "using SSH over 443 port to access Github",
+  "headline": "番茄🍅杂货铺",
+  "name": "",
+  "description": "问题表现 可以通过浏览器正常访问github.com。 命令行中执行 git pull 时出现以下错误：\n1 2 ssh: connect to host github.com port 22: Operation timed out fatal: Could not read from remote repository. 核心解决步骤 第一步：验证 SSH 端口封锁 1 nc -vz github.com 22 预期正常响应：Connected to github.com... 异常响应：Operation timed out 表示端口 22 被阻断: nc: connectx to github.com port 22 (tcp) failed: Operation timed out 第二步：配置 SSH over 443 端口 创建 SSH 配置文件 1 vi ~/.ssh/config 写入配置内容 Host github.com Hostname ssh.github.com Port 443 User git 第三步：测试新配置 1 ssh -T git@github.com 如果有询问是否修改known_hosts, 输入 yes ： 1 2 3 This host key is known by the following other names/addresses: ~/.ssh/known_hosts:28: github.com Are you sure you want to continue connecting (yes/no/[fingerprint])? yes 成功标志：Hi username! You've successfully authenticated... 补充方案 使用 HTTPS 协议代替 SSH 1 git config --global url.\u0026#34;https://github.com/\u0026#34;.insteadOf git@github.com: ",
   "keywords": [
-    "github", "ssh", "macOS", "https", ""
+    
   ],
   "wordCount" : "264",
   "inLanguage": "en",
-  "datePublished": "2025-04-30T00:00:00Z",
-  "dateModified": "2025-04-30T00:00:00Z",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://blog.tomatostore.top/posts/2025/04/github-cmd-access-fix/"
@@ -104,6 +356,51 @@
   }
 }
 </script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+<script>
+  (function () {
+    
+    var DESKTOP_APP_LINKS = {
+      "1314360935": "https://apps.apple.com/us/app/dino-voice-calculator-mathtool/id1314360935",
+      "1528477391": "https://apps.apple.com/us/app/amclock-art-minimalist-clock/id1528477391",
+      "1501166219": "https://apps.apple.com/us/app/number-talking-calculator-plus/id1501166219"
+    };
+    var LINK_SELECTOR = ".home-info a[href*='apps.apple.com'], .footer-products-bar a[href*='apps.apple.com']";
+
+    function isMobileDevice() {
+      var ua = navigator.userAgent || "";
+      if (/iPhone|iPod|iPad|Android|Mobile/i.test(ua)) {
+        return true;
+      }
+      
+      return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    }
+
+    function useDesktopAppStoreLinks() {
+      if (isMobileDevice()) {
+        return;
+      }
+      var links = document.querySelectorAll(LINK_SELECTOR);
+      Array.prototype.forEach.call(links, function (link) {
+        var matched = (link.getAttribute("href") || "").match(/id(\d+)/);
+        if (matched && DESKTOP_APP_LINKS[matched[1]]) {
+          link.setAttribute("href", DESKTOP_APP_LINKS[matched[1]]);
+        }
+      });
+    }
+
+    useDesktopAppStoreLinks();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", useDesktopAppStoreLinks);
+    }
+    window.addEventListener("load", function () {
+      useDesktopAppStoreLinks();
+      
+      if (window.InstantClick && window.InstantClick.on) {
+        window.InstantClick.on("change", useDesktopAppStoreLinks);
+      }
+    });
+  })();
+</script>
 
 <noscript>
     <style>
@@ -274,13 +571,8 @@ function toggleThemeListener() {
 
 <article class="post-single">
   <header class="post-header">
-    <h1 class="post-title">Mac 上浏览器可访问github，但命令行 SSH 连接超时</h1>
-    <div class="post-description">using SSH over 443 port to access Github</div>
-    <div class="post-meta"><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select: text;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select: text;"></rect><line x1="16" y1="2" x2="16" y2="6" style="user-select: text;"></line><line x1="8" y1="2" x2="8" y2="6" style="user-select: text;"></line><line x1="3" y1="10" x2="21" y2="10" style="user-select: text;"></line></svg>
-  <span>April 30, 2025</span></span><span class="meta-item">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select: text;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" style="user-select: text;"></path><line x1="7" y1="7" x2="7" y2="7" style="user-select: text;"></line></svg>
-  <span class="post-tags"><a href="https://blog.tomatostore.top/tags/2025/">2025</a><a href="https://blog.tomatostore.top/tags/2025-04/">2025-04</a><a href="https://blog.tomatostore.top/tags/git/">Git</a><a href="https://blog.tomatostore.top/tags/macos/">MacOS</a><a href="https://blog.tomatostore.top/tags/github/">Github</a><a href="https://blog.tomatostore.top/tags/ssh/">Ssh</a><a href="https://blog.tomatostore.top/tags/443/">443</a><a href="https://blog.tomatostore.top/tags/port-22/">Port 22</a></span></span>
+    <h1 class="post-title"></h1>
+    <div class="post-meta">
 
       
       
@@ -431,7 +723,7 @@ function toggleThemeListener() {
 </div>
 
 
-  <span>&copy; 2025 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+  <span>&copy; 2026 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
     <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
     <span class="division">|</span>
     <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>

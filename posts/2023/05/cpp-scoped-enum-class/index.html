@@ -26,7 +26,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55d5f8076e06189cd225788b61b1fe5bb6b11df6918103b10534ac292f7da8cd.css" integrity="sha256-VdX4B24GGJzSJXiLYbH&#43;W7axHfaRgQOxBTSsKS99qM0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f5b4b08753f9c8eea2b6d66457d9a2840e73996dc7abe6816dfb7ff582e7a7db.css" integrity="sha256-9bSwh1P5yO6ittZkV9mihA5zmW3Hq&#43;aBbft/9YLnp9s=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" hreflang="en" href="https://blog.tomatostore.top/posts/2023/05/cpp-scoped-enum-class/">
@@ -34,7 +34,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -104,6 +104,51 @@
   }
 }
 </script><meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+<script>
+  (function () {
+    
+    var DESKTOP_APP_LINKS = {
+      "1314360935": "https://apps.apple.com/us/app/dino-voice-calculator-mathtool/id1314360935",
+      "1528477391": "https://apps.apple.com/us/app/amclock-art-minimalist-clock/id1528477391",
+      "1501166219": "https://apps.apple.com/us/app/number-talking-calculator-plus/id1501166219"
+    };
+    var LINK_SELECTOR = ".home-info a[href*='apps.apple.com'], .footer-products-bar a[href*='apps.apple.com']";
+
+    function isMobileDevice() {
+      var ua = navigator.userAgent || "";
+      if (/iPhone|iPod|iPad|Android|Mobile/i.test(ua)) {
+        return true;
+      }
+      
+      return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    }
+
+    function useDesktopAppStoreLinks() {
+      if (isMobileDevice()) {
+        return;
+      }
+      var links = document.querySelectorAll(LINK_SELECTOR);
+      Array.prototype.forEach.call(links, function (link) {
+        var matched = (link.getAttribute("href") || "").match(/id(\d+)/);
+        if (matched && DESKTOP_APP_LINKS[matched[1]]) {
+          link.setAttribute("href", DESKTOP_APP_LINKS[matched[1]]);
+        }
+      });
+    }
+
+    useDesktopAppStoreLinks();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", useDesktopAppStoreLinks);
+    }
+    window.addEventListener("load", function () {
+      useDesktopAppStoreLinks();
+      
+      if (window.InstantClick && window.InstantClick.on) {
+        window.InstantClick.on("change", useDesktopAppStoreLinks);
+      }
+    });
+  })();
+</script>
 
 <noscript>
     <style>
@@ -306,7 +351,7 @@ function toggleThemeListener() {
 </span></span><span class="line"><span class="cl"><span class="n">Season</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Summer</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">isEqual</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">);</span> <span class="c1">// isEqual is true
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="problem">Problem<a hidden class="anchor" aria-hidden="true" href="#problem">¶</a></h3>
@@ -395,20 +440,20 @@ function toggleThemeListener() {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumOnly</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Week</span> <span class="p">{</span> <span class="n">Mon</span><span class="p">,</span> <span class="n">Tue</span><span class="p">,</span> <span class="n">Wed</span><span class="p">,</span> <span class="n">Thu</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">Season</span> <span class="p">{</span> <span class="n">Sprint</span><span class="p">,</span> <span class="n">Summer</span><span class="p">,</span> <span class="n">Fall</span><span class="p">,</span> <span class="n">Winter</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumOnly
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">EnumClass</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Month</span> <span class="p">{</span> <span class="n">Jan</span><span class="p">,</span> <span class="n">Feb</span><span class="p">,</span> <span class="n">Mar</span><span class="p">,</span> <span class="n">Apr</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Num</span> <span class="p">{</span> <span class="n">One</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Two</span><span class="p">,</span> <span class="n">Three</span><span class="p">,</span> <span class="n">Four</span> <span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace EnumClass
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumOnly::Week::Mon = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">EnumOnly</span><span class="o">::</span><span class="n">Week</span><span class="o">::</span><span class="n">Mon</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EnumClass::Month::Jan = &#34;</span> <span class="o">&lt;&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EnumClass</span><span class="o">::</span><span class="n">Month</span><span class="o">::</span><span class="n">Jan</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -430,7 +475,7 @@ function toggleThemeListener() {
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w == s, ohh!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// unmeaningful
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;w != s&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  
@@ -563,7 +608,7 @@ function toggleThemeListener() {
 </div>
 
 
-  <span>&copy; 2025 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+  <span>&copy; 2026 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
     <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
     <span class="division">|</span>
     <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>

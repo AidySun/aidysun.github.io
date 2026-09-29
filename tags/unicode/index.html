@@ -26,7 +26,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55d5f8076e06189cd225788b61b1fe5bb6b11df6918103b10534ac292f7da8cd.css" integrity="sha256-VdX4B24GGJzSJXiLYbH&#43;W7axHfaRgQOxBTSsKS99qM0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f5b4b08753f9c8eea2b6d66457d9a2840e73996dc7abe6816dfb7ff582e7a7db.css" integrity="sha256-9bSwh1P5yO6ittZkV9mihA5zmW3Hq&#43;aBbft/9YLnp9s=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://blog.tomatostore.top/favicon.ico">
 <link rel="apple-touch-icon" href="https://blog.tomatostore.top/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" href="https://blog.tomatostore.top/tags/unicode/index.xml">
@@ -35,7 +35,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DGG8VLCZY"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -54,6 +54,51 @@
 <meta property="og:url" content="https://blog.tomatostore.top/tags/unicode/" />
 
 <meta name="baidu-site-verification" content="codeva-j6siwtsu0f" />
+<script>
+  (function () {
+    
+    var DESKTOP_APP_LINKS = {
+      "1314360935": "https://apps.apple.com/us/app/dino-voice-calculator-mathtool/id1314360935",
+      "1528477391": "https://apps.apple.com/us/app/amclock-art-minimalist-clock/id1528477391",
+      "1501166219": "https://apps.apple.com/us/app/number-talking-calculator-plus/id1501166219"
+    };
+    var LINK_SELECTOR = ".home-info a[href*='apps.apple.com'], .footer-products-bar a[href*='apps.apple.com']";
+
+    function isMobileDevice() {
+      var ua = navigator.userAgent || "";
+      if (/iPhone|iPod|iPad|Android|Mobile/i.test(ua)) {
+        return true;
+      }
+      
+      return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    }
+
+    function useDesktopAppStoreLinks() {
+      if (isMobileDevice()) {
+        return;
+      }
+      var links = document.querySelectorAll(LINK_SELECTOR);
+      Array.prototype.forEach.call(links, function (link) {
+        var matched = (link.getAttribute("href") || "").match(/id(\d+)/);
+        if (matched && DESKTOP_APP_LINKS[matched[1]]) {
+          link.setAttribute("href", DESKTOP_APP_LINKS[matched[1]]);
+        }
+      });
+    }
+
+    useDesktopAppStoreLinks();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", useDesktopAppStoreLinks);
+    }
+    window.addEventListener("load", function () {
+      useDesktopAppStoreLinks();
+      
+      if (window.InstantClick && window.InstantClick.on) {
+        window.InstantClick.on("change", useDesktopAppStoreLinks);
+      }
+    });
+  })();
+</script>
 
 <noscript>
     <style>
@@ -305,7 +350,7 @@ function toggleThemeListener() {
 </div>
 
 
-  <span>&copy; 2025 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
+  <span>&copy; 2026 <a href="https://blog.tomatostore.top/">番茄🍅杂货铺</a></span><div class="busuanzi-footer">
     <span id="busuanzi_container_site_pv">Page View: <span id="busuanzi_value_site_pv"></span></span>
     <span class="division">|</span>
     <span id="busuanzi_container_site_uv">Unique Visitor: <span id="busuanzi_value_site_uv"></span></span>
